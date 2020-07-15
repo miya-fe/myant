@@ -1,0 +1,61 @@
+{
+  "name": "myant",
+  "version": "0.1.0",
+  "description": "WX & AliPay UI Components built on uniApp",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "style": "lib/index.css",
+  "scripts": {
+    "lint": "myant-cli lint",
+    "test": "myant-cli test",
+    "dev": "myant-cli dev",
+    "build": "myant-cli build",
+    "release": "myant-cli release"
+  },
+  "sideEffects": false,
+  "files": [
+    "es",
+    "lib",
+    "types"
+  ],
+  "keywords": [
+    "myant",
+    "miya-ant",
+    "ant",
+    "uniapp",
+    "wx",
+    "alipay",
+    "components"
+  ],
+  "author": "miya-fe",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@myant"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "@myant/stylelint-config"
+    ]
+  },
+  "prettier": {
+    "printWidth": 200,
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "endOfLine": "lf",
+    "proseWrap": "never"
+  },
+  "browserslist": [
+    "Android >= 4.0",
+    "iOS >= 8"
+  ]
+}

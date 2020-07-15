@@ -1,0 +1,18 @@
+{
+  "name": "myant-markdown-loader",
+  "version": "1.0.0",
+  "description": "myant readme loader",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "myant",
+    "readme",
+    "webpack",
+    "loader",
+    "vue"
+  ],
+  "author": "miya-fe",
+  "license": "ISC"
+}

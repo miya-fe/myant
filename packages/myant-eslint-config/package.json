@@ -1,0 +1,26 @@
+{
+  "name": "@myant/eslint-config-vue",
+  "version": "1.0.1",
+  "description": "eslint config of myant",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/miya-fe/myant/tree/dev/packages/myant-eslint-config",
+  "peerDependencies": {
+    "eslint": "^6.0.0"
+  },
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "typescript": "^3.9.6"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}

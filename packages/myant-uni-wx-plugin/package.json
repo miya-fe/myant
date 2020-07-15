@@ -1,0 +1,46 @@
+{
+  "name": "@myant/uni-wx-plugin",
+  "version": "1.0.0",
+  "description": "auto build with wx plugin",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "keywords": [
+    "uniapp",
+    "wx",
+    "plugin"
+  ],
+  "author": "miya-fe",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib",
+    "src",
+    "test",
+    "jest.config.js",
+    "tsconfig.json"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/minimatch": "^3.0.3",
+    "@types/node": "^14.0.23",
+    "@types/webpack": "^4.41.21",
+    "jest": "^26.1.0",
+    "loader-utils": "^2.0.0",
+    "minimatch": "^3.0.4",
+    "ts-jest": "^26.1.2",
+    "webpack": "^4.43.0"
+  },
+  "dependencies": {
+    "@vue/cli-shared-utils": "^4.4.6",
+    "webapack": "^1.0.0"
+  }
+}
