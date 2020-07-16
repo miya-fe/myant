@@ -16,7 +16,7 @@ test('wx plugin', () => {
       plugins: [
         new WxPlugin({
           'pages/index/index': {
-            name: 'liver',
+            name: 'liver-player-plugin',
             version: '1.0.1',
             provider: 'abcdefghijklmn',
             usingComponents: {

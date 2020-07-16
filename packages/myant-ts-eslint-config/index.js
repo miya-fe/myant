@@ -1,15 +1,15 @@
 module.exports = {
-  extends: ['airbnb-base', 'plugin:vue/recommended', 'prettier', 'prettier/vue'],
+  extends: ['airbnb-base', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'plugin:vue/recommended', 'prettier', 'prettier/vue'],
 
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 2019,
     sourceType: 'module',
     jsx: true,
     extraFileExtensions: ['.vue'], // The default extensions are .ts, .tsx, .js, and .jsx
   },
 
-  plugins: [],
+  plugins: ['@typescript-eslint'],
 
   env: {
     es6: true,

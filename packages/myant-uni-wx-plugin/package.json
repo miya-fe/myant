@@ -20,8 +20,6 @@
   "files": [
     "lib",
     "src",
-    "test",
-    "jest.config.js",
     "tsconfig.json"
   ],
   "engines": {
@@ -41,6 +39,7 @@
   },
   "dependencies": {
     "@vue/cli-shared-utils": "^4.4.6",
+    "fs-extra": "^9.0.1",
     "webapack": "^1.0.0"
   }
 }
