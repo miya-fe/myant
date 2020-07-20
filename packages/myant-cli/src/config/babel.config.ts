@@ -7,8 +7,7 @@ module.exports = function (api?: ConfigAPI) {
 
   const { BABEL_MODULE, NODE_ENV } = process.env
   const isTest = NODE_ENV === 'test'
-  const useESModules =
-    BABEL_MODULE !== 'commonjs' && !isTest
+  const useESModules = BABEL_MODULE !== 'commonjs' && !isTest
 
   return {
     presets: [

@@ -1,11 +1,11 @@
-import { join } from 'path';
-import { existsSync } from 'fs-extra';
+import { join } from 'path'
+import { existsSync } from 'fs-extra'
 import {
   ROOT,
   JEST_SETUP_FILE,
   JEST_FILE_MOCK_FILE,
   JEST_STYLE_MOCK_FILE,
-} from '../common/constant';
+} from '../common/constant'
 
 const DEFAULT_CONFIG = {
   moduleNameMapper: {
@@ -18,25 +18,25 @@ const DEFAULT_CONFIG = {
     '\\.(vue)$': 'vue-jest',
     '\\.(js|jsx|ts|tsx)$': 'babel-jest',
   },
-  transformIgnorePatterns: ['/node_modules/(?!(@vant/cli))/'],
+  transformIgnorePatterns: ['/node_modules/(?!(@myant/cli))/'],
   snapshotSerializers: ['jest-serializer-vue'],
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx,vue}', '!**/demo/**'],
   coverageReporters: ['html', 'lcov', 'text-summary'],
   coverageDirectory: './test/coverage',
-};
+}
 
 function readRootConfig() {
-  const ROOT_CONFIG_PATH = join(ROOT, 'jest.config.js');
+  const ROOT_CONFIG_PATH = join(ROOT, 'jest.config.js')
 
   if (existsSync(ROOT_CONFIG_PATH)) {
-    return require(ROOT_CONFIG_PATH);
+    return require(ROOT_CONFIG_PATH)
   }
 
-  return {};
+  return {}
 }
 
 module.exports = {
   ...DEFAULT_CONFIG,
   ...readRootConfig(),
-};
+}

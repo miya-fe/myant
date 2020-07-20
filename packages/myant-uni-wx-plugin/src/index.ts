@@ -76,4 +76,4 @@ class WxPlugin {
   }
 }
 
-module.exports = WxPlugin
+export default WxPlugin

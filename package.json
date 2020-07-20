@@ -38,7 +38,7 @@
   "eslintConfig": {
     "root": true,
     "extends": [
-      "@myant"
+      "@myant/vue-ts"
     ]
   },
   "stylelint": {
@@ -47,7 +47,7 @@
     ]
   },
   "prettier": {
-    "printWidth": 200,
+    "printWidth": 100,
     "tabWidth": 2,
     "semi": false,
     "singleQuote": true,

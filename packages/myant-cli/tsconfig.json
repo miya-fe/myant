@@ -9,9 +9,5 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"]
   },
-  "include": [
-    "src/**/*",
-    "site",
-    "node_modules/@types"
-  ]
+  "include": ["src/**/*", "site", "node_modules/*"]
 }

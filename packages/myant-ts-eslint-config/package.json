@@ -7,7 +7,7 @@
     "access": "public"
   },
   "license": "MIT",
-  "repository": "https://github.com/miya-fe/myant/tree/dev/packages/myant-eslint-config",
+  "repository": "https://github.com/miya-fe/myant/tree/dev/packages/myant-ts-eslint-config",
   "peerDependencies": {
     "eslint": "^6.0.0"
   },
