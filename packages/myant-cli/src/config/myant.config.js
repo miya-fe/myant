@@ -9,7 +9,13 @@ module.exports = {
     },
   ],
 
-  sites: [
+  site: {
+    title: '',
+    logo: '',
+    description: '',
+  },
+
+  build: [
     {
       type: 'mobile',
       chainWebpack: (config) => {},
