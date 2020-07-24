@@ -17,14 +17,6 @@ export function getSiteProdWebpackConfig(): Configuration {
       'site-desktop': [join(__dirname, '../../sites/desktop/main.js')],
       'site-mobile': [join(__dirname, '../../sites/mobile/main.js')],
     },
-    devServer: {
-      port: 8080,
-      quiet: true,
-      host: '0.0.0.0',
-      stats: 'errors-only',
-      publicPath: '/',
-      disableHostCheck: true,
-    },
     resolve: {
       alias: {
         'site-mobile-shared': SITE_MODILE_SHARED_FILE,

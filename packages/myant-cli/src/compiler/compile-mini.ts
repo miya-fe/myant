@@ -1,5 +1,8 @@
-import { MINI_DIST_DIR, TPl_MINI_DIR } from '../common/constant'
+import { MINI_DEV_DIR, MINI_PROD_DIR, TPl_MINI_DIR, SRC_DIR, LIB_DIR } from '../common/constant'
+import { getSrcFiles, copySrcDir } from '../common'
 import execa from 'execa'
+import { emptyDirSync, existsSync } from 'fs-extra'
+import { join } from 'path'
 
 export type Option = {
   platform: 'mp-weixin' | 'mp-alipay' | 'mp-baidu' | 'mp-qq' | 'mp-toutiao'
@@ -10,13 +13,19 @@ export type Option = {
 /**
  * 打包组件
  */
-function build(cmd: Option) {}
+function build() {
+  let dirs = getSrcFiles()
+  emptyDirSync(LIB_DIR)
 
-function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
-  let command = `cross-env NODE_ENV=production UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
-    option.output_dir || MINI_DIST_DIR
-  } vue-cli-service uni-build`
-  let subProcess = execa.command(command, {
+  dirs.forEach((dirName: string) => {
+    if (existsSync(join(SRC_DIR, dirName, 'index.vue'))) {
+      copySrcDir(join(SRC_DIR, dirName), join(LIB_DIR, dirName))
+    }
+  })
+}
+
+function runMiniCommand(cmd: string) {
+  let subProcess = execa.command(cmd, {
     localDir: TPl_MINI_DIR,
     execPath: TPl_MINI_DIR,
   })
@@ -29,7 +38,19 @@ function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
   })
 }
 
-export function buildMiniSite(cmd: Option) {}
+function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
+  let command = `cross-env NODE_ENV=development UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
+    option.output_dir || MINI_DEV_DIR
+  } vue-cli-service uni-build`
+  runMiniCommand(command)
+}
+
+export function buildMiniSite(option: Option) {
+  let command = `cross-env NODE_ENV=production UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
+    option.output_dir || MINI_PROD_DIR
+  } vue-cli-service uni-build`
+  runMiniCommand(command)
+}
 
 /**
  * 编译小程序
@@ -37,7 +58,7 @@ export function buildMiniSite(cmd: Option) {}
  */
 export function compileMini(isProduction: boolean = false, cmd: Option) {
   if (isProduction) {
-    build(cmd)
+    build()
   } else {
     runMiniServer(cmd)
   }

@@ -1,6 +1,15 @@
 import execa from 'execa'
 import consola from 'consola'
-import { MYANT_CONFIG_FILE } from './constant'
+import { PACKAGE_JSON_FILE, MYANT_CONFIG_FILE, SRC_DIR } from './constant'
+import {
+  readFileSync,
+  outputFileSync,
+  readdirSync,
+  existsSync,
+  lstatSync,
+  copyFileSync,
+} from 'fs-extra'
+import { join } from 'path'
 
 export type NODE_ENV = 'production' | 'development' | 'test'
 export type MODULE_ENV = 'esmodule' | 'commonjs'
@@ -11,6 +20,42 @@ export function setNodeEnv(env: NODE_ENV) {
 
 export function setModuleEnv(env: MODULE_ENV) {
   process.env.MODULE_ENV = env
+}
+
+export function isDemoDir(dirName: string) {
+  return /(\/|\.)demo\/?/g.test(dirName)
+}
+
+export function isTestDir(dirName: string) {
+  return /(\/|\.)test\/?/g.test(dirName)
+}
+
+export function isMDFile(dirName: string) {
+  return /\.md$/.test(dirName.toLowerCase())
+}
+
+export function isSrcFiles(file: string) {
+  return !isTestDir(file) && !isDemoDir(file) && !isMDFile(file)
+}
+
+export function getSrcFiles() {
+  return readdirSync(SRC_DIR)
+}
+
+export function copySrcDir(fromDir: string, toDir: string) {
+  if (isTestDir(fromDir) || isDemoDir(fromDir)) {
+    return
+  }
+  let files = readdirSync(fromDir)
+  files.forEach((file: string) => {
+    let stat = lstatSync(file)
+
+    if (stat.isDirectory()) {
+      copySrcDir(join(fromDir, file), join(toDir, file))
+    } else {
+      copyFileSync(join(fromDir, file), join(toDir, file))
+    }
+  })
 }
 
 let installedYarn: boolean
@@ -43,6 +88,12 @@ export async function installDependencies() {
   }
 }
 
+export function getPackageJson() {
+  delete require.cache[PACKAGE_JSON_FILE]
+
+  return require(PACKAGE_JSON_FILE)
+}
+
 export function getMyantConfig() {
   delete require.cache[MYANT_CONFIG_FILE]
 
@@ -51,4 +102,20 @@ export function getMyantConfig() {
   } catch (err) {
     return {}
   }
+}
+
+export function smartOutputFile(filePath: string, content: string) {
+  if (existsSync(filePath)) {
+    const previousContent = readFileSync(filePath, 'utf-8')
+
+    if (previousContent === content) {
+      return
+    }
+  }
+
+  outputFileSync(filePath, content)
+}
+
+export function normalizePath(path: string) {
+  return path.replace(/\\/, '/')
 }
