@@ -19,3 +19,5 @@ export default function (content: string | Buffer): string {
 
   return toMobileComponent(parser.render(content))
 }
+
+export { parser }

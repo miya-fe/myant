@@ -1,5 +1,5 @@
-import { getPackageJson, getSrcFiles, smartOutputFile } from '../common'
-import { SRC_DIR, SITE_MOBILE_SHARED_FILE } from '../common/constant'
+import { getPackageJson, getSrcFiles, smartOutputFile, normalizePath } from '../common'
+import { SRC_DIR, SITE_MOBILE_SHARED_FILE, MYANT_CONFIG_FILE } from '../common/constant'
 import { existsSync } from 'fs-extra'
 import { join } from 'path'
 
@@ -14,12 +14,13 @@ function genCode(): string {
   let packageJson = getPackageJson()
 
   return `
+    import config from '${normalizePath(MYANT_CONFIG_FILE)}'
     ${components.join('\n')}
 
     const version='${packageJson.version}'
 
     function install(Vue){
-      const components = ${files};
+      const components = [${files.join(',')}];
 
       components.forEach(item => {
         if (item.install) {
@@ -30,11 +31,12 @@ function genCode(): string {
       });
     }
 
+    const demos = {${files.join(',\n')}}
     export {
+      config,
       install,
       version,
-      ${files.join(',\n')}
-
+      demos
     }
 
     export default {

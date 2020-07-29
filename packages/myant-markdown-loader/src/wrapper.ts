@@ -3,11 +3,9 @@
  * @param html
  */
 export function toMobileComponent(html: string): string {
-  return `
-    <template>
-        {toCardSection(html)}
-    </template>
-  `
+  return `<template>
+  ${toCardSection(html)}
+</template>`
 }
 
 /**

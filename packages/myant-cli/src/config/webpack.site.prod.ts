@@ -6,7 +6,12 @@ import { Configuration } from 'webpack'
 import { baseConfig } from './webpack.base'
 import { MyantCliSitePlugin } from '../compiler/myant-cli-site-plugin'
 import { getMyantConfig } from '../common'
-import { GREEN } from '../common/constant'
+import {
+  SRC_DIR,
+  GREEN,
+  SITE_MOBILE_SHARED_FILE,
+  SITE_DESKTOP_SHARED_FILE,
+} from '../common/constant'
 
 export function getSiteProdWebpackConfig(): Configuration {
   let myantConfig = getMyantConfig(),
@@ -19,7 +24,8 @@ export function getSiteProdWebpackConfig(): Configuration {
     },
     resolve: {
       alias: {
-        'site-mobile-shared': SITE_MODILE_SHARED_FILE,
+        '@src': SRC_DIR,
+        'site-mobile-shared': SITE_MOBILE_SHARED_FILE,
         'site-desktop-shared': SITE_DESKTOP_SHARED_FILE,
       },
     },

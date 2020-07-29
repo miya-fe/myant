@@ -29,7 +29,7 @@ function genExportCode(components: string[]) {
 
 function genMyantConfigCode() {
   return `
-  import config from '${normalizePath(MYANT_CONFIG_FILE)}';
+  import config from '${normalizePath(MYANT_CONFIG_FILE)}'
   export {config}`
 }
 
@@ -43,3 +43,5 @@ export function genSiteDesktopShared(): void {
   `
   smartOutputFile(SITE_DESKTOP_SHARED_FILE, code)
 }
+
+export default genSiteDesktopShared
