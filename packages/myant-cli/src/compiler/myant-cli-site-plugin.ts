@@ -1,12 +1,12 @@
 import { Compiler } from 'webpack'
-import { genSiteMobileShared } from './gen-site-mobile-shared'
+// import { genSiteMobileShared } from './gen-site-mobile-shared'
 import { genSiteDesktopShared } from './gen-site-desktop-shared'
 
 type Option = {}
 const PLUGIN_NAME = 'myant-cli-site-plugin'
 
 async function genSiteEntry() {
-  await genSiteMobileShared()
+  // await genSiteMobileShared()
   await genSiteDesktopShared()
 }
 

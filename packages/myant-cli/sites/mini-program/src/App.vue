@@ -16,4 +16,10 @@ export default Vue.extend({
 
 <style>
 /*每个页面公共css */
+page {
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+}
 </style>

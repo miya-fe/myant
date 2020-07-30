@@ -7,7 +7,7 @@ import {
   readdirSync,
   existsSync,
   lstatSync,
-  copyFileSync,
+  copySync,
 } from 'fs-extra'
 import { join } from 'path'
 
@@ -48,12 +48,30 @@ export function copySrcDir(fromDir: string, toDir: string) {
   }
   let files = readdirSync(fromDir)
   files.forEach((file: string) => {
+    let srcPath = join(fromDir, file),
+      destPath = join(toDir, file)
+    let stat = lstatSync(srcPath)
+
+    if (stat.isDirectory()) {
+      copySrcDir(srcPath, destPath)
+    } else {
+      copySync(srcPath, destPath)
+    }
+  })
+}
+
+export function copyDemoDir(fromDir: string, toDir: string) {
+  if (isTestDir(fromDir)) {
+    return
+  }
+  let files = readdirSync(fromDir)
+  files.forEach((file: string) => {
     let stat = lstatSync(file)
 
     if (stat.isDirectory()) {
-      copySrcDir(join(fromDir, file), join(toDir, file))
+      copyDemoDir(join(fromDir, file), join(toDir, file))
     } else {
-      copyFileSync(join(fromDir, file), join(toDir, file))
+      copySync(join(fromDir, file), join(toDir, file))
     }
   })
 }

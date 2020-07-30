@@ -36,6 +36,7 @@ export const SITE_DESKTOP_SHARED_FILE = join(SITE_DIST_DIR, 'site-desktop-shared
 export const DIST_DIR = join(__dirname, '../../dist')
 export const CONFIG_DIR = join(__dirname, '../config')
 export const TPl_MINI_DIR = join(__dirname, '../../sites/mini-program')
+export const TPl_MINI_SRC_DIR = join(__dirname, '../../sites/mini-program', 'src')
 
 // 默认的postcss配置信息
 export const POSTCSS_CONFIG_FILE = join(CONFIG_DIR, 'postcss.config.js')

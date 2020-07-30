@@ -5,7 +5,7 @@ export async function buildSite(cmd: Option) {
   if (cmd.target === 'mini') {
     buildMiniSite(cmd)
   } else if (cmd.target === 'site') {
-    compileSite(true)
+    await compileSite(true)
   } else {
     buildMiniSite(cmd)
     compileSite(true)

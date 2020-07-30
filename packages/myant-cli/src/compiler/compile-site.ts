@@ -10,15 +10,20 @@ import { getSiteProdWebpackConfig } from '../config/webpack.site.prod'
 /**
  * 打包组件
  */
-function build() {
+async function build() {
   let config = getSiteProdWebpackConfig()
 
-  webpack(config, (err, stats) => {
-    if (err || stats.hasErrors()) {
-      consola.error(err)
-    } else {
-      consola.log('build!!!')
-    }
+  return new Promise((resolve, reject) => {
+    webpack(config, (err, stats) => {
+      if (err || stats.hasErrors()) {
+        consola.error(err)
+        consola.error(stats.compilation.errors)
+        reject(err)
+      } else {
+        consola.log('build!!!')
+        resolve()
+      }
+    })
   })
 }
 
@@ -66,9 +71,9 @@ function runSiteWatch() {
   )
 }
 
-export function compileSite(isProduction: boolean = false) {
+export async function compileSite(isProduction: boolean = false) {
   if (isProduction) {
-    build()
+    await build()
   } else {
     runSiteWatch()
   }

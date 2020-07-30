@@ -1,4 +1,4 @@
-import merge from 'webpack-merge'
+import { merge } from 'webpack-merge'
 import { join } from 'path'
 import WebpackBar from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -11,26 +11,38 @@ import {
   GREEN,
   SITE_MOBILE_SHARED_FILE,
   SITE_DESKTOP_SHARED_FILE,
+  SITE_DIST_DIR,
 } from '../common/constant'
+import { get } from 'lodash'
 
-export function getSiteProdWebpackConfig(): Configuration {
+const myantConfig = getMyantConfig()
+
+export function getSiteProdWebpackConfig(site: string = 'desktop'): Configuration {
   let myantConfig = getMyantConfig(),
-    siteConfig = myantConfig.site || {}
+    siteConfig = get(myantConfig, `site`, {})
 
-  let siteDevWebpackConfig = {
+  const outputDir = get(myantConfig, `build.${site}.outputDir`, join(SITE_DIST_DIR, site))
+  const publicPath = get(myantConfig, `build.${site}.publicPath`, '/')
+
+  let siteProdWebpackConfig = {
+    mode: 'production',
+    stats: 'none',
     entry: {
       'site-desktop': [join(__dirname, '../../sites/desktop/main.js')],
-      'site-mobile': [join(__dirname, '../../sites/mobile/main.js')],
+      // 'site-mobile': [join(__dirname, '../../sites/mobile/main.js')],
     },
     resolve: {
       alias: {
         '@src': SRC_DIR,
-        'site-mobile-shared': SITE_MOBILE_SHARED_FILE,
+        // 'site-mobile-shared': SITE_MOBILE_SHARED_FILE,
         'site-desktop-shared': SITE_DESKTOP_SHARED_FILE,
       },
     },
     output: {
-      chunkFilename: '[name].js',
+      publicPath,
+      path: outputDir,
+      filename: '[name].[hash:8].js',
+      chunkFilename: 'async_[name].[chunkhash:8].js',
     },
     optimization: {
       splitChunks: {
@@ -54,23 +66,14 @@ export function getSiteProdWebpackConfig(): Configuration {
         title: siteConfig.title,
         logo: siteConfig.logo,
         description: siteConfig.description,
-        chunks: ['chunks', 'site-desktop'],
+        chunks: ['chunks', 'site-' + site],
         template: join(__dirname, '../../sites/desktop/index.html'),
         filename: 'index.html',
-        baiduAnalytics: siteConfig.baiduAnalytics,
-      }),
-      new HtmlWebpackPlugin({
-        title: siteConfig.title,
-        logo: siteConfig.logo,
-        description: siteConfig.description,
-        chunks: ['chunks', 'site-mobile'],
-        template: join(__dirname, '../../sites/mobile/index.html'),
-        filename: 'mobile.html',
         baiduAnalytics: siteConfig.baiduAnalytics,
       }),
     ],
   }
 
   // @ts-ignore
-  return merge(baseConfig, siteDevWebpackConfig)
+  return merge(baseConfig, siteProdWebpackConfig, get(myantConfig, `build.${site}.webpack`, {}))
 }

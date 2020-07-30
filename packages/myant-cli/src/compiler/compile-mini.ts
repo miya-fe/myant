@@ -1,8 +1,17 @@
-import { MINI_DEV_DIR, MINI_PROD_DIR, TPl_MINI_DIR, SRC_DIR, LIB_DIR } from '../common/constant'
-import { getSrcFiles, copySrcDir } from '../common'
+import {
+  MINI_DEV_DIR,
+  MINI_PROD_DIR,
+  TPl_MINI_DIR,
+  TPl_MINI_SRC_DIR,
+  SRC_DIR,
+  LIB_DIR,
+} from '../common/constant'
+import { getSrcFiles, copySrcDir, copyDemoDir, isDemoDir, isTestDir } from '../common'
 import execa from 'execa'
-import { emptyDirSync, existsSync } from 'fs-extra'
+import { emptyDirSync, existsSync, copySync, removeSync } from 'fs-extra'
 import { join } from 'path'
+import chokidar from 'chokidar'
+import ora from 'ora'
 
 export type Option = {
   platform: 'mp-weixin' | 'mp-alipay' | 'mp-baidu' | 'mp-qq' | 'mp-toutiao'
@@ -52,14 +61,37 @@ export function buildMiniSite(option: Option) {
   runMiniCommand(command)
 }
 
+function watchFileChange() {
+  const DemoTplDir = join(TPl_MINI_SRC_DIR, 'demo')
+  removeSync(DemoTplDir)
+  copyDemoDir(SRC_DIR, DemoTplDir)
+
+  chokidar.watch(SRC_DIR).on('change', async (path) => {
+    if (!isTestDir(path)) {
+      return
+    }
+
+    const miniPath = path.replace(SRC_DIR, DemoTplDir)
+
+    const spinner = ora('File changed, start copy...').start()
+    try {
+      await copySync(path, miniPath)
+      spinner.succeed('Compiled: ' + miniPath)
+    } catch (err) {
+      spinner.fail('Compile failed: ' + path)
+    }
+  })
+}
+
 /**
  * 编译小程序
  * @param cmd
  */
-export function compileMini(isProduction: boolean = false, cmd: Option) {
+export function compileMini(isProduction: boolean = false, cmd?: Option) {
   if (isProduction) {
     build()
   } else {
     runMiniServer(cmd)
+    watchFileChange()
   }
 }

@@ -43,7 +43,7 @@ if (existsSync(tsconfigPath)) {
   plugins.push(
     new ForkTsCheckerPlugin({
       formatter: 'codeframe',
-      vue: { enabled: true },
+      // vue: { enabled: true },
       logger: {
         // skip info message
         info() {},

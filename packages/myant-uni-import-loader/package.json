@@ -1,6 +1,6 @@
 {
-  "name": "@myant/uni-plugin-import",
-  "version": "1.0.1",
+  "name": "@myant/uni-import-loader",
+  "version": "1.0.0",
   "description": "uniapp component import loader",
   "main": "lib/index.js",
   "scripts": {
