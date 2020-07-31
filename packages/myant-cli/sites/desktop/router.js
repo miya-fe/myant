@@ -3,12 +3,13 @@ import VueRouter from 'vue-router'
 import { isMobile, decamelize } from '../common'
 import { config, documents } from 'site-desktop-shared'
 import { getLang, setDefaultLang } from '../common/locales'
-import '../common/iframe-router'
+// import '../common/iframe-router'
 
-if (isMobile) {
+/*if (isMobile) {
   location.replace('mobile.html' + location.hash)
-}
-
+}*/
+console.log('config', config)
+console.log('documents', documents)
 const { locales, defaultLang } = config.site
 
 setDefaultLang(defaultLang)
@@ -66,6 +67,7 @@ function getRoutes() {
     })
   }
 
+  console.log('names', names)
   names.forEach((name) => {
     const { component, lang } = parseName(name)
 
@@ -112,8 +114,8 @@ export const router = new VueRouter({
   },
 })
 
-router.afterEach(() => {
+/*router.afterEach(() => {
   Vue.nextTick(() => window.syncPath())
-})
+})*/
 
 window.vueRouter = router

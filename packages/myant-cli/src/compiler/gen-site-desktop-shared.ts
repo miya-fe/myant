@@ -17,7 +17,7 @@ function genPackageVersion() {
 function genImportCode(files: string[]): string {
   let components: string[] = []
   files.forEach((file: string) => {
-    components.push(`import ${file} from '@src/${file}/README.MD'`)
+    components.push(`import ${file} from '@src/${file}/README.md'`)
   })
 
   return components.join('\n')

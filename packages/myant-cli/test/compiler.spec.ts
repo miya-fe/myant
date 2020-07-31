@@ -6,7 +6,7 @@ describe.skip('compiler dirs', () => {
   test('gen site desktop shared file', () => {
     genSiteDesktopShared()
   })
-  test('gen site mobile shared file', () => {
+  /*test('gen site mobile shared file', () => {
     genSiteMobileShared()
-  })
+  })*/
 })

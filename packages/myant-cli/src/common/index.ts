@@ -1,6 +1,6 @@
 import execa from 'execa'
 import consola from 'consola'
-import { PACKAGE_JSON_FILE, MYANT_CONFIG_FILE, SRC_DIR } from './constant'
+import { PACKAGE_JSON_FILE, MYANT_CONFIG_FILE, SRC_DIR, ROOT_POSTCSS_CONFIG_FILE } from './constant'
 import {
   readFileSync,
   outputFileSync,
@@ -120,6 +120,14 @@ export function getMyantConfig() {
   } catch (err) {
     return {}
   }
+}
+
+export function getPostcssConfig(): object {
+  if (existsSync(ROOT_POSTCSS_CONFIG_FILE)) {
+    return require(ROOT_POSTCSS_CONFIG_FILE)
+  }
+
+  return {}
 }
 
 export function smartOutputFile(filePath: string, content: string) {

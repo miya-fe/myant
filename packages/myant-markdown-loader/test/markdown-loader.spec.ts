@@ -1,4 +1,6 @@
-import markdownLoader, { parser } from '../src/index'
+import markdownLoader, { parser } from '../lib/index'
+import fs from 'fs'
+import { join } from 'path'
 
 describe('test markdown loader', () => {
   test('parser markdown string to html', () => {
@@ -7,7 +9,8 @@ describe('test markdown loader', () => {
   })
 
   test('parser markdown string to html and to mobile component', () => {
-    let result = markdownLoader('## 标题2\n### 标题3')
+    // let result = markdownLoader('## 标题2\n### 标题3')
+    let result = markdownLoader(fs.readFileSync(join(__dirname, './README.md')))
     console.log(result)
     expect(result).toEqual(`<template>
   <h2 id="biao-ti2">标题2</h2>

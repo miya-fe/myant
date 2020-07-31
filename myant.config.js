@@ -20,8 +20,9 @@ module.exports = {
 
   site: {
     title: 'myant',
-    logo: '',
+    logo: 'http://hh-oss-picture.miyapay.com/box/7c472992c6f2e4bbe74a9b218044e19a.png',
     description: 'myant微信小程序组件库',
+    defaultLang: 'zh-CN',
     nav: [
       {
         title: '基础组件',

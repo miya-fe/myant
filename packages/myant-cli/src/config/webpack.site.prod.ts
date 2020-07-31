@@ -15,14 +15,12 @@ import {
 } from '../common/constant'
 import { get } from 'lodash'
 
-const myantConfig = getMyantConfig()
-
 export function getSiteProdWebpackConfig(site: string = 'desktop'): Configuration {
   let myantConfig = getMyantConfig(),
     siteConfig = get(myantConfig, `site`, {})
 
   const outputDir = get(myantConfig, `build.${site}.outputDir`, join(SITE_DIST_DIR, site))
-  const publicPath = get(myantConfig, `build.${site}.publicPath`, '/')
+  const publicPath = get(myantConfig, `build.${site}.publicPath`, './')
 
   let siteProdWebpackConfig = {
     mode: 'production',

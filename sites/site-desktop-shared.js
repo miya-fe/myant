@@ -1,4 +1,4 @@
-import button from '@src/button/README.MD'
+import button from '@src/button/README.md'
 export const documents = { button }
 export const version = '0.1.0'
 

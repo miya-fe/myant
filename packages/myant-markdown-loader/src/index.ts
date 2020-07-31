@@ -14,10 +14,16 @@ const parser = new MarkdownIt({
 
 export default function (content: string | Buffer): string {
   if (Buffer.isBuffer(content)) {
-    content = Buffer.toString()
+    content = content.toString()
   }
 
-  return toMobileComponent(parser.render(content))
+  let template = parser.render(content)
+  console.log('====template=====')
+  console.log(template)
+  let result = toMobileComponent(template)
+  console.log(result)
+  console.log('====template=====')
+  return result
 }
 
 export { parser }

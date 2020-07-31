@@ -1,6 +1,6 @@
-import { build } from '../src/commands/build'
-import { buildSite } from '../src/commands/build-site'
-import { join } from 'path'
+import { build } from '../lib/commands/build'
+import { buildSite } from '../lib/commands/build-site'
+import { setNodeEnv } from '../src/common'
 
 describe.only('command describe', () => {
   test('build mini production', async (done) => {
@@ -10,11 +10,18 @@ describe.only('command describe', () => {
     done()
   })
 
-  test.only('build desktop or mini site', async (done) => {
-    await buildSite({
-      platform: 'mp-weixin',
-      target: 'site',
-    })
-    done()
-  })
+  test.only(
+    'build desktop or mini site',
+    async () => {
+      setNodeEnv('production')
+      return new Promise(async (resolve, reject) => {
+        await buildSite({
+          platform: 'mp-weixin',
+          target: 'site',
+        })
+        resolve()
+      })
+    },
+    1000 * 60 * 10
+  )
 })

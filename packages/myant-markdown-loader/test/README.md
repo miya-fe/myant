@@ -1,12 +1,15 @@
 ### button 的使用方法
 
-```
+```text
 .vue
+
 <template>
     <h3 class="title">button 的使用方法</h3>
 </template>
 .vue jsx
+```
 
+```
 markdown-it转换为html格式
 h3 --> text
 自动转换的组件名：地址  map
