@@ -5,7 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { Configuration } from 'webpack'
 import { baseConfig } from './webpack.base'
 import { MyantCliSitePlugin } from '../compiler/myant-cli-site-plugin'
-import { getMyantConfig } from '../common'
+import { getMyantConfig, siteOutputDir } from '../common'
 import {
   SRC_DIR,
   GREEN,
@@ -19,8 +19,9 @@ export function getSiteProdWebpackConfig(site: string = 'desktop'): Configuratio
   let myantConfig = getMyantConfig(),
     siteConfig = get(myantConfig, `site`, {})
 
-  const outputDir = get(myantConfig, `build.${site}.outputDir`, join(SITE_DIST_DIR, site))
-  const publicPath = get(myantConfig, `build.${site}.publicPath`, './')
+  // const outputDir = get(myantConfig, `build.${site}.outputDir`, join(SITE_DIST_DIR, site))
+  const outputDir = siteOutputDir(site)
+  const publicPath = get(myantConfig, `build.${site}.publicPath`, '')
 
   let siteProdWebpackConfig = {
     mode: 'production',

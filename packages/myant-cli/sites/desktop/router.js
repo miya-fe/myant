@@ -72,29 +72,17 @@ function getRoutes() {
     const { component, lang } = parseName(name)
 
     if (component === 'home') {
-      addHomeRoute(documents[name], lang)
+      addHomeRoute(documents[name], '')
     }
 
-    if (lang) {
-      routes.push({
-        name: `${lang}/${component}`,
-        path: `/${lang}/${component}`,
-        component: documents[name],
-        meta: {
-          lang,
-          name: component,
-        },
-      })
-    } else {
-      routes.push({
-        name: `${component}`,
-        path: `/${component}`,
-        component: documents[name],
-        meta: {
-          name: component,
-        },
-      })
-    }
+    routes.push({
+      name: `${component}`,
+      path: `/${component}`,
+      component: documents[name],
+      meta: {
+        name: component,
+      },
+    })
   })
 
   return routes

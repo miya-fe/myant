@@ -1,6 +1,12 @@
 import execa from 'execa'
 import consola from 'consola'
-import { PACKAGE_JSON_FILE, MYANT_CONFIG_FILE, SRC_DIR, ROOT_POSTCSS_CONFIG_FILE } from './constant'
+import {
+  PACKAGE_JSON_FILE,
+  MYANT_CONFIG_FILE,
+  SRC_DIR,
+  ROOT_POSTCSS_CONFIG_FILE,
+  SITE_DIST_DIR,
+} from './constant'
 import {
   readFileSync,
   outputFileSync,
@@ -10,6 +16,7 @@ import {
   copySync,
 } from 'fs-extra'
 import { join } from 'path'
+import { get } from 'lodash'
 
 export type NODE_ENV = 'production' | 'development' | 'test'
 export type MODULE_ENV = 'esmodule' | 'commonjs'
@@ -20,6 +27,10 @@ export function setNodeEnv(env: NODE_ENV) {
 
 export function setModuleEnv(env: MODULE_ENV) {
   process.env.MODULE_ENV = env
+}
+
+export function siteOutputDir(site: string) {
+  return get(getMyantConfig(), `build.${site}.outputDir`, join(SITE_DIST_DIR, site))
 }
 
 export function isDemoDir(dirName: string) {
@@ -144,4 +155,15 @@ export function smartOutputFile(filePath: string, content: string) {
 
 export function normalizePath(path: string) {
   return path.replace(/\\/, '/')
+}
+
+const camelizeRE = /-(\w)/g
+const pascalizeRE = /(\w)(\w*)/g
+
+export function camelize(str: string): string {
+  return str.replace(camelizeRE, (_, c) => c.toUpperCase())
+}
+
+export function pascalize(str: string): string {
+  return camelize(str).replace(pascalizeRE, (_, c1, c2) => c1.toUpperCase() + c2)
 }
