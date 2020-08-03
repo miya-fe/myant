@@ -70,4 +70,6 @@ class MiniPageWebpackPlugin {
   }
 }
 
+module.exports = MiniPageWebpackPlugin
+
 export default MiniPageWebpackPlugin

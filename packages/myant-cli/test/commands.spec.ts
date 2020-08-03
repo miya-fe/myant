@@ -1,6 +1,6 @@
 import { build } from '../lib/commands/build'
 import { buildSite } from '../lib/commands/build-site'
-import { setNodeEnv } from '../src/common'
+import { setNodeEnv } from '../lib/common'
 
 describe.only('command describe', () => {
   test('build mini production', async (done) => {

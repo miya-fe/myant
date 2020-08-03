@@ -1,4 +1,4 @@
-import MiniPageWebpackPlugin from '../../src/compiler/mini-page-webpack-plugin'
+const MiniPageWebpackPlugin = require('../../lib/compiler/mini-page-webpack-plugin')
 
 // 自定义vue配置
 module.exports = {

@@ -75,18 +75,23 @@ export function copySrcDir(fromDir: string, toDir: string) {
   })
 }
 
-export function copyDemoDir(fromDir: string, toDir: string) {
+export function copyDemoDir(fromDir: string, toDir: string, demo: string = 'demo') {
   if (isTestDir(fromDir)) {
     return
   }
   let files = readdirSync(fromDir)
   files.forEach((file: string) => {
-    let stat = lstatSync(file)
+    let srcPath = join(fromDir, file, demo),
+      destPath = join(toDir, file)
 
-    if (stat.isDirectory()) {
-      copyDemoDir(join(fromDir, file), join(toDir, file))
-    } else {
-      copySync(join(fromDir, file), join(toDir, file))
+    if (existsSync(srcPath)) {
+      let stat = lstatSync(srcPath)
+
+      if (stat.isDirectory()) {
+        copyDemoDir(srcPath, destPath, '')
+      } else {
+        copySync(srcPath, destPath)
+      }
     }
   })
 }

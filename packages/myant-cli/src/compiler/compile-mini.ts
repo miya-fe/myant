@@ -5,6 +5,7 @@ import {
   TPl_MINI_SRC_DIR,
   SRC_DIR,
   LIB_DIR,
+  CWD,
 } from '../common/constant'
 import { getSrcFiles, copySrcDir, copyDemoDir, isDemoDir, isTestDir } from '../common'
 import execa from 'execa'
@@ -34,22 +35,11 @@ function build() {
 }
 
 async function runMiniCommand(cmd: string) {
-  let subProcess = execa.command(cmd, {
+  execa.commandSync(cmd, {
+    preferLocal: true,
     localDir: TPl_MINI_DIR,
     execPath: TPl_MINI_DIR,
-  })
-
-  ;(subProcess as any).stdout.pipe(process.stdout)
-
-  await new Promise((resolve, reject) => {
-    process.on('beforeExit', (code) => {
-      console.log('miniServer will exit')
-      subProcess.kill(code)
-    })
-
-    process.on('exit', (code) => {
-      resolve(code)
-    })
+    stdout: process.stdout,
   })
 }
 
@@ -61,16 +51,22 @@ function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
 }
 
 export async function buildMiniSite(option: Option) {
+  copyMiniDemo()
   let command = `cross-env NODE_ENV=production UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
     option.output_dir || MINI_PROD_DIR
   } vue-cli-service uni-build`
   await runMiniCommand(command)
 }
 
-function watchFileChange() {
-  const DemoTplDir = join(TPl_MINI_SRC_DIR, 'demo')
+function copyMiniDemo() {
+  const DemoTplDir = join(TPl_MINI_SRC_DIR, 'demos')
   removeSync(DemoTplDir)
   copyDemoDir(SRC_DIR, DemoTplDir)
+}
+
+function watchFileChange() {
+  copyMiniDemo()
+  const DemoTplDir = join(TPl_MINI_SRC_DIR, 'demos')
 
   chokidar.watch(SRC_DIR).on('change', async (path) => {
     if (!isTestDir(path)) {
