@@ -3,8 +3,8 @@ import {
   smartOutputFile,
   getPackageJson,
   normalizePath,
-  getMyantConfig,
   pascalize,
+  getMyantConfig,
 } from '../common'
 import {
   SRC_DIR,
@@ -16,13 +16,14 @@ import {
 import { existsSync } from 'fs-extra'
 import { join, parse } from 'path'
 import glob from 'fast-glob'
-import { doc } from 'prettier'
+import { get } from 'lodash'
 
 function formatName(component: string, lang?: string) {
   component = pascalize(component)
 
   if (lang) {
     return `${component}_${lang.replace('-', '_')}`
+    // return `${component}_${lang}`
   }
 
   return component
@@ -33,13 +34,17 @@ function formatName(component: string, lang?: string) {
  */
 type Document = { name: string; path: string }
 function resolveComponents(): Document[] {
-  let documents: Document[] = []
+  let documents: Document[] = [],
+    locales = get(getMyantConfig(), 'site.locales', {})
+
   getSrcFiles().forEach((file: string) => {
-    if (existsSync(join(SRC_DIR, file, 'index.vue'))) {
-      documents.push({
-        name: file,
-        path: join(SRC_DIR, file, 'index.vue'),
-      })
+    for (let lang of Object.keys(locales)) {
+      if (existsSync(join(SRC_DIR, file, `README.${lang}.md`))) {
+        documents.push({
+          name: formatName(file, lang),
+          path: join(SRC_DIR, file, `README.${lang}.md`),
+        })
+      }
     }
   })
 

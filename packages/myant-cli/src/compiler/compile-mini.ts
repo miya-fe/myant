@@ -14,7 +14,7 @@ import chokidar from 'chokidar'
 import ora from 'ora'
 
 export type Option = {
-  platform: 'mp-weixin' | 'mp-alipay' | 'mp-baidu' | 'mp-qq' | 'mp-toutiao'
+  platform?: 'mp-weixin' | 'mp-alipay' | 'mp-baidu' | 'mp-qq' | 'mp-toutiao'
   output_dir?: string
   target?: 'all' | 'mini' | 'site'
 }
@@ -33,7 +33,7 @@ function build() {
   })
 }
 
-function runMiniCommand(cmd: string) {
+async function runMiniCommand(cmd: string) {
   let subProcess = execa.command(cmd, {
     localDir: TPl_MINI_DIR,
     execPath: TPl_MINI_DIR,
@@ -41,9 +41,15 @@ function runMiniCommand(cmd: string) {
 
   ;(subProcess as any).stdout.pipe(process.stdout)
 
-  process.on('beforeExit', (code) => {
-    console.log('miniServer will exit')
-    subProcess.kill(code)
+  await new Promise((resolve, reject) => {
+    process.on('beforeExit', (code) => {
+      console.log('miniServer will exit')
+      subProcess.kill(code)
+    })
+
+    process.on('exit', (code) => {
+      resolve(code)
+    })
   })
 }
 
@@ -54,11 +60,11 @@ function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
   runMiniCommand(command)
 }
 
-export function buildMiniSite(option: Option) {
+export async function buildMiniSite(option: Option) {
   let command = `cross-env NODE_ENV=production UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
     option.output_dir || MINI_PROD_DIR
   } vue-cli-service uni-build`
-  runMiniCommand(command)
+  await runMiniCommand(command)
 }
 
 function watchFileChange() {

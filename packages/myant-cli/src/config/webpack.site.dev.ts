@@ -5,17 +5,18 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { Configuration } from 'webpack'
 import { baseConfig } from './webpack.base'
 import { MyantCliSitePlugin } from '../compiler/myant-cli-site-plugin'
-import { getMyantConfig } from '../common'
+import { getMyantConfig, getSiteOutputDir } from '../common'
 import {
   SRC_DIR,
   GREEN,
   SITE_MOBILE_SHARED_FILE,
   SITE_DESKTOP_SHARED_FILE,
 } from '../common/constant'
+import { get } from 'lodash'
 
-export function getSiteDevWebpackConfig(): Configuration {
+export function getSiteDevWebpackConfig(site: string = 'desktop'): Configuration {
   let myantConfig = getMyantConfig(),
-    siteConfig = myantConfig.site || {}
+    siteConfig = get(myantConfig, `site`, {})
 
   let siteDevWebpackConfig = {
     entry: {

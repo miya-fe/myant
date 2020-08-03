@@ -29,8 +29,12 @@ export function setModuleEnv(env: MODULE_ENV) {
   process.env.MODULE_ENV = env
 }
 
-export function siteOutputDir(site: string) {
-  return get(getMyantConfig(), `build.${site}.outputDir`, join(SITE_DIST_DIR, site))
+export function getSiteOutputDir(site: string) {
+  return join(get(getMyantConfig(), `site.outputDir`, SITE_DIST_DIR), site)
+}
+
+export function getSitePublicPath() {
+  return get(getMyantConfig(), `site.publicPath`, '')
 }
 
 export function isDemoDir(dirName: string) {

@@ -18,7 +18,7 @@
   },
   "files": [
     "lib",
-    "sites",
+    "dist",
     "preset.js"
   ],
   "engines": {

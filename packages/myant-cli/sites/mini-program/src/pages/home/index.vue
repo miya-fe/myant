@@ -27,7 +27,8 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getMyantConfig } from '../../../../../src/common'
+// import { getMyantConfig } from '../../../../../src/common'
+import { config } from 'site-desktop-shared'
 import { get } from 'lodash'
 
 export default Vue.extend({
@@ -38,7 +39,7 @@ export default Vue.extend({
     }
   },
   onShow() {
-    this.navs = get(getMyantConfig(), 'site', 'nav') || []
+    this.navs = get(config, `site.locales.'zh-CN'.nav`, 'nav') || []
   },
   methods: {
     handleNav(path: string) {

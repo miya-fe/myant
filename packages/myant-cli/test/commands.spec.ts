@@ -10,14 +10,29 @@ describe.only('command describe', () => {
     done()
   })
 
-  test.only(
-    'build desktop or mini site',
+  test(
+    'build desktop site',
     async () => {
       setNodeEnv('production')
       return new Promise(async (resolve, reject) => {
         await buildSite({
           platform: 'mp-weixin',
           target: 'site',
+        })
+        resolve()
+      })
+    },
+    1000 * 60 * 10
+  )
+
+  test.only(
+    'build mini site',
+    async () => {
+      setNodeEnv('production')
+      return new Promise(async (resolve, reject) => {
+        await buildSite({
+          platform: 'mp-weixin',
+          target: 'mini',
         })
         resolve()
       })
