@@ -28,7 +28,7 @@
 <script lang="ts">
 import Vue from 'vue'
 // import { getMyantConfig } from '../../../../../src/common'
-import { config } from 'site-desktop-shared'
+import { config } from 'site-mini-shared'
 import { get } from 'lodash'
 
 export default Vue.extend({
