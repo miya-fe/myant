@@ -10,12 +10,12 @@
     </view>
     <text class="tip">基于uniApp的轻量级小程序UI组件库</text>
 
-    <view class="section" :for="(nav, index) in navs" :key="index">
-      <text class="tip">{nav.title}</text>
+    <view class="section" v-for="(nav, index) in navs" :key="index">
+      <text class="tip">{{ nav.title }}</text>
 
       <view class="nav" v-for="item in nav.items" :key="item.path">
         <view class="col" @click="handleNav(item.path)">
-          <text>{item.title}</text>
+          <text>{{ item.title }}</text>
           <image
             src="http://hh-oss-picture.miyapay.com/box/db9681bd3099d4dc83fba54b8a25b118.png"
           ></image>
@@ -27,7 +27,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-// import { getMyantConfig } from '../../../../../src/common'
 import { config } from 'site-mini-shared'
 import { get } from 'lodash'
 
@@ -38,8 +37,9 @@ export default Vue.extend({
       navs: [],
     }
   },
-  onShow() {
-    this.navs = get(config, `site.locales.'zh-CN'.nav`, 'nav') || []
+  onLoad() {
+    this.navs = get(config, `site.locales.'zh-CN'.nav`, [])
+    console.log(this.navs)
   },
   methods: {
     handleNav(path: string) {

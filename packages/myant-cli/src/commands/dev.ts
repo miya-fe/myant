@@ -8,14 +8,18 @@ export async function devMini(cmd: Option) {
   if (cmd.target === 'mini') {
     compileMini(false, cmd)
   } else if (cmd.target === 'site') {
-    compileSite(false)
+    await compileSite(false)
   } else {
     compileMini(false, cmd)
-    compileSite(false)
+    await compileSite(false)
   }
 }
 
 //TODO
-export async function devVue() {}
+export async function devVue() {
+  console.warn('dev vue is building')
+}
 //TODO
-export async function devReact() {}
+export async function devReact() {
+  console.warn('dev react is building')
+}

@@ -73,6 +73,7 @@
     "@dcloudio/vue-cli-plugin-uni-optimize": "^2.0.0-27920200618002",
     "@dcloudio/webpack-uni-mp-loader": "^2.0.0-27920200618002",
     "@dcloudio/webpack-uni-pages-loader": "^2.0.0-27920200618002",
+    "@types/lodash": "^4.14.159",
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-typescript": "*",
     "@vue/cli-service": "~4.4.0",

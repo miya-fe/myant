@@ -17,13 +17,7 @@ export default function (content: string | Buffer): string {
     content = content.toString()
   }
 
-  let template = parser.render(content)
-  console.log('====template=====')
-  console.log(template)
-  let result = toMobileComponent(template)
-  console.log(result)
-  console.log('====template=====')
-  return result
+  return toMobileComponent(parser.render(content))
 }
 
 export { parser }

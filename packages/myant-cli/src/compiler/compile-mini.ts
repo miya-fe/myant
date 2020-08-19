@@ -5,9 +5,8 @@ import {
   TPl_MINI_SRC_DIR,
   SRC_DIR,
   LIB_DIR,
-  CWD,
 } from '../common/constant'
-import { getSrcFiles, copySrcDir, copyDemoDir, isDemoDir, isTestDir } from '../common'
+import { getSrcFiles, copySrcDir, copyDemoDir, hasYarn, isTestDir } from '../common'
 import execa from 'execa'
 import { emptyDirSync, existsSync, copySync, removeSync } from 'fs-extra'
 import { join } from 'path'
@@ -23,7 +22,7 @@ export type Option = {
 /**
  * 打包组件
  */
-function build() {
+function buildComponent() {
   let dirs = getSrcFiles()
   emptyDirSync(LIB_DIR)
 
@@ -35,19 +34,36 @@ function build() {
 }
 
 async function runMiniCommand(cmd: string) {
+  if (!existsSync(join(TPl_MINI_DIR, 'node_modules'))) {
+    if (hasYarn()) {
+      execa.commandSync('yarn install')
+    } else {
+      execa.commandSync('npm install')
+    }
+  }
+
+  /*let args = cmd.split(' ')
+  await execa('cross-env', args.slice(1), {
+    preferLocal: true,
+    localDir: TPl_MINI_DIR,
+    execPath: TPl_MINI_DIR,
+    stdout: process.stdout,
+  })*/
+
   execa.commandSync(cmd, {
     preferLocal: true,
+    cwd: TPl_MINI_DIR,
     localDir: TPl_MINI_DIR,
     execPath: TPl_MINI_DIR,
     stdout: process.stdout,
   })
 }
 
-function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
+async function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
   let command = `cross-env NODE_ENV=development UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
     option.output_dir || MINI_DEV_DIR
   } vue-cli-service uni-build`
-  runMiniCommand(command)
+  await runMiniCommand(command)
 }
 
 export async function buildMiniSite(option: Option) {
@@ -91,9 +107,9 @@ function watchFileChange() {
  */
 export function compileMini(isProduction: boolean = false, cmd?: Option) {
   if (isProduction) {
-    build()
+    buildComponent()
   } else {
-    runMiniServer(cmd)
     watchFileChange()
+    runMiniServer(cmd)
   }
 }

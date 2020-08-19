@@ -97,7 +97,7 @@ export function copyDemoDir(fromDir: string, toDir: string, demo: string = 'demo
 }
 
 let installedYarn: boolean
-function hasYarn() {
+export function hasYarn() {
   if (installedYarn === undefined) {
     try {
       execa.sync('yarn', ['--version'], { stdio: 'ignore' })

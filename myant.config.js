@@ -1,3 +1,5 @@
+const { join } = require('path')
+
 module.exports = {
   /**
    * 小程序自动批量打包和上传的相关配置
@@ -19,41 +21,53 @@ module.exports = {
   },
 
   site: {
-    title: 'myant',
-    logo: 'http://hh-oss-picture.miyapay.com/box/7c472992c6f2e4bbe74a9b218044e19a.png',
-    description: 'myant微信小程序组件库',
     defaultLang: 'zh-CN',
-    nav: [
-      {
-        title: '基础组件',
-        items: [
+    outputDir: join(__dirname, 'dist'),
+    publicPath: '',
+    locales: {
+      'zh-CN': {
+        title: 'myant',
+        logo: 'http://hh-oss-picture.miyapay.com/box/7c472992c6f2e4bbe74a9b218044e19a.png',
+        description: 'myant微信小程序组件库',
+        langLabel: '中文',
+        searchConfig: {
+          apiKey: '',
+          indexName: 'myant',
+          placeholder: '搜索文档...',
+        },
+        nav: [
           {
-            path: '/pages/button/index',
-            title: 'Button 按钮',
+            title: '基础组件',
+            items: [
+              {
+                path: 'button',
+                title: 'Button 按钮',
+              },
+              {
+                path: 'cell',
+                title: 'Cell 单元格',
+              },
+              {
+                path: 'layout',
+                title: 'Layout 布局',
+              },
+            ],
           },
           {
-            path: '/pages/cell/index',
-            title: 'Cell 单元格',
-          },
-          {
-            path: '/pages/layout/index',
-            title: 'Layout 布局',
+            title: '表单组件',
+            items: [
+              {
+                path: 'input',
+                title: 'Input 输入框',
+              },
+              {
+                path: 'textarea',
+                title: 'textarea 文本框',
+              },
+            ],
           },
         ],
       },
-      {
-        title: '表单组件',
-        items: [
-          {
-            path: '/pages/input/index',
-            title: 'Input 输入框',
-          },
-          {
-            path: '/pages/textarea/index',
-            title: 'textarea 文本框',
-          },
-        ],
-      },
-    ],
+    },
   },
 }

@@ -29,6 +29,7 @@ export const MYANT_CONFIG_FILE = join(ROOT, 'myant.config.js')
 export const PACKAGE_JSON_FILE = join(ROOT, 'package.json')
 export const CACHE_DIR = join(ROOT, 'node_modules/.cache')
 
+export const SITE_MINI_SHARED_FILE = join(SITE_DIST_DIR, 'site-mini-shared.js')
 export const SITE_MOBILE_SHARED_FILE = join(SITE_DIST_DIR, 'site-mobile-shared.js')
 export const SITE_DESKTOP_SHARED_FILE = join(SITE_DIST_DIR, 'site-desktop-shared.js')
 export const ROOT_POSTCSS_CONFIG_FILE = join(ROOT, 'postcss.config.js')

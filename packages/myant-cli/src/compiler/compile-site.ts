@@ -36,7 +36,7 @@ function logSiteServerInfo(port: number) {
   consola.log(`  Network:  ${network}`)
 }
 
-function runSiteDevServer(port: number, config: ReturnType<typeof getSiteDevWebpackConfig>) {
+async function runSiteDevServer(port: number, config: ReturnType<typeof getSiteDevWebpackConfig>) {
   const server = new WebpackDevServer(webpack(config), config.devServer)
 
   // this is a hack to disable wds status log
@@ -52,29 +52,33 @@ function runSiteDevServer(port: number, config: ReturnType<typeof getSiteDevWebp
 /**
  * 开启组件站点打包服务
  */
-function runSiteWatch() {
+async function runSiteWatch() {
   let config = getSiteDevWebpackConfig()
 
-  getPort(
-    {
-      port: config.devServer!.port,
-    },
-    (err, port) => {
-      if (err) {
-        console.log(err)
-        return
-      }
+  return new Promise((resolve, reject) => {
+    getPort(
+      {
+        port: config.devServer!.port,
+      },
+      async (err, port) => {
+        if (err) {
+          console.log(err)
+          reject(err)
+          return
+        }
 
-      logSiteServerInfo(port)
-      runSiteDevServer(port, config)
-    }
-  )
+        logSiteServerInfo(port)
+        await runSiteDevServer(port, config)
+        resolve()
+      }
+    )
+  })
 }
 
 export async function compileSite(isProduction: boolean = false) {
   if (isProduction) {
     await build()
   } else {
-    runSiteWatch()
+    await runSiteWatch()
   }
 }

@@ -19,7 +19,11 @@ version(`@myant/cli ${packageJson.version}`)
 
 command('clean').description('Clean all dist files').action(clean)
 
-command('dev:mini').description('Run webpack dev server').action(devMini)
+command('dev:mini')
+  .description('Run miniprogram dev server')
+  .option('--target', 'which target to be packaged: mini | site')
+  .option('--platform', 'which target to be packaged: mp-weixin | mp-alipay')
+  .action(devMini)
 command('dev:vue').description('Run webpack dev server').action(devVue)
 command('dev:react').description('Run webpack dev server').action(devReact)
 

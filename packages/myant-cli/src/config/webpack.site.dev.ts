@@ -1,4 +1,4 @@
-import merge from 'webpack-merge'
+import { merge } from 'webpack-merge'
 import { join } from 'path'
 import WebpackBar from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'

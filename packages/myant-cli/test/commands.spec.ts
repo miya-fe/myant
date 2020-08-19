@@ -1,5 +1,6 @@
 import { build } from '../lib/commands/build'
 import { buildSite } from '../lib/commands/build-site'
+import { devMini } from '../lib/commands/dev'
 import { setNodeEnv } from '../lib/common'
 
 describe.only('command describe', () => {
@@ -25,7 +26,7 @@ describe.only('command describe', () => {
     1000 * 60 * 10
   )
 
-  test.only(
+  test(
     'build mini site',
     async () => {
       setNodeEnv('production')
@@ -33,6 +34,35 @@ describe.only('command describe', () => {
         await buildSite({
           platform: 'mp-weixin',
           target: 'mini',
+        })
+        resolve()
+      })
+    },
+    1000 * 60 * 10
+  )
+
+  test(
+    'dev mini site',
+    async () => {
+      setNodeEnv('development')
+      return new Promise(async (resolve, reject) => {
+        await devMini({
+          platform: 'mp-weixin',
+          target: 'mini',
+        })
+        resolve()
+      })
+    },
+    1000 * 60 * 10
+  )
+
+  test.only(
+    'dev site server',
+    async () => {
+      setNodeEnv('development')
+      return new Promise(async (resolve, reject) => {
+        await devMini({
+          target: 'site',
         })
         resolve()
       })
