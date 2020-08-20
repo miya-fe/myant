@@ -8,8 +8,6 @@ import {
   MINI_PROD_DIR,
   SITE_DESKTOP_SHARED_FILE,
 } from '../common/constant'
-import { get } from 'lodash'
-import { join } from 'path'
 
 export async function buildSite(cmd: Option) {
   setNodeEnv('production')
