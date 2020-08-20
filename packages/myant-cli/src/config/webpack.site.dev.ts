@@ -4,7 +4,7 @@ import WebpackBar from 'webpackbar'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { Configuration } from 'webpack'
 import { baseConfig } from './webpack.base'
-import { MyantCliSitePlugin } from '../compiler/myant-cli-site-plugin'
+import { MyantCliSitePlugin, Platform } from '../compiler/myant-cli-site-plugin'
 import { getMyantConfig, getSiteOutputDir } from '../common'
 import {
   SRC_DIR,
@@ -58,7 +58,7 @@ export function getSiteDevWebpackConfig(site: string = 'desktop'): Configuration
         name: 'myant cli',
         color: GREEN,
       }),
-      new MyantCliSitePlugin(),
+      new MyantCliSitePlugin({ platform: [Platform.mobile, Platform.desktop] }),
       new HtmlWebpackPlugin({
         title: siteConfig.title,
         logo: siteConfig.logo,

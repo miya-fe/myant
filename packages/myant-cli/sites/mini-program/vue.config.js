@@ -1,5 +1,5 @@
-const { MyantCliSitePlugin } = require('../../lib/compiler/myant-cli-site-plugin')
-const { SITE_MINI_SHARED_FILE } = require('../../lib/common/constant')
+const { MyantCliSitePlugin, Platform } = require('../../lib/compiler/myant-cli-site-plugin')
+const { SITE_MINI_SHARED_FILE, TPl_MINI_COMPONENT_DIR } = require('../../lib/common/constant')
 const MiniPageWebpackPlugin = require('../../lib/compiler/mini-page-webpack-plugin')
 
 // 自定义vue配置
@@ -15,6 +15,6 @@ module.exports = {
         'site-mini-shared': SITE_MINI_SHARED_FILE,
       },
     },*/
-    plugins: [new MyantCliSitePlugin(), new MiniPageWebpackPlugin()],
+    plugins: [new MyantCliSitePlugin({ platform: [Platform.mini] }), new MiniPageWebpackPlugin()],
   },
 }

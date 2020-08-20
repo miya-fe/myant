@@ -6,7 +6,7 @@
         mode="widthFix"
         src="http://hh-oss-picture.miyapay.com/box/7c472992c6f2e4bbe74a9b218044e19a.png"
       ></image>
-      <text>Myant uniApp</text>
+      <text class="title">Myant uniApp</text>
     </view>
     <text class="tip">基于uniApp的轻量级小程序UI组件库</text>
 
@@ -38,13 +38,13 @@ export default Vue.extend({
     }
   },
   onLoad() {
-    this.navs = get(config, `site.locales.'zh-CN'.nav`, [])
+    this.navs = get(config, `site.locales['zh-CN'].nav`, [])
     console.log(this.navs)
   },
   methods: {
     handleNav(path: string) {
       uni.navigateTo({
-        url: path,
+        url: `/demos/${path}/index`,
         fail: (e) => {
           console.error('===页面跳转失败，demo页面可能是未正确载入===')
           console.error(e)
@@ -69,7 +69,7 @@ export default Vue.extend({
 }
 
 .header {
-  padding: 100rpx 0rpx;
+  padding: 50rpx 0rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -79,6 +79,9 @@ export default Vue.extend({
     width: 200rpx;
     height: auto;
     margin-right: 20rpx;
+  }
+  .title {
+    font-size: 36rpx;
   }
 }
 

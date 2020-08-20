@@ -38,7 +38,8 @@ export const ROOT_POSTCSS_CONFIG_FILE = join(ROOT, 'postcss.config.js')
 export const DIST_DIR = join(__dirname, '../../dist')
 export const CONFIG_DIR = join(__dirname, '../config')
 export const TPl_MINI_DIR = join(__dirname, '../../sites/mini-program')
-export const TPl_MINI_SRC_DIR = join(__dirname, '../../sites/mini-program', 'src')
+export const TPl_MINI_SRC_DIR = join(TPl_MINI_DIR, 'src')
+export const TPl_MINI_COMPONENT_DIR = join(TPl_MINI_SRC_DIR, 'components')
 
 // 默认的postcss配置信息
 export const POSTCSS_CONFIG_FILE = join(CONFIG_DIR, 'postcss.config.js')
