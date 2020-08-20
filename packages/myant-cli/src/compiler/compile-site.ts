@@ -20,7 +20,7 @@ async function build() {
         consola.error(stats.compilation.errors)
         reject(err)
       } else {
-        consola.log('build!!!')
+        consola.success('站点打包完成')
         resolve()
       }
     })
