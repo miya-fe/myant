@@ -43,17 +43,17 @@ module.exports = {
                 path: 'button',
                 title: 'Button 按钮',
               },
-              {
+              /*{
                 path: 'cell',
                 title: 'Cell 单元格',
               },
               {
                 path: 'layout',
                 title: 'Layout 布局',
-              },
+              },*/
             ],
           },
-          {
+          /*{
             title: '表单组件',
             items: [
               {
@@ -65,7 +65,7 @@ module.exports = {
                 title: 'textarea 文本框',
               },
             ],
-          },
+          },*/
         ],
       },
     },

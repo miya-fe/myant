@@ -9,8 +9,15 @@
   ],
   "subPackages": [
     {
-      "root": "",
-      "pages": []
+      "root": "demos",
+      "pages": [
+        {
+          "path": "button/index",
+          "style": {
+            "navigationBarTitleText": "Button 按钮"
+          }
+        }
+      ]
     }
   ],
   "globalStyle": {

@@ -1,8 +1,10 @@
 import webpack, { Compiler } from 'webpack'
 import { RawSource } from 'webpack-sources'
-import { getMyantConfig } from '../common'
-import { get } from 'lodash'
-import Compilation = webpack.compilation.Compilation
+import { getMyantConfig, smartOutputFile } from '../common'
+import { get, difference } from 'lodash'
+import { TPl_MINI_SRC_DIR } from '../common/constant'
+import { join } from 'path'
+import { readFileSync, writeFileSync } from 'fs-extra'
 
 type NavItem = {
   title: string
@@ -22,12 +24,13 @@ class MiniPageWebpackPlugin {
     return content
   }
 
-  genSubPackages(compilation: Compilation) {
-    let pagesJsonPath = 'app.json'
+  genSubPackages() {
+    /*let pagesJsonPath = 'app.json'
     // 更新page.json里面的页面配置
     if (!compilation.assets[pagesJsonPath]) {
       return
-    }
+    }*/
+    let pagesJsonPath = join(TPl_MINI_SRC_DIR, 'pages.json')
 
     let locales = get(getMyantConfig(), `site.locales`, {}),
       pages: NavItem[] = []
@@ -53,25 +56,29 @@ class MiniPageWebpackPlugin {
       }
     }
 
-    console.log('subpackages: ', pages)
-
     // 更新page.json里面的页面配置
-    let content = this.toJson(compilation.assets[pagesJsonPath])
-    /*content.subPackages = [
-      {
-        root: 'demos',
-        pages: pages.map((page: NavItem) => {
-          /!*return {
-            path: page.path,
-            style: {
-              navigationBarTitleText: page.title,
-            },
-          }*!/
-          return `${page.path}/index`
-        }),
-      },
-    ]*/
-    compilation.assets[pagesJsonPath] = new RawSource(JSON.stringify(content, null, 2))
+    // let content = this.toJson(compilation.assets[pagesJsonPath])
+    let content = JSON.parse(readFileSync(pagesJsonPath).toString()) as any,
+      subPages = pages.map((page: NavItem) => {
+        return {
+          path: `${page.path}/index`,
+          style: {
+            navigationBarTitleText: page.title,
+          },
+        }
+        // return `${page.path}/index`
+      }),
+      subPackages = [
+        {
+          root: 'demos',
+          pages: subPages,
+        },
+      ]
+
+    if (content.subPackages[0].pages.length !== subPages.length) {
+      content.subPackages = subPackages
+      writeFileSync(pagesJsonPath, JSON.stringify(content, null, 2))
+    }
   }
 
   /**
@@ -79,16 +86,16 @@ class MiniPageWebpackPlugin {
    * @param compiler
    */
   apply(compiler: Compiler): void {
-    compiler.hooks.emit.tap(PLUGIN_NAME, (compilation, nmf) => {
+    /*compiler.hooks.emit.tap(PLUGIN_NAME, (compilation, nmf) => {
       this.genSubPackages(compilation)
-    })
-    /*if (process.env.NODE_ENV === 'production') {
+    })*/
+    if (process.env.NODE_ENV === 'production') {
       // Executes a plugin after compilation parameters are created.
       compiler.hooks.beforeCompile.tap(PLUGIN_NAME, this.genSubPackages)
     } else {
       // Executes a plugin during watch mode after a new compilation is triggered but before the compilation is actually started
       compiler.hooks.watchRun.tap(PLUGIN_NAME, this.genSubPackages)
-    }*/
+    }
   }
 }
 
