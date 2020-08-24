@@ -1,6 +1,5 @@
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+export default {
   mpType: 'app',
   onLaunch() {
     console.log('App Launch')
@@ -11,7 +10,7 @@ export default Vue.extend({
   onHide() {
     console.log('App Hide')
   },
-})
+}
 </script>
 
 <style>
