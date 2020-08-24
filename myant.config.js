@@ -40,8 +40,8 @@ module.exports = {
             title: '基础组件',
             items: [
               {
-                path: 'button',
-                title: 'Button 按钮',
+                path: 'my-button',
+                title: 'My-Button 按钮',
               },
               /*{
                 path: 'cell',

@@ -14,7 +14,9 @@ function genCode(): string {
     return existsSync(join(SRC_DIR, file, 'index.vue'))
   })
   files.forEach((file: string) => {
-    components.push(`import ${file} from '${TPl_MINI_COMPONENT_DIR}/${file}/index'`)
+    let name = file.replace(/-/g, '_')
+
+    components.push(`import ${name} from '${TPl_MINI_COMPONENT_DIR}/${file}/index'`)
   })
   let packageJson = getPackageJson()
 
@@ -25,7 +27,7 @@ function genCode(): string {
     const version='${packageJson.version}'
 
     function install(Vue){
-      const components = [${files.join(',')}];
+      const components = [${files.map((file) => file.replace(/-/g, '_')).join(',')}];
 
       components.forEach(item => {
         if (item.install) {

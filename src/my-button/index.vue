@@ -6,7 +6,7 @@
 
 <script lang="ts">
 export default {
-  name: 'button',
+  name: 'my-button',
   props: {
     openType: {
       type: String,
@@ -17,7 +17,7 @@ export default {
     return {}
   },
   onShow() {
-    console.log('button')
+    console.log('my-button ！！!')
   },
 }
 </script>
@@ -27,6 +27,7 @@ export default {
   background-color: transparent;
   display: inline-block;
   font-size: 24rpx;
+  outline: none;
 
   &:after {
     content: '';

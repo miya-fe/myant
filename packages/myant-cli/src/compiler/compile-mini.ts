@@ -9,7 +9,14 @@ import {
 } from '../common/constant'
 import { getSrcFiles, copySrcDir, copyDemoDir, hasYarn, isTestDir, isDemoDir } from '../common'
 import execa from 'execa'
-import { emptyDirSync, existsSync, copySync, removeSync } from 'fs-extra'
+import {
+  emptyDirSync,
+  existsSync,
+  copyFile,
+  removeSync,
+  createReadStream,
+  createWriteStream,
+} from 'fs-extra'
 import { join } from 'path'
 import chokidar from 'chokidar'
 import ora from 'ora'
@@ -36,7 +43,7 @@ function buildComponent() {
   consola.success('组件打包已完成')
 }
 
-async function runMiniCommand(cmd: string) {
+function runMiniCommand(cmd: string) {
   if (!existsSync(join(TPl_MINI_DIR, 'node_modules'))) {
     if (hasYarn()) {
       execa.commandSync('yarn install')
@@ -53,7 +60,7 @@ async function runMiniCommand(cmd: string) {
     stdout: process.stdout,
   })*/
 
-  execa.commandSync(cmd, {
+  execa.command(cmd, {
     preferLocal: true,
     cwd: TPl_MINI_DIR,
     localDir: TPl_MINI_DIR,
@@ -62,12 +69,12 @@ async function runMiniCommand(cmd: string) {
   })
 }
 
-async function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
+function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
   option.platform = option.platform || 'mp-weixin'
   let command = `cross-env NODE_ENV=development UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
     option.output_dir || MINI_DEV_DIR
   } vue-cli-service uni-build --watch`
-  await runMiniCommand(command)
+  runMiniCommand(command)
   consola.success('小程序开发服务已启动')
 }
 
@@ -107,7 +114,7 @@ function watchFileChange() {
 
   const DemoTplDir = join(TPl_MINI_SRC_DIR, 'demos')
   const SrcTplDir = TPl_MINI_COMPONENT_DIR
-
+  consola.info(`开启文件监听： ${SRC_DIR}`)
   chokidar.watch(SRC_DIR).on('change', async (path) => {
     consola.info('监听到文件变动，开始检测')
     if (isTestDir(path)) {
@@ -116,19 +123,19 @@ function watchFileChange() {
     }
     let miniPath
     if (isDemoDir(path)) {
-      miniPath = path.replace(SRC_DIR, DemoTplDir)
+      miniPath = path.replace(SRC_DIR, DemoTplDir).replace(/\/demo\//, '/')
     } else {
       miniPath = path.replace(SRC_DIR, SrcTplDir)
     }
-
-    consola.info(`开始拷贝文件: ${miniPath}`)
+    consola.info(`开始拷贝文件: ${path}`)
     const spinner = ora('File changed, start copy...').start()
     try {
-      await copySync(path, miniPath)
+      await copyFile(path, miniPath)
+      // createReadStream(path).pipe(createWriteStream(miniPath))
       spinner.succeed('Compiled: ' + miniPath)
       consola.success('拷贝成功')
     } catch (err) {
-      spinner.fail('Compile failed: ' + path)
+      spinner.fail('Compile failed: ' + miniPath)
       consola.success('拷贝失败', err)
     }
   })
@@ -145,6 +152,6 @@ export async function compileMini(isProduction: boolean = false, cmd?: Option) {
     buildComponent()
   } else {
     watchFileChange()
-    await runMiniServer(cmd)
+    runMiniServer(cmd)
   }
 }

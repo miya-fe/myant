@@ -90,9 +90,9 @@ export default Vue.extend({
 
   .nav {
     .col {
-      border-radius: 20rpx;
-      background-color: #999;
-      padding: 8rpx 10rpx;
+      border-radius: 10rpx;
+      background-color: #eee;
+      padding: 20rpx 20rpx;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -100,11 +100,11 @@ export default Vue.extend({
       margin-top: 20rpx;
 
       text {
-        font-size: 28rpx;
+        font-size: 24rpx;
       }
       image {
-        width: 30rpx;
-        height: 30rpx;
+        width: 15rpx;
+        height: 20rpx;
       }
     }
   }

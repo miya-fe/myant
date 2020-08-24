@@ -1,5 +1,5 @@
 <template>
-  <button>按钮</button>
+  <my-button>按钮222</my-button>
 </template>
 <script lang="ts">
 export default {
@@ -7,7 +7,7 @@ export default {
     return {}
   },
   onLoad() {
-    console.log('button demo ！！！')
+    console.log('button demo ！！220000')
   },
 }
 </script>

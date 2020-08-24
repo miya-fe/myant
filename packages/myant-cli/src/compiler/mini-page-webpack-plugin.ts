@@ -10,8 +10,25 @@ type NavItem = {
   title: string
   path: string
 }
+type PageItem = {
+  path: string
+  style?: any
+}
 
 const PLUGIN_NAME = 'gen-mini-page-entry'
+
+function isModified(oldPages: PageItem[], newPages: PageItem[]) {
+  let modified = false
+  for (let op of oldPages) {
+    if (!newPages.find((p) => p.path === op.path)) {
+      modified = true
+      break
+    }
+  }
+
+  return modified
+}
+
 class MiniPageWebpackPlugin {
   toJson(asset: any) {
     let content = asset.source()
@@ -61,7 +78,7 @@ class MiniPageWebpackPlugin {
     let content = JSON.parse(readFileSync(pagesJsonPath).toString()) as any,
       subPages = pages.map((page: NavItem) => {
         return {
-          path: `${page.path}/index`,
+          path: join(page.path, 'index'),
           style: {
             navigationBarTitleText: page.title,
           },
@@ -75,7 +92,10 @@ class MiniPageWebpackPlugin {
         },
       ]
 
-    if (content.subPackages[0].pages.length !== subPages.length) {
+    if (
+      content.subPackages[0].pages.length !== subPages.length ||
+      isModified(content.subPackages[0].pages, subPages)
+    ) {
       content.subPackages = subPackages
       writeFileSync(pagesJsonPath, JSON.stringify(content, null, 2))
     }

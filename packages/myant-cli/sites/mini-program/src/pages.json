@@ -12,7 +12,7 @@
       "root": "demos",
       "pages": [
         {
-          "path": "button/index",
+          "path": "my-button/index",
           "style": {
             "navigationBarTitleText": "Button 按钮"
           }
