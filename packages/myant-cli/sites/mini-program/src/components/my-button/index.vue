@@ -1,6 +1,5 @@
 <template>
   <button class="btn" :open-type="openType">
-    <text>我是按钮的默认文字</text>
     <slot></slot>
   </button>
 </template>

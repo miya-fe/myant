@@ -1,8 +1,5 @@
 <template>
-  <view>
-    <my-button>按钮222</my-button>
-    <icon></icon>
-  </view>
+  <my-button>按钮2221</my-button>
 </template>
 <script lang="ts">
 export default {

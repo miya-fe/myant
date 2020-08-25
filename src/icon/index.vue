@@ -1,13 +1,16 @@
 <template>
-  <my-button>按钮2221</my-button>
+  <text>我是icon</text>
 </template>
+
 <script lang="ts">
 export default {
+  name: 'icon',
+  props: {},
   data: () => {
     return {}
   },
-  onLoad() {
-    console.log('button demo ！！220000')
+  onShow() {
+    console.log('icon ！！!')
   },
 }
 </script>
