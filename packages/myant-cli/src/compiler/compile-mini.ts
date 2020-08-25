@@ -45,20 +45,27 @@ function buildComponent() {
 
 function runMiniCommand(cmd: string) {
   if (!existsSync(join(TPl_MINI_DIR, 'node_modules'))) {
+    consola.info('未检测到安装小程序依赖模块，现在开始安装')
     if (hasYarn()) {
-      execa.commandSync('yarn install')
+      execa.commandSync('yarn install', {
+        preferLocal: true,
+        cwd: TPl_MINI_DIR,
+        localDir: TPl_MINI_DIR,
+        execPath: TPl_MINI_DIR,
+        stdout: process.stdout,
+      })
     } else {
-      execa.commandSync('npm install')
+      execa.commandSync('npm install', {
+        preferLocal: true,
+        cwd: TPl_MINI_DIR,
+        localDir: TPl_MINI_DIR,
+        execPath: TPl_MINI_DIR,
+        stdout: process.stdout,
+      })
     }
+  } else {
+    consola.success('小程序依赖模块已安装')
   }
-
-  /*let args = cmd.split(' ')
-  await execa('cross-env', args.slice(1), {
-    preferLocal: true,
-    localDir: TPl_MINI_DIR,
-    execPath: TPl_MINI_DIR,
-    stdout: process.stdout,
-  })*/
 
   execa.command(cmd, {
     preferLocal: true,
@@ -76,19 +83,6 @@ function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
   } vue-cli-service uni-build --watch`
   runMiniCommand(command)
   consola.success('小程序开发服务已启动')
-}
-
-export async function buildMiniSite(option: Option) {
-  consola.info('开始拷贝目标文件')
-  copyMiniDemo()
-  copyMiniComponent()
-  consola.success('完成拷贝目标文件')
-  option.platform = option.platform || 'mp-weixin'
-  let command = `cross-env NODE_ENV=production UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
-    option.output_dir || MINI_PROD_DIR
-  } vue-cli-service uni-build`
-  await runMiniCommand(command)
-  consola.success('小程序打包已完成')
 }
 
 /**
@@ -141,6 +135,19 @@ function watchFileChange() {
   })
 
   consola.success('文件监听已启动')
+}
+
+export async function buildMiniSite(option: Option) {
+  consola.info('开始拷贝目标文件')
+  copyMiniDemo()
+  copyMiniComponent()
+  consola.success('完成拷贝目标文件')
+  option.platform = option.platform || 'mp-weixin'
+  let command = `cross-env NODE_ENV=production UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
+    option.output_dir || MINI_PROD_DIR
+  } vue-cli-service uni-build`
+  await runMiniCommand(command)
+  consola.success('小程序打包已完成')
 }
 
 /**
