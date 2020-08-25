@@ -1,5 +1,5 @@
 <template>
-  <text>我是icon</text>
+  <text class="text">我是icon</text>
 </template>
 
 <script lang="ts">
@@ -14,4 +14,8 @@ export default {
   },
 }
 </script>
-<style scoped lang="less"></style>
+<style scoped lang="less">
+.text {
+  font-size: 24rpx;
+}
+</style>
