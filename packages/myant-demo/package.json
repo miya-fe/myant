@@ -1,6 +1,0 @@
-{
-  "name": "myant-demo",
-  "version": "1.0.0",
-  "dependencies": {},
-  "main": "./index.js"
-}

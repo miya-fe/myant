@@ -10,16 +10,22 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc ",
+    "test": "jest",
     "release": "tsc & release-it",
     "jest:init": "ts-jest config:init"
   },
   "publishConfig": {
     "access": "public"
   },
+  "repository": "https://github.com/miya-fe/myant/tree/dev/packages/myant-cli",
   "files": [
+    "docs",
     "lib",
-    "dist",
-    "preset.js"
+    "sites",
+    "test",
+    "jest.config.js",
+    "preset.js",
+    "README.md"
   ],
   "engines": {
     "node": ">=10"
