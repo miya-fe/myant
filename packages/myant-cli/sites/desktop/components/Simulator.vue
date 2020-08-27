@@ -1,7 +1,7 @@
 <template>
   <div :class="['myant-doc-simulator', { 'myant-doc-simulator-fixed': isFixed }]">
     <!--    <iframe ref="iframe" :src="src" :style="simulatorStyle" frameborder="0" />-->
-    <img :src="src" :style="simulatorStyle" />
+    <img :src="src" />
   </div>
 </template>
 
@@ -77,6 +77,10 @@ export default {
 
   iframe {
     display: block;
+    width: 100%;
+  }
+
+  img {
     width: 100%;
   }
 }
