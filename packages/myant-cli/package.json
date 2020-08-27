@@ -1,6 +1,6 @@
 {
   "name": "@myant/cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "cli tool",
   "main": "lib/index.ts",
   "typings": "lib/index.d.ts",
@@ -17,7 +17,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "https://github.com/miya-fe/myant/tree/dev/packages/myant-cli",
+  "repository": "https://github.com/miya-fe/myant/tree/master/packages/myant-cli",
   "engines": {
     "node": ">=10"
   },

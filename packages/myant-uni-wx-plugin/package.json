@@ -1,6 +1,6 @@
 {
   "name": "@myant/uni-wx-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "auto build with wx plugin",
   "main": "lib/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "repository": "https://github.com/miya-fe/myant/tree/master/packages/myant-uni-wx-plugin",
   "files": [
     "lib",
     "src",

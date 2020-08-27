@@ -12,6 +12,7 @@
     "build": "myant-cli build",
     "release": "myant-cli release"
   },
+  "repository": "https://github.com/miya-fe/myant",
   "sideEffects": false,
   "files": [
     "es",

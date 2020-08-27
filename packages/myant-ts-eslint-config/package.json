@@ -1,13 +1,13 @@
 {
   "name": "@myant/eslint-config-vue-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ts eslint config of myant",
   "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
-  "repository": "https://github.com/miya-fe/myant/tree/dev/packages/myant-ts-eslint-config",
+  "repository": "https://github.com/miya-fe/myant/tree/master/packages/myant-ts-eslint-config",
   "peerDependencies": {
     "eslint": "^6.0.0"
   },
