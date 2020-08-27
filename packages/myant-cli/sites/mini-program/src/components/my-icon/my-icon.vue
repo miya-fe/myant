@@ -4,7 +4,7 @@
 
 <script lang="ts">
 export default {
-  name: 'icon',
+  name: 'my-icon',
   props: {},
   data: () => {
     return {}

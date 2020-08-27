@@ -1,7 +1,7 @@
 <template>
   <view>
     <my-button>按钮2223111</my-button>
-    <icon></icon>
+    <my-icon></my-icon>
   </view>
 </template>
 <script lang="ts">

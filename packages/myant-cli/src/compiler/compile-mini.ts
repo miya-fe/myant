@@ -7,7 +7,15 @@ import {
   LIB_DIR,
   TPl_MINI_COMPONENT_DIR,
 } from '../common/constant'
-import { getSrcFiles, copySrcDir, copyDemoDir, hasYarn, isTestDir, isDemoDir } from '../common'
+import {
+  getSrcFiles,
+  copySrcDir,
+  copyDemoDir,
+  hasYarn,
+  isTestDir,
+  isDemoDir,
+  isComponentEntry,
+} from '../common'
 import execa from 'execa'
 import {
   emptyDirSync,
@@ -99,7 +107,7 @@ function copyMiniDemo() {
  */
 function copyMiniComponent() {
   removeSync(TPl_MINI_COMPONENT_DIR)
-  copySrcDir(SRC_DIR, TPl_MINI_COMPONENT_DIR)
+  copySrcDir(SRC_DIR, TPl_MINI_COMPONENT_DIR, true)
 }
 
 function watchFileChange() {
@@ -124,7 +132,11 @@ function watchFileChange() {
     consola.info(`开始拷贝文件: ${path}`)
     const spinner = ora('File changed, start copy...').start()
     try {
-      await copyFile(path, miniPath)
+      if (isComponentEntry(path)) {
+        await copyFile(path, miniPath.replace(/\/(\w+)\/index.vue$/, '/$1/$1.vue'))
+      } else {
+        await copyFile(path, miniPath)
+      }
       // createReadStream(path).pipe(createWriteStream(miniPath))
       spinner.succeed('Compiled: ' + miniPath)
       consola.success('拷贝成功')

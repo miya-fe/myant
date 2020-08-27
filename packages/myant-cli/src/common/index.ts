@@ -15,7 +15,7 @@ import {
   lstatSync,
   copySync,
 } from 'fs-extra'
-import { join } from 'path'
+import { join, basename } from 'path'
 import { get } from 'lodash'
 
 export type NODE_ENV = 'production' | 'development' | 'test'
@@ -57,7 +57,21 @@ export function getSrcFiles() {
   return readdirSync(SRC_DIR)
 }
 
-export function copySrcDir(fromDir: string, toDir: string) {
+export function isComponentEntry(filePath: string): boolean {
+  let fileName = basename(filePath),
+    dirs = filePath
+      .replace(SRC_DIR, '')
+      .split('/')
+      .filter((dir) => dir !== '')
+
+  if (fileName === 'index.vue' && dirs.length === 2) {
+    return true
+  } else {
+    return false
+  }
+}
+
+export function copySrcDir(fromDir: string, toDir: string, isDemo?: boolean) {
   if (isTestDir(fromDir) || isDemoDir(fromDir)) {
     return
   }
@@ -68,9 +82,18 @@ export function copySrcDir(fromDir: string, toDir: string) {
     let stat = lstatSync(srcPath)
 
     if (stat.isDirectory()) {
-      copySrcDir(srcPath, destPath)
+      copySrcDir(srcPath, destPath, isDemo)
     } else {
-      copySync(srcPath, destPath)
+      //拷贝mini开发包，需要个是如下：<路径>/<组价名>/<组件名>.vue
+      if (isDemo && isComponentEntry(srcPath)) {
+        if (!existsSync(join(fromDir, `${fromDir}.vue`))) {
+          copySync(srcPath, join(toDir, `${basename(fromDir)}.vue`))
+        } else {
+          copySync(srcPath, destPath)
+        }
+      } else {
+        copySync(srcPath, destPath)
+      }
     }
   })
 }
