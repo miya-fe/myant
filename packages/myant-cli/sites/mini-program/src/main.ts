@@ -1,6 +1,10 @@
 import Vue from 'vue'
-import App from './App.vue'
-
+import App from './App'
+// import { install } from 'site-mini-shared'
 Vue.config.productionTip = false
+// install(Vue)
 
-new App().$mount()
+const app = new Vue({
+  ...App,
+})
+app.$mount()

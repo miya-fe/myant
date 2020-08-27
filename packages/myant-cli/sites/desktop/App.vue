@@ -23,11 +23,12 @@ export default {
   },
 
   data() {
-    const path = location.pathname.replace(/\/index(\.html)?/, '/')
+    // const path = location.pathname.replace(/\/index(\.html)?/, '/')
 
     return {
       packageVersion,
-      simulator: `${path}mobile.html${location.hash}`,
+      // simulator: `${path}mobile.html${location.hash}`,
+      simulator: `http://hh-oss-picture.miyapay.com/box/f9735437ffdda6df9bd1b1513d5ec0ea.png`,
     }
   },
 

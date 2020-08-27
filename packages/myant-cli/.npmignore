@@ -1,0 +1,6 @@
+node_modules/
+yarn.lock
+sites/mini-program/node_modules/
+sites/mini-program/yarn.lock
+src/
+.npmignore

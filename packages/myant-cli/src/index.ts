@@ -19,7 +19,11 @@ version(`@myant/cli ${packageJson.version}`)
 
 command('clean').description('Clean all dist files').action(clean)
 
-command('dev:mini').description('Run webpack dev server').action(devMini)
+command('dev:mini')
+  .description('Run miniprogram dev server')
+  .option('--target <type>', 'which target to be packaged: mini | site')
+  .option('--platform <type>', 'which target to be packaged: mp-weixin | mp-alipay')
+  .action(devMini)
 command('dev:vue').description('Run webpack dev server').action(devVue)
 command('dev:react').description('Run webpack dev server').action(devReact)
 
@@ -38,7 +42,11 @@ command('build')
 
 command('release').description('Compile components and release it').action(release)
 
-command('build-site').description('Compile site in production mode').action(buildSite)
+command('build-site')
+  .description('Compile site in production mode')
+  .option('--target <type>', 'which target to be packaged: mini | site')
+  .option('--platform <type>', 'which target to be packaged: mp-weixin | mp-alipay')
+  .action(buildSite)
 
 command('changelog').description('Generate changelog').action(changelog)
 

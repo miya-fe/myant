@@ -1,21 +1,26 @@
 import { setNodeEnv } from '../common'
 import { compileMini, Option } from '../compiler/compile-mini'
 import { compileSite } from '../compiler/compile-site'
+import consola from 'consola'
 
 export async function devMini(cmd: Option) {
   setNodeEnv('development')
 
   if (cmd.target === 'mini') {
-    compileMini(false, cmd)
+    await compileMini(false, cmd)
   } else if (cmd.target === 'site') {
-    compileSite(false)
+    await compileSite(false)
   } else {
-    compileMini(false, cmd)
-    compileSite(false)
+    await compileMini(false, cmd)
+    await compileSite(false)
   }
 }
 
 //TODO
-export async function devVue() {}
+export async function devVue() {
+  consola.info('dev vue is building')
+}
 //TODO
-export async function devReact() {}
+export async function devReact() {
+  consola.info('dev react is building')
+}

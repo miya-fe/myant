@@ -6,7 +6,7 @@ import { existsSync } from 'fs'
 import DashboardPlugin from 'webpack-dashboard/plugin'
 
 import consola from 'consola'
-import { CWD, CACHE_DIR, STYLE_EXTS, SCRIPT_EXTS, POSTCSS_CONFIG_FILE } from '../common/constant'
+import { ROOT, CACHE_DIR, STYLE_EXTS, SCRIPT_EXTS, POSTCSS_CONFIG_FILE } from '../common/constant'
 
 const CACHE_LOADER = {
   loader: 'cache-loader',
@@ -31,19 +31,19 @@ const CSS_LOADERS = [
 const plugins = [
   new DashboardPlugin(),
   new VueLoaderPlugin(),
-  new FriendlyErrorsPlugin({
+  /*new FriendlyErrorsPlugin({
     clearConsole: false,
     logLevel: 'WARNING',
-  }),
+  }),*/
 ]
 
-const tsconfigPath = join(CWD, 'tsconfig.json')
+const tsconfigPath = join(ROOT, 'tsconfig.json')
 if (existsSync(tsconfigPath)) {
   const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin')
   plugins.push(
     new ForkTsCheckerPlugin({
       formatter: 'codeframe',
-      vue: { enabled: true },
+      // vue: { enabled: true },
       logger: {
         // skip info message
         info() {},
@@ -68,7 +68,7 @@ export const baseConfig = {
       {
         test: /\.vue$/,
         use: [
-          CACHE_LOADER,
+          // CACHE_LOADER,
           {
             loader: 'vue-loader',
             options: {
@@ -82,7 +82,10 @@ export const baseConfig = {
       {
         test: /\.(js|ts|jsx|tsx)$/,
         exclude: /node_modules\/(?!(@myant\/cli))/,
-        use: [CACHE_LOADER, 'babel-loader'],
+        use: [
+          // CACHE_LOADER,
+          'babel-loader',
+        ],
       },
       {
         test: /\.css$/,
@@ -109,7 +112,11 @@ export const baseConfig = {
       },
       {
         test: /\.md$/,
-        use: [CACHE_LOADER, 'vue-loader', '@myant/markdown-loader'],
+        use: [
+          // CACHE_LOADER,
+          'vue-loader',
+          '@myant/markdown-loader',
+        ],
       },
     ],
   },

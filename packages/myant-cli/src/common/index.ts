@@ -1,15 +1,22 @@
 import execa from 'execa'
 import consola from 'consola'
-import { PACKAGE_JSON_FILE, MYANT_CONFIG_FILE, SRC_DIR } from './constant'
+import {
+  PACKAGE_JSON_FILE,
+  MYANT_CONFIG_FILE,
+  SRC_DIR,
+  ROOT_POSTCSS_CONFIG_FILE,
+  SITE_DIST_DIR,
+} from './constant'
 import {
   readFileSync,
   outputFileSync,
   readdirSync,
   existsSync,
   lstatSync,
-  copyFileSync,
+  copySync,
 } from 'fs-extra'
-import { join } from 'path'
+import { join, basename } from 'path'
+import { get } from 'lodash'
 
 export type NODE_ENV = 'production' | 'development' | 'test'
 export type MODULE_ENV = 'esmodule' | 'commonjs'
@@ -20,6 +27,14 @@ export function setNodeEnv(env: NODE_ENV) {
 
 export function setModuleEnv(env: MODULE_ENV) {
   process.env.MODULE_ENV = env
+}
+
+export function getSiteOutputDir(site: string) {
+  return join(get(getMyantConfig(), `site.outputDir`, SITE_DIST_DIR), site)
+}
+
+export function getSitePublicPath() {
+  return get(getMyantConfig(), `site.publicPath`, '')
 }
 
 export function isDemoDir(dirName: string) {
@@ -42,24 +57,70 @@ export function getSrcFiles() {
   return readdirSync(SRC_DIR)
 }
 
-export function copySrcDir(fromDir: string, toDir: string) {
+export function isComponentEntry(filePath: string): boolean {
+  let fileName = basename(filePath),
+    dirs = filePath
+      .replace(SRC_DIR, '')
+      .split('/')
+      .filter((dir) => dir !== '')
+
+  if (fileName === 'index.vue' && dirs.length === 2) {
+    return true
+  } else {
+    return false
+  }
+}
+
+export function copySrcDir(fromDir: string, toDir: string, isDemo?: boolean) {
   if (isTestDir(fromDir) || isDemoDir(fromDir)) {
     return
   }
   let files = readdirSync(fromDir)
   files.forEach((file: string) => {
-    let stat = lstatSync(file)
+    let srcPath = join(fromDir, file),
+      destPath = join(toDir, file)
+    let stat = lstatSync(srcPath)
 
     if (stat.isDirectory()) {
-      copySrcDir(join(fromDir, file), join(toDir, file))
+      copySrcDir(srcPath, destPath, isDemo)
     } else {
-      copyFileSync(join(fromDir, file), join(toDir, file))
+      //拷贝mini开发包，需要个是如下：<路径>/<组价名>/<组件名>.vue
+      if (isDemo && isComponentEntry(srcPath)) {
+        if (!existsSync(join(fromDir, `${fromDir}.vue`))) {
+          copySync(srcPath, join(toDir, `${basename(fromDir)}.vue`))
+        } else {
+          copySync(srcPath, destPath)
+        }
+      } else {
+        copySync(srcPath, destPath)
+      }
+    }
+  })
+}
+
+export function copyDemoDir(fromDir: string, toDir: string, demo: string = 'demo') {
+  if (isTestDir(fromDir)) {
+    return
+  }
+  let files = readdirSync(fromDir)
+  files.forEach((file: string) => {
+    let srcPath = join(fromDir, file, demo),
+      destPath = join(toDir, file)
+
+    if (existsSync(srcPath)) {
+      let stat = lstatSync(srcPath)
+
+      if (stat.isDirectory()) {
+        copyDemoDir(srcPath, destPath, '')
+      } else {
+        copySync(srcPath, destPath)
+      }
     }
   })
 }
 
 let installedYarn: boolean
-function hasYarn() {
+export function hasYarn() {
   if (installedYarn === undefined) {
     try {
       execa.sync('yarn', ['--version'], { stdio: 'ignore' })
@@ -104,6 +165,14 @@ export function getMyantConfig() {
   }
 }
 
+export function getPostcssConfig(): object {
+  if (existsSync(ROOT_POSTCSS_CONFIG_FILE)) {
+    return require(ROOT_POSTCSS_CONFIG_FILE)
+  }
+
+  return {}
+}
+
 export function smartOutputFile(filePath: string, content: string) {
   if (existsSync(filePath)) {
     const previousContent = readFileSync(filePath, 'utf-8')
@@ -118,4 +187,15 @@ export function smartOutputFile(filePath: string, content: string) {
 
 export function normalizePath(path: string) {
   return path.replace(/\\/, '/')
+}
+
+const camelizeRE = /-(\w)/g
+const pascalizeRE = /(\w)(\w*)/g
+
+export function camelize(str: string): string {
+  return str.replace(camelizeRE, (_, c) => c.toUpperCase())
+}
+
+export function pascalize(str: string): string {
+  return camelize(str).replace(pascalizeRE, (_, c1, c2) => c1.toUpperCase() + c2)
 }

@@ -14,7 +14,7 @@ const parser = new MarkdownIt({
 
 export default function (content: string | Buffer): string {
   if (Buffer.isBuffer(content)) {
-    content = Buffer.toString()
+    content = content.toString()
   }
 
   return toMobileComponent(parser.render(content))

@@ -1,6 +1,5 @@
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+export default {
   mpType: 'app',
   onLaunch() {
     console.log('App Launch')
@@ -11,9 +10,15 @@ export default Vue.extend({
   onHide() {
     console.log('App Hide')
   },
-})
+}
 </script>
 
 <style>
 /*每个页面公共css */
+page {
+  height: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+}
 </style>

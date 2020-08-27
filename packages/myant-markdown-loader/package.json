@@ -1,5 +1,5 @@
 {
-  "name": "myant-markdown-loader",
+  "name": "@myant/markdown-loader",
   "version": "1.0.0",
   "description": "myant readme loader",
   "main": "lib/index.js",
