@@ -123,7 +123,9 @@ function watchFileChange() {
       consola.info('当前文件为单元测试，放弃拷贝')
       return
     }
+
     let miniPath
+    path = path.replace('\\', '/')
     if (isDemoDir(path)) {
       miniPath = path.replace(SRC_DIR, DemoTplDir).replace(/\/demo\//, '/')
     } else {
@@ -133,7 +135,7 @@ function watchFileChange() {
     const spinner = ora('File changed, start copy...').start()
     try {
       if (isComponentEntry(path)) {
-        await copyFile(path, miniPath.replace(/\/(\w+)\/index.vue$/, '/$1/$1.vue'))
+        await copyFile(path, miniPath.replace(/\/([^\/]+)\/index.vue$/, '/$1/$1.vue'))
       } else {
         await copyFile(path, miniPath)
       }

@@ -888,10 +888,10 @@
   resolved "https://registry.npmjs.org/@most/prelude/-/prelude-1.7.3.tgz#51db3f3ba3ed65431b6eea89ecb0a31826af640c"
   integrity sha512-qWWEnA22UP1lzFfKx75XMut6DUUXGRKe7qv2k+Bgs7ju8lwb5RjsZYyQZ+VcsYvHcIavHKzseLlBMLOe2CvUZw==
 
-"@myant/cli@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@myant/cli/-/cli-1.0.1.tgz#a89086f29bdf4f1ac8a554ba51769e8476282101"
-  integrity sha512-RJUiAhAdK2wjvMwU6GgXjOl4KFGK/FqCPyiS2DNzkNqoCWVyX0Pxic/gQ//oNPe03cuShQH7+I4uEVjDTOX2dw==
+"@myant/cli@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@myant/cli/-/cli-1.0.2.tgz#e4d2b0ca895d354303394eaa8e842fbc005156b6"
+  integrity sha512-VDY7mIbl4JqeOYnSWq9VUt7FSByK3AR/OmZ0a5nh0li2KYzfnJt59KvtSNhDB0G8SJg0yQ/KTr1YVR+a38x6LQ==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/plugin-transform-object-assign" "^7.10.4"
@@ -1911,9 +1911,9 @@ camelcase@^6.0.0:
   integrity sha512-8KMDF1Vz2gzOq54ONPJS65IvTUaB1cHJ2DMM7MbPmLZljDH1qpzzLsWdiN9pHh6qvkRVDTi/07+eNGch/oLU4w==
 
 caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001111:
-  version "1.0.30001122"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001122.tgz#2c8ff631330d986a07a7ba7125cce77a1373b475"
-  integrity sha512-pxjw28CThdrqfz06nJkpAc5SXM404TXB/h5f4UJX+rrXJKE/1bu/KAILc2AY+O6cQIFtRjV9qOR2vaEp9LDGUA==
+  version "1.0.30001123"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001123.tgz#7b981d81382ab2c8fd062f3e6439215e8c503c22"
+  integrity sha512-03dJDoa4YC4332jq0rqwiM+Hw6tA5RJtrnZKvOQy7ASoIUv8CinkcmGhYpCvCjedvkBQrrKnkcELxrUSW/XwNQ==
 
 chalk@^2.0.0, chalk@^2.3.2, chalk@^2.4.2:
   version "2.4.2"
@@ -2646,9 +2646,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.523:
-  version "1.3.559"
-  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.559.tgz#698e231046e9c7438a42f310373c2d5ba76ea1de"
-  integrity sha512-CQChkWNny3Tp8StVV2t/6Yegl7BwgR3Qk4gJ09lffK87IkHdNBy0exo9CBxAA8Mv6ihwWOuM0Pp0gTQc2Y+NTQ==
+  version "1.3.560"
+  resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.560.tgz#6c3f61fe50324770b75705300e9f98f29312ea8d"
+  integrity sha512-0cEFfOA3sNXfSxo0FIClBhrLVSe/QO9LBiqmmYPm3N/IYyt41NRTa2EhvOMWAOKpjd91t/rq062yhnJzfVMKkQ==
 
 elliptic@^6.5.3:
   version "6.5.3"
