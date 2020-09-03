@@ -1,6 +1,6 @@
 {
   "name": "@myant/markdown-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "myant readme loader",
   "main": "lib/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "author": "miya-fe",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/miya-fe/myant/tree/master/packages/myant-markdown-loader",
   "peerDependencies": {},
   "dependencies": {
     "highlight.js": "^10.1.1",

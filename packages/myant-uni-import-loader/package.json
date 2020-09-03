@@ -1,6 +1,6 @@
 {
   "name": "@myant/uni-import-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "uniapp component import loader",
   "main": "lib/index.js",
   "scripts": {
@@ -27,6 +27,7 @@
   "engines": {
     "node": ">=10"
   },
+  "repository": "https://github.com/miya-fe/myant/tree/master/packages/myant-uni-import-loader",
   "devDependencies": {
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",

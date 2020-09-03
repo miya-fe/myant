@@ -6,12 +6,14 @@
   "module": "es/index.js",
   "style": "lib/index.css",
   "scripts": {
-    "lint": "myant-cli lint",
-    "test": "myant-cli test",
-    "dev": "myant-cli dev",
-    "build": "myant-cli build",
-    "release": "myant-cli release"
+    "lint": "npx myant-cli lint",
+    "test": "npx myant-cli test",
+    "dev:mini": "npx myant-cli dev:mini --target mini",
+    "dev:site": "npx myant-cli dev:mini --target site",
+    "build": "npx myant-cli build",
+    "release": "npx myant-cli release"
   },
+  "repository": "https://github.com/miya-fe/myant",
   "sideEffects": false,
   "files": [
     "es",
@@ -24,12 +26,14 @@
     "ant",
     "uniapp",
     "wx",
+    "weixin",
     "alipay",
     "components"
   ],
   "author": "miya-fe",
   "license": "MIT",
   "devDependencies": {
+    "@myant/cli": "^1.0.1",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",

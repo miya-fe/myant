@@ -1,13 +1,13 @@
 {
   "name": "@myant/stylelint-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "stylelint config",
   "main": "index.js",
   "publishConfig": {
     "access": "public"
   },
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/miya-fe/myant/tree/master/packages/myant-stylelint-config",
   "peerDependencies": {
     "stylelint": "^13.0.0"
   },

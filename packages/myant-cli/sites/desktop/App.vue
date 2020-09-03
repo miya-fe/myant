@@ -28,7 +28,7 @@ export default {
     return {
       packageVersion,
       // simulator: `${path}mobile.html${location.hash}`,
-      simulator: `http://hh-oss-picture.miyapay.com/box/f9735437ffdda6df9bd1b1513d5ec0ea.png`,
+      simulator: `http://hh-oss-picture.miyapay.com/box/f8811cbfed3d08e19f9707fabf224510.jpeg`,
     }
   },
 

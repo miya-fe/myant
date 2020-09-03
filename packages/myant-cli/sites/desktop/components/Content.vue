@@ -29,7 +29,7 @@ export default {
   padding: 0 0 75px;
 
   .card {
-    margin-bottom: 24px;
+    margin: 30px;
     padding: 24px;
     background-color: #fff;
     border-radius: @myant-doc-border-radius;
