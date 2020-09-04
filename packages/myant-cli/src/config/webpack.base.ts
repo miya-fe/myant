@@ -31,10 +31,10 @@ const CSS_LOADERS = [
 const plugins = [
   new DashboardPlugin(),
   new VueLoaderPlugin(),
-  /*new FriendlyErrorsPlugin({
+  new FriendlyErrorsPlugin({
     clearConsole: false,
     logLevel: 'WARNING',
-  }),*/
+  }),
 ]
 
 const tsconfigPath = join(ROOT, 'tsconfig.json')
@@ -68,7 +68,7 @@ export const baseConfig = {
       {
         test: /\.vue$/,
         use: [
-          // CACHE_LOADER,
+          CACHE_LOADER,
           {
             loader: 'vue-loader',
             options: {
@@ -82,10 +82,7 @@ export const baseConfig = {
       {
         test: /\.(js|ts|jsx|tsx)$/,
         exclude: /node_modules\/(?!(@myant\/cli))/,
-        use: [
-          // CACHE_LOADER,
-          'babel-loader',
-        ],
+        use: [CACHE_LOADER, 'babel-loader'],
       },
       {
         test: /\.css$/,
@@ -112,11 +109,7 @@ export const baseConfig = {
       },
       {
         test: /\.md$/,
-        use: [
-          // CACHE_LOADER,
-          'vue-loader',
-          '@myant/markdown-loader',
-        ],
+        use: [CACHE_LOADER, 'vue-loader', '@myant/markdown-loader'],
       },
     ],
   },

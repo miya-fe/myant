@@ -14,7 +14,7 @@
 
 <script>
 import MyantDoc from './components'
-import { config, packageVersion } from 'site-desktop-shared'
+import { config, version } from 'site-desktop-shared'
 import { setLang } from '../common/locales'
 
 export default {
@@ -26,7 +26,7 @@ export default {
     // const path = location.pathname.replace(/\/index(\.html)?/, '/')
 
     return {
-      packageVersion,
+      packageVersion: version,
       // simulator: `${path}mobile.html${location.hash}`,
       simulator: `http://hh-oss-picture.miyapay.com/box/f8811cbfed3d08e19f9707fabf224510.jpeg`,
     }

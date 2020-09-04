@@ -28,12 +28,19 @@ export default {
   flex: 1;
   padding: 0 0 75px;
 
+  .top-wrapper {
+    padding: 30px;
+  }
   .card {
-    margin: 30px;
     padding: 24px;
     background-color: #fff;
     border-radius: @myant-doc-border-radius;
     box-shadow: 0 8px 12px #ebedf0;
+    margin-top: 30px;
+
+    :first-child {
+      margin-top: 0;
+    }
   }
 
   a {

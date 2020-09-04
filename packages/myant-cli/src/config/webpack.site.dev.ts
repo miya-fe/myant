@@ -6,18 +6,12 @@ import { Configuration } from 'webpack'
 import { baseConfig } from './webpack.base'
 import { MyantCliSitePlugin, Platform } from '../compiler/myant-cli-site-plugin'
 import { getMyantConfig, getSiteOutputDir } from '../common'
-import {
-  SRC_DIR,
-  GREEN,
-  SITE_MOBILE_SHARED_FILE,
-  SITE_DESKTOP_SHARED_FILE,
-} from '../common/constant'
+import { SRC_DIR, GREEN, SITE_DESKTOP_SHARED_FILE } from '../common/constant'
 import { get } from 'lodash'
 
 export function getSiteDevWebpackConfig(site: string = 'desktop'): Configuration {
   let myantConfig = getMyantConfig(),
-    siteConfig = get(myantConfig, `site`, {})
-
+    siteConfig = get(myantConfig, `site.locales['zh-CN']`, {})
   let siteDevWebpackConfig = {
     entry: {
       'site-desktop': [join(__dirname, '../../sites/desktop/main.js')],
@@ -33,7 +27,7 @@ export function getSiteDevWebpackConfig(site: string = 'desktop'): Configuration
     },
     resolve: {
       alias: {
-        '@/src': SRC_DIR,
+        '@': SRC_DIR,
         // 'site-mobile-shared': SITE_MOBILE_SHARED_FILE,
         'site-desktop-shared': SITE_DESKTOP_SHARED_FILE,
       },
@@ -61,7 +55,7 @@ export function getSiteDevWebpackConfig(site: string = 'desktop'): Configuration
       new MyantCliSitePlugin({ platform: [Platform.mobile, Platform.desktop] }),
       new HtmlWebpackPlugin({
         title: siteConfig.title,
-        logo: siteConfig.logo,
+        icon: siteConfig.icon,
         description: siteConfig.description,
         chunks: ['chunks', 'site-desktop'],
         template: join(__dirname, '../../sites/desktop/index.html'),

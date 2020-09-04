@@ -3,6 +3,7 @@
     "target": "ES2017",
     "outDir": "./lib",
     "module": "commonjs",
+    "allowJs": false,
     "strict": true,
     "declaration": true,
     "skipLibCheck": true,

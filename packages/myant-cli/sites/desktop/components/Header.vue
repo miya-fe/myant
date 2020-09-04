@@ -7,7 +7,7 @@
           <span>{{ config.title }}</span>
         </a>
 
-        <search-input v-if="searchConfig" :lang="lang" :search-config="searchConfig" />
+        <!--<search-input v-if="searchConfig" :lang="lang" :search-config="searchConfig" />-->
 
         <ul class="myant-doc-header__top-nav">
           <li v-for="item in config.links" class="myant-doc-header__top-nav-item">

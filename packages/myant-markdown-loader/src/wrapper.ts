@@ -4,7 +4,9 @@
  */
 export function toMobileComponent(html: string): string {
   return `<template>
-  ${toCardSection(html)}
+  <div class="top-wrapper">
+    ${toCardSection(html)}
+  </div>
 </template>`
 }
 

@@ -1,5 +1,6 @@
-### button 的使用方法
+# button 按钮
 
+### button的使用方法
 ```
 .vue
 <template>
@@ -25,4 +26,10 @@ h3 --> text
 3. desktop & mobile 站点
 
 es + lib
+```
+
+### 第二个使用方法
+
+```text
+我是第二个板块
 ```

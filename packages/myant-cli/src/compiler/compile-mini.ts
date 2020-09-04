@@ -135,10 +135,9 @@ function watchFileChange() {
     const spinner = ora('File changed, start copy...').start()
     try {
       if (isComponentEntry(path)) {
-        await copyFile(path, miniPath.replace(/\/([^\/]+)\/index.vue$/, '/$1/$1.vue'))
-      } else {
-        await copyFile(path, miniPath)
+        miniPath = miniPath.replace(/\/([^\/]+)\/index.vue$/, '/$1/$1.vue')
       }
+      await copyFile(path, miniPath)
       // createReadStream(path).pipe(createWriteStream(miniPath))
       spinner.succeed('Compiled: ' + miniPath)
       consola.success('拷贝成功')

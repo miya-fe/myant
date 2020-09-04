@@ -26,8 +26,9 @@ export default {
   border: none;
   background-color: transparent;
   display: inline-block;
-  font-size: 24rpx;
+  font-size: 28rpx;
   outline: none;
+  color: red;
 
   &:after {
     content: '';

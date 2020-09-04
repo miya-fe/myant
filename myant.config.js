@@ -26,8 +26,9 @@ module.exports = {
     publicPath: '',
     locales: {
       'zh-CN': {
-        title: 'myant',
-        logo: 'http://hh-oss-picture.miyapay.com/box/7c472992c6f2e4bbe74a9b218044e19a.png',
+        title: 'Myant',
+        logo: 'http://hh-oss-picture.miyapay.com/box/e0ad6809af6c6738a84ad79b824980cf.png',
+        icon: 'http://hh-oss-picture.miyapay.com/box/9ee38309cc66ea32fc46945c0cdc297d.svg',
         description: 'myant微信小程序组件库',
         langLabel: '中文',
         searchConfig: {

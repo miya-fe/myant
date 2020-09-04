@@ -70,6 +70,7 @@ function genImportCode(files: Document[]): string {
   let components: string[] = []
   files.forEach((doc: Document) => {
     // components.push(`import ${doc.name} from '@src/${doc.name}/README.md'`)
+    // let url = doc.path.replace(SRC_DIR, '@')
     components.push(`import ${doc.name} from '${doc.path}'`)
   })
 
