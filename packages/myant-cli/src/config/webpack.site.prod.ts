@@ -11,8 +11,7 @@ import { get } from 'lodash'
 
 export function getSiteProdWebpackConfig(site: string = 'desktop'): Configuration {
   let myantConfig = getMyantConfig(),
-    siteConfig = get(myantConfig, `site`, {})
-
+    siteConfig = get(myantConfig, `site.locales['zh-CN']`, {})
   // const outputDir = get(myantConfig, `build.${site}.outputDir`, join(SITE_DIST_DIR, site))
   const outputDir = getSiteOutputDir(site)
   const publicPath = getSitePublicPath()
@@ -26,7 +25,7 @@ export function getSiteProdWebpackConfig(site: string = 'desktop'): Configuratio
     },
     resolve: {
       alias: {
-        '@src': SRC_DIR,
+        '@': SRC_DIR,
         // 'site-mobile-shared': SITE_MOBILE_SHARED_FILE,
         'site-desktop-shared': SITE_DESKTOP_SHARED_FILE,
       },

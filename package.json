@@ -33,7 +33,7 @@
   "author": "miya-fe",
   "license": "MIT",
   "devDependencies": {
-    "@myant/cli": "^1.0.1",
+    "@myant/cli": "^1.0.3",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",

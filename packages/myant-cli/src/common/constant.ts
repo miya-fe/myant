@@ -27,7 +27,7 @@ export const MINI_DEV_DIR = join(SITE_DIST_DIR, 'dev', 'mini-program')
 export const MINI_PROD_DIR = join(SITE_DIST_DIR, 'prod', 'mini-program')
 export const MYANT_CONFIG_FILE = join(ROOT, 'myant.config.js')
 export const PACKAGE_JSON_FILE = join(ROOT, 'package.json')
-export const CACHE_DIR = join(ROOT, 'node_modules/.cache')
+export const CACHE_DIR = join(ROOT, 'node_modules', '.cache')
 
 export const SITE_MINI_SHARED_FILE = join(SITE_DIST_DIR, 'site-mini-shared.js')
 export const SITE_MOBILE_SHARED_FILE = join(SITE_DIST_DIR, 'site-mobile-shared.js')
