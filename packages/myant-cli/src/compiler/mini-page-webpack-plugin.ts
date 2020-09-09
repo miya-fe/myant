@@ -78,7 +78,7 @@ class MiniPageWebpackPlugin {
     let content = JSON.parse(readFileSync(pagesJsonPath).toString()) as any,
       subPages = pages.map((page: NavItem) => {
         return {
-          path: join(page.path, 'index'),
+          path: join(page.path, 'index').replace(/\\/g, '/'),
           style: {
             navigationBarTitleText: page.title,
           },

@@ -15,7 +15,7 @@ function genCode(): string {
     return existsSync(join(SRC_DIR, file, 'index.vue'))
   })
   files.forEach((file: string) => {
-    components.push(`import ${file} from '@${formatPlatformOutputPath(join('src/${file}/demo'))}'`)
+    components.push(`import ${file} from '@${formatPlatformOutputPath(join('src', file, 'demo'))}'`)
   })
   let packageJson = getPackageJson()
 

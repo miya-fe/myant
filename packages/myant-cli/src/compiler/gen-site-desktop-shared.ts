@@ -42,19 +42,19 @@ function resolveComponents(): Document[] {
       if (existsSync(join(SRC_DIR, file, `README.${lang}.md`))) {
         documents.push({
           name: formatName(file, lang),
-          path: formatPlatformOutputPath(join(SRC_DIR, file, `README.${lang}.md`)),
+          path: join(SRC_DIR, file, `README.${lang}.md`),
         })
       }
     }
   })
 
-  glob.sync(join(DOCS_DIR, '**/*.md')).forEach((path: string) => {
+  glob.sync(join(DOCS_DIR, '**', '*.md').replace(/\\/g, '/')).forEach((path: string) => {
     const pairs = parse(path).name.split('.'),
       name = formatName(pairs[0], pairs[1])
     if (!documents.find((item) => item.name === name)) {
       documents.push({
         name,
-        path: formatPlatformOutputPath(path),
+        path,
       })
     }
   })

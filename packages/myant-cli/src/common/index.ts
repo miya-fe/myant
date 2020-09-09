@@ -39,11 +39,11 @@ export function getSitePublicPath() {
 }
 
 export function isDemoDir(dirName: string) {
-  return /(\/|\.)demo\/?/g.test(dirName)
+  return /(\/|\\|\.)demo\/?/g.test(dirName)
 }
 
 export function isTestDir(dirName: string) {
-  return /(\/|\.)test\/?/g.test(dirName)
+  return /(\/|\\|\.)test\/?/g.test(dirName)
 }
 
 export function isMDFile(dirName: string) {
@@ -62,6 +62,7 @@ export function isComponentEntry(filePath: string): boolean {
   let fileName = basename(filePath),
     dirs = filePath
       .replace(SRC_DIR, '')
+      .replace(/\\/g, '/')
       .split('/')
       .filter((dir) => dir !== '')
 
