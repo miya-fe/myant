@@ -45,6 +45,10 @@ module.exports = {
                 title: 'My-Button 按钮',
               },
               /*{
+                path: 'my-ddd',
+                title: 'My-ddd 按钮',
+              },
+              {
                 path: 'cell',
                 title: 'Cell 单元格',
               },

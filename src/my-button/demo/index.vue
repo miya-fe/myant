@@ -2,6 +2,7 @@
   <view>
     <my-button>按钮2223111</my-button>
     <my-icon></my-icon>
+    <my-ddd></my-ddd>
   </view>
 </template>
 <script lang="ts">

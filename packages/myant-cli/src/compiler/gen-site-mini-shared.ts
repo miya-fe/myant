@@ -1,4 +1,4 @@
-import { getPackageJson, getSrcFiles, smartOutputFile, normalizePath } from '../common'
+import { getPackageJson, formatPlatformOutputPath, smartOutputFile, normalizePath } from '../common'
 import {
   SRC_DIR,
   SITE_MINI_SHARED_FILE,
@@ -21,7 +21,7 @@ function genCode(): string {
   let packageJson = getPackageJson()
 
   return `
-    import config from '${normalizePath(MYANT_CONFIG_FILE)}'
+    import config from '${formatPlatformOutputPath(MYANT_CONFIG_FILE)}'
     const version='${packageJson.version}'
 
     export {
