@@ -2,9 +2,9 @@ import {
   getSrcFiles,
   smartOutputFile,
   getPackageJson,
-  normalizePath,
   pascalize,
   getMyantConfig,
+  formatPlatformOutputPath,
 } from '../common'
 import {
   SRC_DIR,
@@ -42,19 +42,19 @@ function resolveComponents(): Document[] {
       if (existsSync(join(SRC_DIR, file, `README.${lang}.md`))) {
         documents.push({
           name: formatName(file, lang),
-          path: join(SRC_DIR, file, `README.${lang}.md`),
+          path: formatPlatformOutputPath(join(SRC_DIR, file, `README.${lang}.md`)),
         })
       }
     }
   })
 
-  glob.sync(normalizePath(join(DOCS_DIR, '**/*.md'))).forEach((path: string) => {
+  glob.sync(join(DOCS_DIR, '**/*.md')).forEach((path: string) => {
     const pairs = parse(path).name.split('.'),
       name = formatName(pairs[0], pairs[1])
     if (!documents.find((item) => item.name === name)) {
       documents.push({
         name,
-        path,
+        path: formatPlatformOutputPath(path),
       })
     }
   })
@@ -71,7 +71,7 @@ function genImportCode(files: Document[]): string {
   files.forEach((doc: Document) => {
     // components.push(`import ${doc.name} from '@src/${doc.name}/README.md'`)
     // let url = doc.path.replace(SRC_DIR, '@')
-    components.push(`import ${doc.name} from '${doc.path}'`)
+    components.push(`import ${doc.name} from '${formatPlatformOutputPath(doc.path)}'`)
   })
 
   return components.join('\n')
@@ -83,7 +83,7 @@ function genExportCode(components: Document[]) {
 
 function genMyantConfigCode() {
   return `
-  import config from '${normalizePath(MYANT_CONFIG_FILE)}'
+  import config from '${formatPlatformOutputPath(MYANT_CONFIG_FILE)}'
   export {config}`
 }
 

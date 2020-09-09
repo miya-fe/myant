@@ -1,5 +1,6 @@
 import execa from 'execa'
 import consola from 'consola'
+import { platform } from 'os'
 import {
   PACKAGE_JSON_FILE,
   MYANT_CONFIG_FILE,
@@ -198,4 +199,12 @@ export function camelize(str: string): string {
 
 export function pascalize(str: string): string {
   return camelize(str).replace(pascalizeRE, (_, c1, c2) => c1.toUpperCase() + c2)
+}
+
+export function formatPlatformOutputPath(path: string): string {
+  if (/^win/.test(platform())) {
+    return path.replace(/\\/g, '\\\\')
+  } else {
+    return path
+  }
 }
