@@ -1,5 +1,6 @@
 import execa from 'execa'
 import consola from 'consola'
+import { platform } from 'os'
 import {
   PACKAGE_JSON_FILE,
   MYANT_CONFIG_FILE,
@@ -38,11 +39,11 @@ export function getSitePublicPath() {
 }
 
 export function isDemoDir(dirName: string) {
-  return /(\/|\.)demo\/?/g.test(dirName)
+  return /(\/|\\|\.)demo\/?/g.test(dirName)
 }
 
 export function isTestDir(dirName: string) {
-  return /(\/|\.)test\/?/g.test(dirName)
+  return /(\/|\\|\.)test\/?/g.test(dirName)
 }
 
 export function isMDFile(dirName: string) {
@@ -61,6 +62,7 @@ export function isComponentEntry(filePath: string): boolean {
   let fileName = basename(filePath),
     dirs = filePath
       .replace(SRC_DIR, '')
+      .replace(/\\/g, '/')
       .split('/')
       .filter((dir) => dir !== '')
 
@@ -198,4 +200,12 @@ export function camelize(str: string): string {
 
 export function pascalize(str: string): string {
   return camelize(str).replace(pascalizeRE, (_, c1, c2) => c1.toUpperCase() + c2)
+}
+
+export function formatPlatformOutputPath(path: string): string {
+  if (/^win/.test(platform())) {
+    return path.replace(/\\/g, '\\\\')
+  } else {
+    return path
+  }
 }

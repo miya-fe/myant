@@ -53,7 +53,7 @@ function buildComponent() {
 
 function runMiniCommand(cmd: string) {
   if (!existsSync(join(TPl_MINI_DIR, 'node_modules'))) {
-    consola.info('未检测到安装小程序依赖模块，现在开始安装')
+    consola.info('检测到未安装小程序依赖模块，现在开始安装')
     if (hasYarn()) {
       execa.commandSync('yarn install', {
         preferLocal: true,

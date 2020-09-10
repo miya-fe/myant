@@ -33,7 +33,6 @@
   "author": "miya-fe",
   "license": "MIT",
   "devDependencies": {
-    "@myant/cli": "^1.0.4",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
@@ -61,5 +60,10 @@
   "browserslist": [
     "Android >= 4.0",
     "iOS >= 8"
-  ]
+  ],
+  "dependencies": {
+    "@myant/cli": "^1.0.6",
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
+  }
 }
