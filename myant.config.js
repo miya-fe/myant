@@ -44,10 +44,11 @@ module.exports = {
                 path: 'my-button',
                 title: 'My-Button 按钮',
               },
-              /*{
-                path: 'cell',
-                title: 'Cell 单元格',
+              {
+                path: 'my-loading',
+                title: 'loading',
               },
+              /*
               {
                 path: 'layout',
                 title: 'Layout 布局',
