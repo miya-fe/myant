@@ -62,7 +62,7 @@
     "iOS >= 8"
   ],
   "dependencies": {
-    "@myant/cli": "^1.0.6",
+    "@myant/cli": "^1.0.8",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"
   }
