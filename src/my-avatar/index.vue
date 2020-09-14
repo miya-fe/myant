@@ -10,7 +10,7 @@ export default {
   props: {
     src: {
       type: String,
-      default: 'http://hh-oss-picture.miyapay.com/box/15a4b74ea22376e9d722bf7863f22afb.jpeg'
+      default: 'http://hh-oss-picture.miyapay.com/box/2e5a693028a3e61a61efa37b91436316.png'
     },
     size: {
       type: String,
