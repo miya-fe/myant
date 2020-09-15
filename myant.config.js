@@ -48,6 +48,10 @@ module.exports = {
                 path: 'my-avatar',
                 title: 'My-avatar 头像',
               },
+              {
+                path: 'my-progress',
+                title: 'My-progress 进度条',
+              },
               /* {
                 path: 'cell',
                 title: 'Cell 单元格',
