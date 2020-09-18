@@ -1,5 +1,5 @@
 <template>
-  <div class="one-tag" :class="typeTag" :style="{background:color,color:textColor}">
+  <div class="common-tag" :class="type">
     <slot></slot>
   </div>
 </template>
@@ -7,18 +7,10 @@
 export default {
   name: 'my-tag',
   props: {
-    typeTag: {
+    type: {
       type: String,
       default: 'one-tag'
     },
-    color: {
-      type: String,
-      // default: 'none'
-    },
-    textColor: {
-      type: String,
-      // default: 'none'
-    }
   },
   computed: {},
   data() {
@@ -29,17 +21,19 @@ export default {
 }
 </script>
 <style scoped lang="less">
-.one-tag {
+.common-tag{
   width: auto;
   display: inline-block;
   height: 40px;
   line-height: 40px;
   padding: 0 16px;
-  background: rgba(255,119,0,1);
   border-radius: 20px;
   font-size: 20px;
   font-family: PingFangSC-Regular,PingFang SC;
   font-weight: 400;
+}
+.one-tag {
+  background: rgba(255,119,0,1);
   color: rgba(255,255,255,1);
 }
 .two-tag {

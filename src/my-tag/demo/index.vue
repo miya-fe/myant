@@ -1,8 +1,7 @@
 <template>
   <view class="tags">
-    <my-tag typeTag="one-tag">一级标签</my-tag>
-    <my-tag typeTag="two-tag">二级标签</my-tag>
-    <my-tag typeTag="two-tag" color="green" text-color="black">一级变色标签</my-tag>
+    <my-tag type="one-tag">一级标签</my-tag>
+    <my-tag type="two-tag">二级标签</my-tag>
   </view>
 </template>
 <script lang="ts">
