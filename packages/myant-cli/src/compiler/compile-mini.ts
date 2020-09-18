@@ -15,6 +15,7 @@ import {
   isTestDir,
   isDemoDir,
   isComponentEntry,
+  isWin,
 } from '../common'
 import execa from 'execa'
 import {
@@ -118,16 +119,16 @@ function watchFileChange() {
   const SrcTplDir = TPl_MINI_COMPONENT_DIR
   consola.info(`开启文件监听： ${SRC_DIR}`)
   chokidar.watch(SRC_DIR).on('change', async (path) => {
-    consola.info('监听到文件变动，开始检测')
+    consola.info(`监听到文件变动，开始检测: ` + path)
     if (isTestDir(path)) {
       consola.info('当前文件为单元测试，放弃拷贝')
       return
     }
 
     let miniPath
-    path = path.replace('\\', '/')
+    //path = path.replace(/\\/g, '/')
     if (isDemoDir(path)) {
-      miniPath = path.replace(SRC_DIR, DemoTplDir).replace(/\/demo\//, '/')
+      miniPath = path.replace(SRC_DIR, DemoTplDir).replace(/(\/|\\)demo(\/|\\)/, '$1')
     } else {
       miniPath = path.replace(SRC_DIR, SrcTplDir)
     }
@@ -135,7 +136,11 @@ function watchFileChange() {
     const spinner = ora('File changed, start copy...').start()
     try {
       if (isComponentEntry(path)) {
-        miniPath = miniPath.replace(/\/([^\/]+)\/index.vue$/, '/$1/$1.vue')
+        if (isWin()) {
+          miniPath = miniPath.replace(/\\([^\\]+)\\index.vue$/, '\\$1\\$1.vue')
+        } else {
+          miniPath = miniPath.replace(/\/([^\/]+)\/index.vue$/, '/$1/$1.vue')
+        }
       }
       await copyFile(path, miniPath)
       // createReadStream(path).pipe(createWriteStream(miniPath))

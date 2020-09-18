@@ -44,6 +44,10 @@ module.exports = {
                 path: 'my-button',
                 title: 'My-Button 按钮',
               },
+              {
+                path: 'my-tag',
+                title: 'My-tag 标签',
+              },
               /*{
                 path: 'my-ddd',
                 title: 'My-ddd 按钮',

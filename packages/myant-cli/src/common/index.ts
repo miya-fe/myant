@@ -202,8 +202,16 @@ export function pascalize(str: string): string {
   return camelize(str).replace(pascalizeRE, (_, c1, c2) => c1.toUpperCase() + c2)
 }
 
-export function formatPlatformOutputPath(path: string): string {
+export function isWin() {
   if (/^win/.test(platform())) {
+    return true
+  } else {
+    return false
+  }
+}
+
+export function formatPlatformOutputPath(path: string): string {
+  if (isWin()) {
     return path.replace(/\\/g, '\\\\')
   } else {
     return path
