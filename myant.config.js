@@ -7,17 +7,17 @@ module.exports = {
   miniProgramBundle: [
     {
       autoPublish: false, //是否自动上传
-      appId: '', //小程序的APPID
-    },
+      appId: '' //小程序的APPID
+    }
   ],
 
   build: {
     mobile: {
       chainWebpack: (config) => {},
-      webpack: {},
+      webpack: {}
     },
     desktop: {},
-    mini: {},
+    mini: {}
   },
 
   site: {
@@ -34,7 +34,7 @@ module.exports = {
         searchConfig: {
           apiKey: '',
           indexName: 'myant',
-          placeholder: '搜索文档...',
+          placeholder: '搜索文档...'
         },
         nav: [
           {
@@ -42,18 +42,14 @@ module.exports = {
             items: [
               {
                 path: 'my-button',
-                title: 'My-Button 按钮',
-              },
-              /*{
-                path: 'cell',
-                title: 'Cell 单元格',
+                title: 'My-Button 按钮'
               },
               {
-                path: 'layout',
-                title: 'Layout 布局',
-              },*/
-            ],
-          },
+                path: 'my-tag',
+                title: 'My-tag 标签'
+              }
+            ]
+          }
           /*{
             title: '表单组件',
             items: [
@@ -67,8 +63,8 @@ module.exports = {
               },
             ],
           },*/
-        ],
-      },
-    },
-  },
+        ]
+      }
+    }
+  }
 }
