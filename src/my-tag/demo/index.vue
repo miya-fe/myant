@@ -2,6 +2,7 @@
   <view class="tags">
     <my-tag type="one-tag">一级标签</my-tag>
     <my-tag type="two-tag">二级标签</my-tag>
+    <my-tag>默认标签</my-tag>
   </view>
 </template>
 <script lang="ts">
