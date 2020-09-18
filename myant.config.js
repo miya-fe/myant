@@ -53,6 +53,10 @@ module.exports = {
                 title: 'My-ddd 按钮',
               },
               {
+                path: 'my-avatar',
+                title: 'My-avatar 头像',
+              },
+              /* {
                 path: 'cell',
                 title: 'Cell 单元格',
               },
