@@ -25,14 +25,20 @@ export default {
     percent: {
       type: Number,
       default: 0,
+      validator: function(value) {
+        return value >=0 && value <= 1
+      }
     },
     width: {
       type: Number,
       default: 160,
+      validator: function(value) {
+        return value <= 750
+      }
     },
     height: {
       type: Number,
-      default: 12,
+      default: 12
     },
     bgColor: {
       type: String,
