@@ -56,10 +56,15 @@ module.exports = {
                 path: 'my-tag',
                 title: 'My-tag 标签',
               },
+              {
+                path: 'my-loading',
+                title: 'My-loading 加载',
+              },
               /* {
                 path: 'cell',
                 title: 'Cell 单元格',
               },
+              /*
               {
                 path: 'layout',
                 title: 'Layout 布局',
