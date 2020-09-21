@@ -13,8 +13,8 @@ export default {
       size: 'small'
     }
   },
-  onLoad() {
-    console.log('avatar demo ！！220000')
+  mounted() {
+    console.log('avatar demo ！！2200')
   },
 }
 </script>
