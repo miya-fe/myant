@@ -1,8 +1,7 @@
 <template>
-  <div class="avatar-outer">
-    <img :src="src" :class="['common-avatar', size + '-avatar']" />
-    <slot></slot>
-  </div>
+  <view class="avatar-outer">
+    <image :src="src" :class="['common-avatar', size + '-avatar']" />
+  </view>
 </template>
 <script lang="ts">
 export default {
@@ -10,11 +9,14 @@ export default {
   props: {
     src: {
       type: String,
-      default: 'http://hh-oss-picture.miyapay.com/box/2e5a693028a3e61a61efa37b91436316.png'
+      required: true
     },
     size: {
       type: String,
-      default: 'middle'
+      default: 'middle',
+      validator: function(value) {
+        return [ 'huge', 'large', 'middle', 'small'].indexOf(value) !== -1
+      }
     },
   },
   computed: {},
