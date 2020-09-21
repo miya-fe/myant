@@ -7,7 +7,6 @@
     @click="handleClick"
   >
     <my-icon v-if="icon" :type="icon"></my-icon>
-    <my-loading if="loading"></my-loading>
     <slot></slot>
   </button>
 </template>
