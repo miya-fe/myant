@@ -6,12 +6,13 @@
         :style="{
 						 width: size + 'rpx',
 						 height: size + 'rpx',
+             margin: layout==='row'?'0':'0 auto',
 						 borderTop: '6rpx solid ' + backgroundColor,
 						 borderRight: '6rpx solid ' + backgroundColor,
 						 borderBottom: '6rpx solid ' + backgroundColor,
-						 borderLeft: '6rpx solid ' + currentColor}"
+						 borderLeft: '6rpx solid ' + color}"
       />
-      <view v-if="haveTitle" class="loader-title" :style="{fontSize: fontSize + 'rpx'}">{{title}}</view>
+      <text v-if="showText" class="loader-title" :style="{fontSize: fontSize + 'rpx'}">{{text}}</text>
     </view>
   </view>
 </template>
@@ -23,20 +24,23 @@ export default {
     type: {
       type: String,
       default: 'primary',
+      validator: function(value){
+        return ['primary','fixed'].indexOf(value) !== -1
+      }
     },
     size: {
       type: String,
       default: '60',
     },
-    currentColor: {
+    color: {
       type: String,
       default: '#FF7700',
     },
-    haveTitle: {
+    showText: {
       type: Boolean,
       default: true,
     },
-    title: {
+    text: {
       type: String,
       default: '加载中',
     },
@@ -47,6 +51,9 @@ export default {
     layout: {
       type: String,
       default: 'column',
+      validator: function(value){
+        return ['column','row'].indexOf(value) !== -1
+      }
     },
   },
   data: () => {
@@ -87,11 +94,11 @@ export default {
   background:rgba(0,0,0,0.8);
   padding: 30rpx 40rpx 20rpx;
   border-radius:10rpx;
+  text-align: center;
 }
 .loader-title {
   margin-top: 16rpx;
   color: #8b8b8d;
-  text-align: center;
 }
 .fixed .loader-title{
   color: #ffffff;

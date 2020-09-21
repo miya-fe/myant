@@ -2,7 +2,7 @@
   <view>
     <my-loading></my-loading>
     <view style="height:80rpx"></view> 
-    <my-loading :haveTitle="false" size="40"></my-loading>
+    <my-loading :showText="false" size="40"></my-loading>
     <view style="height:80rpx"></view> 
     <my-loading layout="row"></my-loading>
     <view style="height:80rpx"></view> 
