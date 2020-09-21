@@ -888,10 +888,10 @@
   resolved "https://registry.npmjs.org/@most/prelude/-/prelude-1.7.3.tgz#51db3f3ba3ed65431b6eea89ecb0a31826af640c"
   integrity sha512-qWWEnA22UP1lzFfKx75XMut6DUUXGRKe7qv2k+Bgs7ju8lwb5RjsZYyQZ+VcsYvHcIavHKzseLlBMLOe2CvUZw==
 
-"@myant/cli@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@myant/cli/-/cli-1.0.8.tgz#254308cba2d08f83405967661dbc4ddf0ba0432b"
-  integrity sha512-OglELxZzgyCF2UODiW5/GXRLZwk2944VoJK4vwcZ5FXHhQ8gMBGxUCtZeLftQxPVKOFDW7GQzYMjK9jSbvld4g==
+"@myant/cli@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@myant/cli/-/cli-1.0.9.tgz#83e491187ebaa9b1dd23ff29a9a6788927837522"
+  integrity sha512-V3QXjFGDSgoqH89ScSxznMfKtjaxIEshM7JjLZaUp8zg84T0me9Thrpio4+Ti5l0mYC78XMOXskPa1SsVq2cvQ==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/plugin-transform-object-assign" "^7.10.4"

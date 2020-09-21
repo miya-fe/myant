@@ -52,16 +52,20 @@ module.exports = {
                 path: 'my-progress',
                 title: 'My-progress 进度条',
               },
+              {
+                path: 'my-tag',
+                title: 'My-tag 标签',
+              },
               /* {
                 path: 'cell',
                 title: 'Cell 单元格',
               },
               {
-                path: 'my-tag',
-                title: 'My-tag 标签'
-              }
-            ]
-          }
+                path: 'layout',
+                title: 'Layout 布局',
+              },*/
+            ],
+          },
           /*{
             title: '表单组件',
             items: [
