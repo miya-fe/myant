@@ -888,10 +888,10 @@
   resolved "https://registry.npmjs.org/@most/prelude/-/prelude-1.7.3.tgz#51db3f3ba3ed65431b6eea89ecb0a31826af640c"
   integrity sha512-qWWEnA22UP1lzFfKx75XMut6DUUXGRKe7qv2k+Bgs7ju8lwb5RjsZYyQZ+VcsYvHcIavHKzseLlBMLOe2CvUZw==
 
-"@myant/cli@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.npmjs.org/@myant/cli/-/cli-1.0.6.tgz#f65de5310b98b3376d0bec45c2f5da4d40d7d4a5"
-  integrity sha512-/4bzyGrjZkM3gqqB2+aanUGUYcTVwf6zcv1ejphOWHbrw4OLYyhL0QxiQX0CCOwGBjRhz6eqzqeVVNQV1KBAww==
+"@myant/cli@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@myant/cli/-/cli-1.0.8.tgz#254308cba2d08f83405967661dbc4ddf0ba0432b"
+  integrity sha512-OglELxZzgyCF2UODiW5/GXRLZwk2944VoJK4vwcZ5FXHhQ8gMBGxUCtZeLftQxPVKOFDW7GQzYMjK9jSbvld4g==
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/plugin-transform-object-assign" "^7.10.4"
@@ -921,8 +921,10 @@
     sass-loader "^9.0.2"
     style-loader "^1.2.1"
     typescript "^4.0.2"
+    vue "^2.6.11"
     vue-loader "^15.9.3"
     vue-router "^3.3.4"
+    vue-template-compiler "^2.6.11"
     webpack "^4.44.0"
     webpack-dashboard "^3.2.0"
     webpack-dev-server "^3.11.0"
@@ -6476,9 +6478,9 @@ vue-style-loader@^4.1.0:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.6.12:
+vue-template-compiler@^2.6.11, vue-template-compiler@^2.6.12:
   version "2.6.12"
-  resolved "https://registry.npmjs.org/vue-template-compiler/-/vue-template-compiler-2.6.12.tgz#947ed7196744c8a5285ebe1233fe960437fcc57e"
+  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.6.12.tgz#947ed7196744c8a5285ebe1233fe960437fcc57e"
   integrity sha512-OzzZ52zS41YUbkCBfdXShQTe69j1gQDZ9HIX8miuC9C3rBCk9wIRjLiZZLrmX9V+Ftq/YEyv1JaVr5Y/hNtByg==
   dependencies:
     de-indent "^1.0.2"
@@ -6489,9 +6491,9 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npmjs.org/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.12:
+vue@^2.6.11, vue@^2.6.12:
   version "2.6.12"
-  resolved "https://registry.npmjs.org/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
 
 watchpack-chokidar2@^2.0.0:

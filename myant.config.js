@@ -42,7 +42,19 @@ module.exports = {
             items: [
               {
                 path: 'my-button',
-                title: 'My-Button 按钮'
+                title: 'My-Button 按钮',
+              },
+              {
+                path: 'my-avatar',
+                title: 'My-avatar 头像',
+              },
+              {
+                path: 'my-progress',
+                title: 'My-progress 进度条',
+              },
+              /* {
+                path: 'cell',
+                title: 'Cell 单元格',
               },
               {
                 path: 'my-tag',
