@@ -35,7 +35,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged && ls-lint",
-      "commit-msg": "vant-cli commit-lint"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -69,14 +69,16 @@
     "iOS >= 8"
   ],
   "dependencies": {
+    "@commitlint/config-conventional": "^11.0.0",
+    "@ls-lint/ls-lint": "^1.9.2",
     "@myant/cli": "^1.0.9",
     "@myant/eslint-config-vue-ts": "^1.0.0",
     "@myant/stylelint-config": "^1.0.0",
-    "vue": "^2.6.12",
-    "vue-template-compiler": "^2.6.12",
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.6"
+    "typescript": "^3.9.6",
+    "vue": "^2.6.12",
+    "vue-template-compiler": "^2.6.12"
   }
 }
