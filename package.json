@@ -32,11 +32,17 @@
   ],
   "author": "miya-fe",
   "license": "MIT",
-  "devDependencies": {
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.6"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && ls-lint",
+      "commit-msg": "vant-cli commit-lint"
+    }
+  },
+  "lint-staged": {
+    "*.md": "prettier --write",
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint --fix",
+    "*.{vue,css,less}": "stylelint --fix"
   },
   "eslintConfig": {
     "root": true,
@@ -64,7 +70,13 @@
   ],
   "dependencies": {
     "@myant/cli": "^1.0.9",
+    "@myant/eslint-config-vue-ts": "^1.0.0",
+    "@myant/stylelint-config": "^1.0.0",
     "vue": "^2.6.12",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
   }
 }
