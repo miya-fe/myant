@@ -3,14 +3,14 @@
 ## 代码演示
 
 ### 基础用法
-```
+```html
 <my-icon>&#xe63f;</my-icon>
 ```
 
 ### 按钮大小
 通过指定 `size` 属性值，可以更改按钮大小（默认值：`default`）
 
-```text
+```html
 <my-icon size="large">&#xe63f;</my-icon>
 <my-icon size="default">&#xe63f;</my-icon>
 <my-icon size="small">&#xe63f;</my-icon>
@@ -19,14 +19,14 @@
 ### 禁用按钮
 通过指定 `color` 属性值更改图标颜色
 
-```
+```html
 <my-icon size="large" color="red">&#xe63f;</my-icon>
 ```
 
 ### 自定义图标
 通过指定 `src` 属性值设置自定义图标
 
-```
+```html
 <my-icon 
   size="large"
   src="http://hh-oss-picture.miyapay.com/box/7012120c4f9fed5558450de70b20a11d.png"
@@ -36,7 +36,7 @@
 ### 带徽标的图标
 通过指定的 `badge` 插槽，可在图标右上角增加徽标
 
-```
+```html
 <my-icon size="large">&#xe63f;<my-badge slot="badge" text="9"></my-badge></my-icon>
 ```
 徽标的参数说明请查看[徽标组件my-badge](#/zh-CN/my-badge)

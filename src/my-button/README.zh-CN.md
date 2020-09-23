@@ -3,14 +3,14 @@
 ## 代码演示
 
 ### 基础用法
-```
+```html
 <my-button>按钮</my-button>
 ```
 
 ### 按钮类型
 通过指定 `type` 属性值，可以更改按钮展示类型
 
-```text
+```html
 <my-button type="primary">primary</my-button>
 <my-button type="default">default</my-button>
 <my-button type="default">default</my-button>
@@ -21,14 +21,14 @@
 ### 按钮大小
 通过指定 `size` 属性值，可以更改按钮大小（默认值：`default`）
 
-```text
+```html
 <my-button size="small" type="primary">primary</my-button>
 ```
 
 ### 禁用按钮
 通过指定 `disable` 属性值禁用按钮，按钮禁用后不再响应 `click` 事件
 
-```
+```html
 <my-button :disable="true" size="small" type="primary">primary</my-button>
 ```
 
