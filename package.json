@@ -39,10 +39,10 @@
     }
   },
   "lint-staged": {
-    "*.md": "prettier --write",
-    "*.{ts,tsx,js,vue,less}": "prettier --write",
-    "*.{ts,tsx,js,vue}": "eslint --fix",
-    "*.{vue,css,less}": "stylelint --fix"
+    "src/*.md": "prettier --write",
+    "src/*.{ts,tsx,js,vue,less}": "prettier --write",
+    "src/*.{ts,tsx,js,vue}": "eslint --fix",
+    "src/*.{vue,css,less}": "stylelint --fix"
   },
   "eslintConfig": {
     "root": true,
@@ -69,12 +69,15 @@
     "iOS >= 8"
   ],
   "dependencies": {
+    "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@ls-lint/ls-lint": "^1.9.2",
     "@myant/cli": "^1.0.9",
     "@myant/eslint-config-vue-ts": "^1.0.0",
     "@myant/stylelint-config": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
     "prettier": "^2.0.5",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.6",

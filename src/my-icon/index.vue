@@ -11,7 +11,7 @@
     <text v-else class="icon" :style="dynamicStyle" :class="dynamicClass">
       <slot></slot>
     </text>
-    <!-- badge slot -->
+    <!--badge slot-->
     <view v-if="showBadge" class="badge">
       <slot name="badge"></slot>
     </view>
