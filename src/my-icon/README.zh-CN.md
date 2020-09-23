@@ -59,3 +59,7 @@
 |名称|说明|
 |---|----|
 |badge|自定义徽标|
+
+## icon 字典
+### 字典
+[链接](https://www.iconfont.cn/manage/index?spm=a313x.7781069.1998910419.db775f1f3&manage_type=myprojects&projectId=1926676&keyword=&project_type=&page=)
