@@ -44,3 +44,8 @@
 |loading|是否处于加载状态|_boolean_|`false`|
 |icon|按钮图标|_string(参考my-icon组件类型)_|`-`|
 |open-type|微信开放能力|_string[参考](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)_|`-`|
+
+### button events
+|事件名|说明|回调参数|
+|---|----|---|
+|click|点击图标时触发|_event: Event_|

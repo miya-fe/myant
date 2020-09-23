@@ -14,15 +14,14 @@ export default {
     size: {
       type: String,
       default: 'middle',
-      validator: function(value) {
-        return [ 'huge', 'large', 'middle', 'small'].indexOf(value) !== -1
+      validator: function (value) {
+        return ['huge', 'large', 'middle', 'small'].indexOf(value) !== -1
       }
-    },
+    }
   },
   computed: {},
   data() {
-    return {
-    }
+    return {}
   },
   methods: {}
 }
@@ -32,7 +31,7 @@ export default {
   display: inline-block;
 }
 .common-avatar {
-  background: #E9E9E9;
+  background: #e9e9e9;
   border-radius: 50%;
 }
 .small-avatar {

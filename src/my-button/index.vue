@@ -6,7 +6,10 @@
     :open-type="openType"
     @click="handleClick"
   >
-    <my-icon v-if="icon" :type="icon"></my-icon>
+    <my-icon v-if="icon && !loading" :type="icon"></my-icon>
+    <view v-if="loading" class="loading">
+      <my-loading v-if="loading" :show-text="false" size="20"></my-loading>
+    </view>
     <slot></slot>
   </button>
 </template>
@@ -162,6 +165,13 @@ export default {
     &-disabled {
       color: #cccccc;
     }
+  }
+
+  .loading {
+    display: inline-block;
+    padding-right: 10rpx;
+    position: relative;
+    top: 2rpx;
   }
 }
 </style>

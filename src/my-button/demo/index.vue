@@ -16,6 +16,9 @@
       <view class="item">
         <my-button type="text">text</my-button>
       </view>
+      <view class="item">
+        <my-button :loading="true">loading</my-button>
+      </view>
     </view>
 
     <view class="list">
@@ -77,9 +80,6 @@
 export default {
   data: () => {
     return {}
-  },
-  onLoad() {
-    console.log('button demo ！！220000')
   }
 }
 </script>
