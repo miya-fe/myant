@@ -67,6 +67,10 @@ module.exports = {
               {
                 path: 'my-loading',
                 title: 'My-loading 加载'
+              },
+              {
+                path: 'my-stepper',
+                title: 'My-stepper 加载'
               }
               /* {
                 path: 'cell',
