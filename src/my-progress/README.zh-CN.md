@@ -1,48 +1,51 @@
-### progress 进度条的使用方法
+# progress 进度条
 
-1. 基础使用：
+## 代码演示
 
-   ```vue
-   <template>
-     <my-progress :percent="0.4></my-progress>
-   </template>
-   ```
+### 基础用法
 
-2. 传入更多参数：
+```html
+<template>
+  <my-progress :percent="0.4"></my-progress>
+</template>
+```
 
-   ```vue
-   <my-progress
-     :percent="0.6"
-     bgColor="#ccc"
-     color="#abc"
-     :width="300"
-     :height="16"
-   >
-     <text class="title">已抢2222</text>
-   </my-progress>
-   ```
+### 进度条长宽
 
-   ```scss
-   // 自定义
-   .title {
-     display: inline-block;
-     font-size: 20rpx;
-     margin-left: 20rpx;
-   }
-   ```
+通过指定 `width`、 `height` 属性值控制当前进度条宽高
 
-   ​
+```html
+<my-progress :percent="0.4" :height="16" :width="200"></my-progress>
+```
 
-3. props参数：
+### 进度条背景色
 
-   | 字段    | 类型   | 含义               |
-   | ------- | ------ | ------------------ |
-   | percent | Number | 内部进度比例       |
-   | width   | Number | 进度条总长度       |
-   | height  | Number | 进度条高度         |
-   | bgColor | String | 外部背景进度条颜色 |
-   | color   | String | 内部进度条颜色     |
+通过指定 `bgColor`、 `color`属性值可以更换进度条背景色(支持传入 linear-gradient)
 
-4. slot插槽
+```html
+<my-progress :percent="0.4" bg-color="#ccc" color="#abc"></my-progress>
+```
 
-   在进度条右侧显示相关文字信息
+### 进度条 slot
+
+```html
+<my-progress :percent="0.4" bg-color="#ccc" color="#abc">
+  <text class="title">已抢2222</text>
+</my-progress>
+```
+
+## API
+
+### progress props
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| percent | 当前进度 | _primary\|\_number_ | `0` |
+| width | 进度条宽度 | _number_ | `160` |
+| height | 进度条高度 | _number_ | `12` |
+| bg-color | 进度条背景色 | _string_ | `#FFE7D2` |
+| color | 进度条颜色 | _string_ | `linear-gradient(270deg, rgba(255,175,0,1) 0%, rgba(255,119,0,1) 100%)` |
+
+### progress slot 插槽
+
+插槽位于进度条右侧，可用于显示文字信息或其他信息
