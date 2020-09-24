@@ -6,6 +6,7 @@
     :open-type="openType"
     @click="handleClick"
   >
+    <!--  自定义icon  -->
     <my-icon v-if="icon && !loading" :type="icon"></my-icon>
     <view v-if="loading" class="loading">
       <my-loading v-if="loading" :show-text="false" size="20"></my-loading>
@@ -16,7 +17,7 @@
 
 <script lang="ts">
 export default {
-  name: 'my-button',
+  name: 'MyButton',
   props: {
     // 小程序Button专属的open-type熟悉
     openType: {
@@ -70,8 +71,8 @@ export default {
   },
   computed: {
     dynamicClass() {
-      //按钮样式
-      let clazz = [`btn-${this.type}`]
+      // 按钮样式
+      const clazz = [`btn-${this.type}`]
       // 按钮大小
       if (this.size === 'small') {
         clazz.push('btn-size-small')
@@ -100,44 +101,43 @@ export default {
 </script>
 <style scoped lang="less">
 .btn {
-  background-color: #fff;
   display: inline-block;
   font-weight: 600;
-  font-family: PingFangSC-Semibold, PingFang SC;
-  outline: none;
   line-height: normal;
   vertical-align: middle;
+  background-color: #fff;
+  outline: none;
 
   &:active {
     opacity: 0.8;
   }
 
-  &:after {
-    content: '';
-    outline: none;
-    border: none;
+  &::after {
     display: inline-block;
+    border: none;
+    outline: none;
+    content: '';
   }
 
   &-size-default {
-    font-size: 32rpx;
     padding: 22rpx 136rpx;
+    font-size: 32rpx;
     border-radius: 60rpx;
   }
   &-size-small {
-    font-size: 24rpx;
     padding: 11rpx 24rpx;
+    font-size: 24rpx;
     border-radius: 32rpx;
   }
 
   &-primary {
     color: #fff;
-    border: 2rpx solid #ff7700;
-    background-color: #ff7700;
+    background-color: #f70;
+    border: 2rpx solid #f70;
 
     &-disabled {
-      background-color: #cccccc;
-      border: 2rpx solid #cccccc;
+      background-color: #ccc;
+      border: 2rpx solid #ccc;
     }
   }
   &-default {
@@ -145,8 +145,8 @@ export default {
     border: 2rpx solid #333;
 
     &-disabled {
-      color: #cccccc;
-      border: 2rpx solid #cccccc;
+      color: #ccc;
+      border: 2rpx solid #ccc;
     }
   }
   &-dashed {
@@ -154,8 +154,8 @@ export default {
     border: 2rpx dashed #333;
 
     &-disabled {
-      color: #cccccc;
-      border: 2rpx dashed #cccccc;
+      color: #ccc;
+      border: 2rpx dashed #ccc;
     }
   }
   &-text {
@@ -163,15 +163,15 @@ export default {
     border: none;
 
     &-disabled {
-      color: #cccccc;
+      color: #ccc;
     }
   }
 
   .loading {
-    display: inline-block;
-    padding-right: 10rpx;
     position: relative;
     top: 2rpx;
+    display: inline-block;
+    padding-right: 10rpx;
   }
 }
 </style>
