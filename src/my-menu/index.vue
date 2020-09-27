@@ -72,12 +72,12 @@ export default {
   },
   computed: {
     styleObj(): string {
-      const width = this.direction === 'vertical' ? `${this.width}rpx` : '100%'
+      const width: string = this.direction === 'vertical' ? `${this.width}rpx` : '100%'
       return `width: ${width}`
     },
     contentObj(): string {
-      const ret = []
-      const width = this.direction === 'vertical' ? `calc(100% - ${this.width}rpx)` : '100%'
+      const ret: Array<string> = []
+      const width: string = this.direction === 'vertical' ? `calc(100% - ${this.width}rpx)` : '100%'
       ret.push(`width: ${width}`)
       ret.push('word-break: break-all')
       return ret.join(';')
