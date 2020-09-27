@@ -1,4 +1,4 @@
-const { join } = require('path')
+import { join } from 'path'
 
 module.exports = {
   /**
@@ -6,14 +6,14 @@ module.exports = {
    */
   miniProgramBundle: [
     {
-      autoPublish: false, //是否自动上传
-      appId: '' //小程序的APPID
+      autoPublish: false, // 是否自动上传
+      appId: '' // 小程序的APPID
     }
   ],
 
   build: {
     mobile: {
-      chainWebpack: (config) => {},
+      // chainWebpack: (config) => {},
       webpack: {}
     },
     desktop: {},
@@ -71,6 +71,10 @@ module.exports = {
               {
                 path: 'my-stepper',
                 title: 'My-stepper 加载'
+              },
+              {
+                path: 'my-menu',
+                title: 'My-menu 菜单'
               }
               /* {
                 path: 'cell',
@@ -80,10 +84,10 @@ module.exports = {
               {
                 path: 'layout',
                 title: 'Layout 布局',
-              },*/
+              }, */
             ]
           }
-          /*{
+          /* {
             title: '表单组件',
             items: [
               {
@@ -95,7 +99,7 @@ module.exports = {
                 title: 'textarea 文本框',
               },
             ],
-          },*/
+          }, */
         ]
       }
     }

@@ -59,6 +59,7 @@
       "unit-allowed-list": [
         "%",
         "rpx",
+        "vh",
         "px",
         "em",
         "rem"
