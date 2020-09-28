@@ -71,6 +71,10 @@ module.exports = {
               {
                 path: 'my-stepper',
                 title: 'My-stepper 加载'
+              },
+              {
+                path: 'my-picker',
+                title: 'My-picker 加载'
               }
               /* {
                 path: 'cell',
