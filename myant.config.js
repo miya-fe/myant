@@ -6,8 +6,8 @@ module.exports = {
    */
   miniProgramBundle: [
     {
-      autoPublish: false, //是否自动上传
-      appId: '' //小程序的APPID
+      autoPublish: false, // 是否自动上传
+      appId: '' // 小程序的APPID
     }
   ],
 
@@ -42,31 +42,35 @@ module.exports = {
             items: [
               {
                 path: 'my-button',
-                title: 'My-Button 按钮'
+                title: 'my-button 按钮'
               },
               {
                 path: 'my-icon',
-                title: 'My-icon 图标'
+                title: 'my-icon 图标'
               },
               {
                 path: 'my-badge',
-                title: 'My-badge 徽标'
+                title: 'my-badge 徽标'
               },
               {
                 path: 'my-avatar',
-                title: 'My-avatar 头像'
+                title: 'my-avatar 头像'
               },
               {
                 path: 'my-progress',
-                title: 'My-progress 进度条'
+                title: 'my-progress 进度条'
               },
               {
                 path: 'my-tag',
-                title: 'My-tag 标签'
+                title: 'my-tag 标签'
               },
               {
                 path: 'my-loading',
-                title: 'My-loading 加载'
+                title: 'my-loading 加载'
+              },
+              {
+                path: 'my-tabbar',
+                title: 'my-tabbar 标签栏'
               }
               /* {
                 path: 'cell',
@@ -76,10 +80,10 @@ module.exports = {
               {
                 path: 'layout',
                 title: 'Layout 布局',
-              },*/
+              }, */
             ]
           }
-          /*{
+          /* {
             title: '表单组件',
             items: [
               {
@@ -91,7 +95,7 @@ module.exports = {
                 title: 'textarea 文本框',
               },
             ],
-          },*/
+          }, */
         ]
       }
     }

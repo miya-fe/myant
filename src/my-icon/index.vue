@@ -1,8 +1,8 @@
 <template>
   <view class="icon-wrapper" @click="handleClick">
     <image
-      mode="widthFix"
       v-if="isImage"
+      mode="widthFix"
       :src="src"
       class="icon"
       :style="dynamicStyle"
@@ -20,7 +20,7 @@
 
 <script lang="ts">
 export default {
-  name: 'my-icon',
+  name: 'MyIcon',
   props: {
     src: {
       type: String
@@ -40,7 +40,7 @@ export default {
         return ['default', 'small', 'large'].indexOf(value) > -1
       }
     },
-    //自定义图标前缀
+    // 自定义图标前缀
     classPrefix: {
       type: String
     }
@@ -52,21 +52,21 @@ export default {
   },
   computed: {
     isImage() {
-      return this.src
+      return !!this.src
     },
     dynamicClass() {
-      let clazz = []
+      const clazz = []
       if (['default', 'small', 'large'].indexOf(this.size) > -1) {
         clazz.push(`icon-${this.size}`)
       }
       if (this.classPrefix) {
-        clazz.push(this.classPrefix + 'icon')
+        clazz.push(`${this.classPrefix  }icon`)
       }
 
       return clazz.join(' ')
     },
     dynamicStyle() {
-      let style = []
+      const style = []
       if (this.color) {
         style.push(`color: ${this.color}`)
       }
@@ -80,28 +80,30 @@ export default {
       return style.join(';')
     }
   },
+  mounted(): void {
+    this.showBadge = this.$children.length > 0
+  },
   methods: {
     handleClick(e) {
       this.$emit('click', e)
     }
-  },
-  mounted(): void {
-    this.showBadge = this.$children.length > 0
   }
 }
 </script>
 <style scoped lang="less">
 @font-face {
   font-family: 'my-icon-font'; /* project id 1926676 */
-  src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot');
+
+  /* src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot');
   src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot?#iefix') format('embedded-opentype'),
     url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.woff') format('woff'),
     url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.svg#iconfont') format('svg');
+    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.svg#iconfont') format('svg'); */
+  src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.ttf') format('truetype');
 }
 .icon-wrapper {
-  display: inline-block;
   position: relative;
+  display: inline-block;
 
   &:active {
     opacity: 0.8;
@@ -112,28 +114,28 @@ export default {
   font-style: normal;
 
   &-badge {
-    border: 2rpx solid #fff;
-    background-color: red;
-    font-size: 22rpx;
     padding: 2rpx 8rpx;
+    font-size: 22rpx;
+    background-color: red;
+    border: 2rpx solid #fff;
   }
   &-dot {
+    padding: 4rpx;
     background-color: red;
     border: 2rpx solid #fff;
-    padding: 4rpx;
   }
 }
 .icon-large {
-  font-size: 48rpx;
   width: 48rpx;
+  font-size: 48rpx;
 }
 .icon-default {
-  font-size: 36rpx;
   width: 36rpx;
+  font-size: 36rpx;
 }
 .icon-small {
-  font-size: 24rpx;
   width: 24rpx;
+  font-size: 24rpx;
 }
 .badge {
   position: absolute;

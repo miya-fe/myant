@@ -7,7 +7,7 @@
 
 <script lang="ts">
 export default {
-  name: 'my-badge',
+  name: 'MyBadge',
   props: {
     text: {
       type: String
@@ -29,7 +29,7 @@ export default {
       return this.text !== 'undefined' && this.text !== ''
     },
     dynamicStyle() {
-      let style = []
+      const style = []
       if (this.color) {
         style.push(`background-color: ${this.color}`)
       }
@@ -43,23 +43,23 @@ export default {
 </script>
 <style scoped lang="less">
 .badge {
-  display: inline-block;
   position: relative;
-  border: 2rpx solid #fff;
-  background-color: red;
-  border-radius: 100%;
+  display: inline-block;
   padding: 2rpx 10rpx;
   font-size: 20rpx;
+  background-color: red;
+  border: 2rpx solid #fff;
+  border-radius: 100%;
 
   &-text {
-    color: #fff;
-    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #fff;
+    font-weight: bold;
   }
 }
 .badge-without-text {
-  padding: 8rpx;
+  padding: 6rpx;
 }
 </style>

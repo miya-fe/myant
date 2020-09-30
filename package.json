@@ -48,7 +48,15 @@
     "root": true,
     "extends": [
       "@myant/vue-ts"
-    ]
+    ],
+    "globals": {
+      "uni": true
+    },
+    "rules": {
+      "import/no-unresolved": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-empty-function": "off"
+    }
   },
   "stylelint": {
     "extends": [
@@ -62,17 +70,19 @@
         "px",
         "em",
         "rem"
-      ]
+      ],
+      "font-family-no-missing-generic-family-keyword": null
     }
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 200,
     "tabWidth": 2,
     "semi": false,
     "trailingComma": "none",
     "singleQuote": true,
     "endOfLine": "lf",
-    "proseWrap": "never"
+    "proseWrap": "never",
+    "jsxBracketSameLine": true
   },
   "browserslist": [
     "Android >= 4.0",
