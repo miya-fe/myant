@@ -1,11 +1,5 @@
 <template>
-  <button
-    class="btn"
-    :class="dynamicClass"
-    :hover-class="hoverClass"
-    :open-type="openType"
-    @click="handleClick"
-  >
+  <button class="btn" :class="dynamicClass" :hover-class="hoverClass" :open-type="openType" @click="handleClick">
     <!--  自定义icon  -->
     <my-icon v-if="icon && !loading" :type="icon"></my-icon>
     <view v-if="loading" class="loading">

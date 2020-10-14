@@ -71,6 +71,10 @@ module.exports = {
               {
                 path: 'my-tabbar',
                 title: 'my-tabbar 标签栏'
+              },
+              {
+                path: 'my-sticky',
+                title: 'my-sticky 粘性布局'
               }
               /* {
                 path: 'cell',
