@@ -1,48 +1,62 @@
 <template>
-  <scroll-view class="container">
+  <scroll-view scroll-y :scroll-top="scrollTop" :scroll-left="scrollLeft" class="container" @scroll="handleScroll">
     <slot></slot>
   </scroll-view>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   name: 'MyStickyScroll',
-  props: {},
+  props: {
+    scrollTop: {
+      type: [Number, String]
+    },
+    scrollLeft: {
+      type: [Number, String]
+    }
+  },
   data: () => {
-    return {}
-  },
-  computed: {
-    stickyParent() {
-      let parent = this.$parent
-
-      while (parent) {
-        if (parent.$data._sticky_) {
-          break
-        } else if (parent.$parent) {
-          parent = parent.$parent
-        } else {
-          parent = null
-        }
-      }
-
-      return parent as any
+    return {
+      _sticky_: true,
+      stickyList: []
     }
   },
-  mounted(): void {
-    if (!this.stickyParent) {
-      throw Error('my-sticky-scroll 需要放置于 my-sticky 组件中')
-    }
-    // this.$parent.onParentScroll(this.onParentScroll)
-  },
+  computed: {},
   methods: {
-    onParentScroll({ scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY }) {
-      console.log({ scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY })
+    onParentScroll(fn) {
+      this.stickyList.push(fn)
+      return () => {
+        this.stickyList = this.stickyList.filter((_fn) => fn !== _fn)
+      }
+    },
+    getScrollOffset() {
+      return new Promise((resolve, reject) => {
+        try {
+          const query = uni.createSelectorQuery()
+          query.in(this).select('.container').scrollOffset()
+
+          query.exec(([offset]) => {
+            resolve({ scrollTop: offset.scrollTop, scrollLeft: offset.scrollLeft })
+          })
+        } catch (e) {
+          resolve({ scrollTop: 0, scrollLeft: 0 })
+        }
+      })
+    },
+    handleScroll(e) {
+      // eslint-disable-next-line array-callback-return
+      this.stickyList.map((fn) => {
+        fn(e)
+      })
     }
   }
 }
 </script>
-<style scoped lang="less">
+<style scoped lang="scss">
 .container {
-  height: 1000rpx;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 </style>
