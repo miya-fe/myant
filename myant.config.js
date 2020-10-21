@@ -71,7 +71,15 @@ module.exports = {
               {
                 path: 'my-stepper',
                 title: 'My-stepper 加载'
-              }
+              },
+              {
+                path: 'my-list',
+                title: 'My-list 列表'
+              },
+              {
+                path: 'my-list-item',
+                title: 'My-list-item 列表项'
+              },
               /* {
                 path: 'cell',
                 title: 'Cell 单元格',

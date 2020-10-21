@@ -29,6 +29,7 @@ export default {
 <style scoped lang="less">
 .avatar-outer {
   display: inline-block;
+  font-size: 0;
 }
 .common-avatar {
   background: #e9e9e9;
