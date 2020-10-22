@@ -59,7 +59,8 @@
       "no-underscore-dangle": "off",
       "prefer-const": "off",
       "one-var": "off",
-      "vue/no-side-effects-in-computed-properties": "off"
+      "vue/no-side-effects-in-computed-properties": "off",
+      "vue/no-reserved-keys": "off"
     }
   },
   "stylelint": {

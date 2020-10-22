@@ -1,11 +1,10 @@
 <template>
   <view class="tabbar-item-wrapper">
     <view class="tabbar-item" :style="dynamicStyle">
-      <my-icon>{{ icon }}</my-icon>
       <slot name="icon"></slot>
-      <text>
+      <view>
         <slot></slot>
-      </text>
+      </view>
     </view>
   </view>
 </template>
@@ -18,19 +17,8 @@ export default {
     name: {
       type: String
     },
-    icon: {
-      type: String
-    },
     // tabbar-item 的路由
     url: {
-      type: String
-    },
-    // 选中的标签颜色
-    activeColor: {
-      type: String
-    },
-    // 未选中的标签颜色
-    inactiveColor: {
       type: String
     }
   },

@@ -7,7 +7,21 @@
 <script lang="ts">
 export default {
   name: 'MyTabbar',
-  props: {}
+  props: {
+    // 选中的标签颜色
+    activeColor: {
+      type: String
+    },
+    // 未选中的标签颜色
+    inactiveColor: {
+      type: String
+    }
+  },
+  data() {
+    return {
+      _tabbar_: true
+    }
+  }
 }
 </script>
 

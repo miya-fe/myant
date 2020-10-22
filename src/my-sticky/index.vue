@@ -1,9 +1,14 @@
 <template>
-  <view class="sticky" :style="divStyle">
-    <view class="sticky-inner" :style="stickyStyle">
+  <block>
+    <view class="sticky" :style="divStyle">
+      <view v-if="!sticky" :style="stickyStyle">
+        <slot></slot>
+      </view>
+    </view>
+    <view v-if="sticky" :style="stickyStyle">
       <slot></slot>
     </view>
-  </view>
+  </block>
 </template>
 
 <script>
@@ -20,7 +25,11 @@ export default {
     // 距离顶部 固定的距离
     offsetTop: {
       type: Number,
-      default: 1
+      default: 0
+    },
+    zIndex: {
+      type: Number,
+      default: 9
     }
   },
   data: () => {
@@ -34,7 +43,7 @@ export default {
   },
   computed: {
     divStyle() {
-      let styles = [],
+      let styles = [`z-index:${this.zIndex}`],
         keys = []
       if (typeof this.styles === 'string') {
         styles.push(this.styles)
@@ -70,7 +79,7 @@ export default {
     // 检测是否可见
     // this.checkIsVisible()
     this.intersectionObserver = uni.createIntersectionObserver(this)
-    this.intersectionObserver.relativeToViewport({ top: -this.offsetTop }).observe(`.sticky`, (res) => {
+    this.intersectionObserver.relativeToViewport({ top: -this.offsetTop - 1 }).observe(`.sticky`, (res) => {
       if (res.intersectionRect.top > 0) {
         this.visible = true
       } else {
@@ -147,12 +156,3 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
-.sticky {
-  overflow-y: auto;
-}
-
-.sticky-inner {
-  overflow-y: auto;
-}
-</style>

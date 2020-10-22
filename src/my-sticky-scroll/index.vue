@@ -52,7 +52,7 @@ export default {
   }
 }
 </script>
-<style scoped lang="scss">
+<style scoped lang="less">
 .container {
   position: relative;
   width: 100%;
