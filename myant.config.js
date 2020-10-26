@@ -75,6 +75,14 @@ module.exports = {
               {
                 path: 'my-sticky',
                 title: 'my-sticky 粘性布局'
+              },
+              {
+                path: 'my-stepper',
+                title: 'My-stepper 步进器'
+              },
+              {
+                path: 'my-toast',
+                title: 'My-toast 提示'
               }
               /* {
                 path: 'cell',

@@ -1055,8 +1055,8 @@
 
 "@myant/cli@^1.0.9":
   version "1.0.9"
-  resolved "https://registry.npmjs.org/@myant/cli/-/cli-1.0.9.tgz#83e491187ebaa9b1dd23ff29a9a6788927837522"
-  integrity sha512-V3QXjFGDSgoqH89ScSxznMfKtjaxIEshM7JjLZaUp8zg84T0me9Thrpio4+Ti5l0mYC78XMOXskPa1SsVq2cvQ==
+  resolved "https://registry.npm.taobao.org/@myant/cli/download/@myant/cli-1.0.9.tgz#83e491187ebaa9b1dd23ff29a9a6788927837522"
+  integrity sha1-g+SRGH66qbHdI/8pqaZ4iSeDdSI=
   dependencies:
     "@babel/core" "^7.10.5"
     "@babel/plugin-transform-object-assign" "^7.10.4"
