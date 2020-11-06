@@ -10,7 +10,98 @@
   "subPackages": [
     {
       "root": "demos",
-      "pages": []
+      "pages": [
+        {
+          "path": "my-button/index",
+          "style": {
+            "navigationBarTitleText": "my-button 按钮"
+          }
+        },
+        {
+          "path": "my-icon/index",
+          "style": {
+            "navigationBarTitleText": "my-icon 图标"
+          }
+        },
+        {
+          "path": "my-badge/index",
+          "style": {
+            "navigationBarTitleText": "my-badge 徽标"
+          }
+        },
+        {
+          "path": "my-avatar/index",
+          "style": {
+            "navigationBarTitleText": "my-avatar 头像"
+          }
+        },
+        {
+          "path": "my-progress/index",
+          "style": {
+            "navigationBarTitleText": "my-progress 进度条"
+          }
+        },
+        {
+          "path": "my-tag/index",
+          "style": {
+            "navigationBarTitleText": "my-tag 标签"
+          }
+        },
+        {
+          "path": "my-loading/index",
+          "style": {
+            "navigationBarTitleText": "my-loading 加载"
+          }
+        },
+        {
+          "path": "my-tabbar/index",
+          "style": {
+            "navigationBarTitleText": "my-tabbar 标签栏"
+          }
+        },
+        {
+          "path": "my-sticky/index",
+          "style": {
+            "navigationBarTitleText": "my-sticky 粘性布局"
+          }
+        },
+        {
+          "path": "my-toast/index",
+          "style": {
+            "navigationBarTitleText": "My-toast 提示"
+          }
+        },
+        {
+          "path": "my-stepper/index",
+          "style": {
+            "navigationBarTitleText": "My-stepper 加载"
+          }
+        },
+        {
+          "path": "my-list/index",
+          "style": {
+            "navigationBarTitleText": "My-list 列表"
+          }
+        },
+        {
+          "path": "my-list-item/index",
+          "style": {
+            "navigationBarTitleText": "My-list-item 列表项"
+          }
+        },
+        {
+          "path": "my-menu/index",
+          "style": {
+            "navigationBarTitleText": "My-menu 菜单"
+          }
+        },
+        {
+          "path": "my-picker/index",
+          "style": {
+            "navigationBarTitleText": "My-picker 加载"
+          }
+        }
+      ]
     }
   ],
   "globalStyle": {

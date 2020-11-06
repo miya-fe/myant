@@ -1,11 +1,11 @@
-# button 按钮
+# sticky-scroll 粘性滚动
 
 ## 代码演示
 
 ### 基础用法
 
 ```html
-<my-button>按钮</my-button>
+<my-sticky-scroll>粘性滚动</my-sticky-scroll>
 ```
 
 ### 按钮类型

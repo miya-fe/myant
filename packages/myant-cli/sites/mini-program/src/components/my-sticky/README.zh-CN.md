@@ -1,11 +1,11 @@
-# button 按钮
+# sticky 粘性布局
 
 ## 代码演示
 
 ### 基础用法
 
 ```html
-<my-button>按钮</my-button>
+<my-sticky>粘性布局</my-sticky>
 ```
 
 ### 按钮类型
