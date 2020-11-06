@@ -95,6 +95,10 @@ module.exports = {
               {
                 path: 'my-menu',
                 title: 'My-menu 菜单'
+              },
+              {
+                path: 'my-picker',
+                title: 'My-picker 加载'
               }
               /* {
                 path: 'cell',
