@@ -66,15 +66,27 @@
           }
         },
         {
-          "path": "my-stepper/index",
-          "style": {
-            "navigationBarTitleText": "My-stepper 步进器"
-          }
-        },
-        {
           "path": "my-toast/index",
           "style": {
             "navigationBarTitleText": "My-toast 提示"
+          }
+        },
+        {
+          "path": "my-stepper/index",
+          "style": {
+            "navigationBarTitleText": "My-stepper 加载"
+          }
+        },
+        {
+          "path": "my-list/index",
+          "style": {
+            "navigationBarTitleText": "My-list 列表"
+          }
+        },
+        {
+          "path": "my-list-item/index",
+          "style": {
+            "navigationBarTitleText": "My-list-item 列表项"
           }
         }
       ]

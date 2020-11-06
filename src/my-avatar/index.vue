@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 export default {
-  name: 'avatar',
+  name: 'Avatar',
   props: {
     src: {
       type: String,
@@ -14,21 +14,22 @@ export default {
     size: {
       type: String,
       default: 'middle',
-      validator: function (value) {
+      validator (value) {
         return ['huge', 'large', 'middle', 'small'].indexOf(value) !== -1
       }
     }
   },
-  computed: {},
   data() {
     return {}
   },
+  computed: {},
   methods: {}
 }
 </script>
 <style scoped lang="less">
 .avatar-outer {
   display: inline-block;
+  font-size: 0;
 }
 .common-avatar {
   background: #e9e9e9;

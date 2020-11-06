@@ -77,12 +77,20 @@ module.exports = {
                 title: 'my-sticky 粘性布局'
               },
               {
-                path: 'my-stepper',
-                title: 'My-stepper 步进器'
-              },
-              {
                 path: 'my-toast',
                 title: 'My-toast 提示'
+              },
+              {
+                path: 'my-stepper',
+                title: 'My-stepper 加载'
+              },
+              {
+                path: 'my-list',
+                title: 'My-list 列表'
+              },
+              {
+                path: 'my-list-item',
+                title: 'My-list-item 列表项'
               }
               /* {
                 path: 'cell',
