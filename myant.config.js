@@ -1,4 +1,4 @@
-const { join } = require('path')
+import { join } from 'path'
 
 module.exports = {
   /**
@@ -13,7 +13,7 @@ module.exports = {
 
   build: {
     mobile: {
-      chainWebpack: (config) => {},
+      // chainWebpack: (config) => {},
       webpack: {}
     },
     desktop: {},
@@ -91,6 +91,10 @@ module.exports = {
               {
                 path: 'my-list-item',
                 title: 'My-list-item 列表项'
+              },
+              {
+                path: 'my-menu',
+                title: 'My-menu 菜单'
               }
               /* {
                 path: 'cell',
