@@ -25,7 +25,8 @@ pnpm-debug.log*
 
 # dist file
 es
-lib
+# lib
+packages/**/lib
 dist/dev
 dist/prod
 dist/site-desktop-shared.js
