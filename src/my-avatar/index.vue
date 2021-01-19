@@ -1,36 +1,38 @@
 <template>
-  <div class="avatar-outer">
-    <img :src="src" :class="['common-avatar', size + '-avatar']" />
-    <slot></slot>
-  </div>
+  <view class="avatar-outer">
+    <image :src="src" :class="['common-avatar', size + '-avatar']" />
+  </view>
 </template>
 <script lang="ts">
 export default {
-  name: 'avatar',
+  name: 'Avatar',
   props: {
     src: {
       type: String,
-      default: 'http://hh-oss-picture.miyapay.com/box/2e5a693028a3e61a61efa37b91436316.png'
+      required: true
     },
     size: {
       type: String,
-      default: 'middle'
-    },
-  },
-  computed: {},
-  data() {
-    return {
+      default: 'middle',
+      validator (value) {
+        return ['huge', 'large', 'middle', 'small'].indexOf(value) !== -1
+      }
     }
   },
+  data() {
+    return {}
+  },
+  computed: {},
   methods: {}
 }
 </script>
 <style scoped lang="less">
 .avatar-outer {
   display: inline-block;
+  font-size: 0;
 }
 .common-avatar {
-  background: #E9E9E9;
+  background: #e9e9e9;
   border-radius: 50%;
 }
 .small-avatar {

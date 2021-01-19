@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "WX & AliPay UI Components built on uniApp",
   "main": "lib/index.js",
-  "module": "es/index.js",
+  "module": "lib/index.js",
   "style": "lib/index.css",
   "scripts": {
     "lint": "npx myant-cli lint",
@@ -32,38 +32,85 @@
   ],
   "author": "miya-fe",
   "license": "MIT",
-  "devDependencies": {
-    "eslint-plugin-prettier": "^3.1.4",
-    "prettier": "^2.0.5",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.6"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && ls-lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.md": "prettier --write",
+    "*.{ts,tsx,js,vue,less}": "prettier --write",
+    "*.{ts,tsx,js,vue}": "eslint --fix",
+    "*.{vue,css,less}": "stylelint --fix"
   },
   "eslintConfig": {
     "root": true,
     "extends": [
       "@myant/vue-ts"
-    ]
+    ],
+    "globals": {
+      "uni": true
+    },
+    "rules": {
+      "import/no-unresolved": "off",
+      "@typescript-eslint/no-var-requires": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "no-underscore-dangle": "off",
+      "prefer-const": "off",
+      "one-var": "off",
+      "vue/no-side-effects-in-computed-properties": "off",
+      "vue/no-reserved-keys": "off"
+    }
   },
   "stylelint": {
     "extends": [
       "@myant/stylelint-config"
-    ]
+    ],
+    "rules": {
+      "unit-no-unknown": null,
+      "unit-allowed-list": [
+        "%",
+        "rpx",
+        "vh",
+        "px",
+        "em",
+        "rem",
+        "s",
+        "deg"
+      ],
+      "font-family-no-missing-generic-family-keyword": null
+    }
   },
   "prettier": {
-    "printWidth": 100,
+    "printWidth": 200,
     "tabWidth": 2,
     "semi": false,
     "trailingComma": "none",
     "singleQuote": true,
     "endOfLine": "lf",
-    "proseWrap": "never"
+    "proseWrap": "never",
+    "jsxBracketSameLine": true
   },
   "browserslist": [
     "Android >= 4.0",
     "iOS >= 8"
   ],
   "dependencies": {
-    "@myant/cli": "^1.0.8",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@ls-lint/ls-lint": "^1.9.2",
+    "@myant/cli": "^1.0.9",
+    "@myant/eslint-config-vue-ts": "^1.0.0",
+    "@myant/stylelint-config": "^1.0.0",
+    "eslint": "^7.9.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.7.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"
   }

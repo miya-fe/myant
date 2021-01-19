@@ -19,7 +19,7 @@ import { setLang } from '../common/locales'
 
 export default {
   components: {
-    MyantDoc,
+    MyantDoc
   },
 
   data() {
@@ -28,7 +28,7 @@ export default {
     return {
       packageVersion: version,
       // simulator: `${path}mobile.html${location.hash}`,
-      simulator: `http://hh-oss-picture.miyapay.com/box/f8811cbfed3d08e19f9707fabf224510.jpeg`,
+      simulator: `http://hh-oss-picture.miyapay.com/box/f8811cbfed3d08e19f9707fabf224510.jpeg`
     }
   },
 
@@ -42,7 +42,7 @@ export default {
       const { locales = {} } = config.site
       return Object.keys(locales).map((key) => ({
         lang: key,
-        label: locales[key].langLabel || '',
+        label: locales[key].langLabel || ''
       }))
     },
 
@@ -62,14 +62,14 @@ export default {
       }
 
       return null
-    },
+    }
   },
 
   watch: {
     lang(val) {
       setLang(val)
       this.setTitle()
-    },
+    }
   },
 
   created() {
@@ -85,14 +85,27 @@ export default {
       }
 
       document.title = title
-    },
-  },
+    }
+  }
 }
 </script>
 
 <style lang="less">
 @import '../common/style/base';
 @import '../common/style/highlight';
+
+@font-face {
+  font-family: 'my-icon-font'; /* project id 1926676 */
+  src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot');
+  src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.svg#iconfont') format('svg');
+}
+.icon {
+  font-family: 'my-icon-font';
+  font-style: normal;
+}
 
 .myant-doc-intro {
   padding-top: 20px;

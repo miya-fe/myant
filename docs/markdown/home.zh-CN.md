@@ -1,6 +1,6 @@
 <div class="card">
   <div class="van-doc-intro">
-    <img class="van-doc-intro__logo" style="width: 120px; height: 120px;" src="">
+    <img class="van-doc-intro__logo" style="width: 120px; height: 120px;" src="http://hh-oss-picture.miyapay.com/box/e0ad6809af6c6738a84ad79b824980cf.png">
     <h2 style="margin: 0; font-size: 36px; line-height: 60px;">myant</h2>
     <p>轻量、可靠的小程序 uniapp 组件库</p>
   </div>
