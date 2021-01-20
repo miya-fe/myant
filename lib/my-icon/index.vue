@@ -11,7 +11,7 @@
   </view>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'MyIcon',
   props: {
@@ -26,7 +26,7 @@ export default {
     size: {
       type: [String, Number],
       default: 'default',
-      validator(value) {
+      validator(value: string | number) {
         if (typeof value === 'number') {
           return true
         }
@@ -73,7 +73,7 @@ export default {
       return style.join(';')
     }
   },
-  mounted() {
+  mounted(): void {
     this.showBadge = this.$children.length > 0
   },
   methods: {

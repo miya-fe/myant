@@ -1,5 +1,7 @@
 ## 0.1.0 (2021-01-20)
 
+- feat: 增加 my-layout 组件 ([c1c84ac](https://github.com/miya-fe/myant/commit/c1c84ac))
+
 ## <small>0.0.1 (2021-01-19)</small>
 
 - feat: add logo ([fc358a8](https://github.com/miya-fe/myant/commit/fc358a8))

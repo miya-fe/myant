@@ -10,16 +10,46 @@ export default {
   props: {
     // 选中的标签颜色
     activeColor: {
-      type: String
+      type: String,
+      default: '#222'
     },
     // 未选中的标签颜色
     inactiveColor: {
-      type: String
+      type: String,
+      default: '#999'
+    },
+    defaultTab: {
+      type: String,
+      default: ''
     }
   },
   data() {
     return {
-      _tabbar_: true
+      _tabbar_: true,
+      active: null,
+      tabList: []
+    }
+  },
+  mounted(): void {
+    this.active = this.defaultTab
+    this.triggerBroadCast()
+  },
+  methods: {
+    onTabChange(fn) {
+      this.tabList.push(fn)
+      return () => {
+        this.tabList = this.tabList.filter((_fn) => fn !== _fn)
+      }
+    },
+    emitTabChange({ tab }) {
+      this.$emit('change', { tab: this.active, active: tab })
+      this.active = tab
+      this.triggerBroadCast()
+    },
+    triggerBroadCast() {
+      this.tabList.forEach((fn) => {
+        fn(this.active)
+      })
     }
   }
 }
