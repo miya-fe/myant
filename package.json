@@ -11,7 +11,8 @@
     "dev:mini": "npx myant-cli dev:mini --target mini",
     "dev:site": "npx myant-cli dev:mini --target site",
     "build": "npx myant-cli build",
-    "release": "npx myant-cli release"
+    "release": "npx myant-cli release",
+    "changelog": "conventional-changelog -p anguNOlar -i CHANGELOG.md -s -r 0"
   },
   "repository": "https://github.com/miya-fe/myant",
   "sideEffects": false,
@@ -112,6 +113,12 @@
     "ts-node": "^8.10.2",
     "typescript": "^3.9.6",
     "vue": "^2.6.12",
+    "vue-property-decorator": "^9.1.2",
     "vue-template-compiler": "^2.6.12"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

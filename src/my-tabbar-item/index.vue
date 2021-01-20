@@ -1,5 +1,5 @@
 <template>
-  <view class="tabbar-item-wrapper">
+  <view class="tabbar-item-wrapper" @click="handleTabBarClick">
     <view class="tabbar-item" :style="dynamicStyle">
       <slot name="icon"></slot>
       <view>
@@ -13,28 +13,59 @@
 export default {
   name: 'MyTabbarItem',
   props: {
-    // tabbar-item 的名称
-    name: {
-      type: String
-    },
     // tabbar-item 的路由
-    url: {
-      type: String
+    tab: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      active: null
     }
   },
   computed: {
     dynamicStyle() {
-      const style = []
-      if (this.active === this.name) {
-        style.push(`color: ${this.activeColor}`)
+      const style = [],
+        parent = this.getTabBarParent()
+      if (this.active === this.tab) {
+        style.push(`color: ${parent.activeColor}`)
       } else {
-        style.push(`color: ${this.inactiveColor}`)
+        style.push(`color: ${parent.inactiveColor}`)
       }
 
       return style.join(';')
     }
   },
-  mounted(): void {}
+  beforeMount(): void {
+    this.getTabBarParent().onTabChange((tab) => {
+      this.active = tab
+    })
+  },
+  methods: {
+    getTabBarParent() {
+      if (this._tabBarParent) {
+        return this._tabBarParent
+      }
+
+      let parent = this.$parent
+
+      while (parent) {
+        if (parent.$data._tabbar_) {
+          break
+        } else if (parent.$parent) {
+          parent = parent.$parent
+        } else {
+          parent = null
+        }
+      }
+      this._tabBarParent = parent
+      return parent
+    },
+    handleTabBarClick() {
+      this.getTabBarParent().emitTabChange({ tab: this.tab })
+    }
+  }
 }
 </script>
 
@@ -49,6 +80,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     color: #333;
+    font-weight: bold;
     font-size: 24rpx;
 
     :active {

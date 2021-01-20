@@ -1,12 +1,5 @@
 module.exports = {
-  extends: [
-    'airbnb-base',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:vue/recommended',
-    'prettier',
-    'prettier/vue'
-  ],
+  extends: ['airbnb-base', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'plugin:vue/recommended', 'prettier', 'prettier/vue'],
 
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -63,6 +56,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off'
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    'lines-between-class-members': 'off'
   }
 }

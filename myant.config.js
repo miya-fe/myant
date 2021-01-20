@@ -41,6 +41,10 @@ module.exports = {
             title: '基础组件',
             items: [
               {
+                path: 'my-layout',
+                title: 'my-layout 布局'
+              },
+              {
                 path: 'my-button',
                 title: 'my-button 按钮'
               },

@@ -1,16 +1,14 @@
 <template>
   <view>
     <view class="list">
-      <view class="tip">
-        基础用法
-      </view>
+      <view class="tip"> 基础用法 </view>
       <view class="item">
-        <my-tabbar>
-          <my-tabbar-item :icon="tabIcon" inactive-color="#333">首页一</my-tabbar-item>
-          <my-tabbar-item>
+        <my-tabbar default-tab="/home2" @change="handleTabChange">
+          <my-tabbar-item tab="/home" :icon="tabIcon" inactive-color="#333">首页一</my-tabbar-item>
+          <my-tabbar-item tab="/home2">
             <my-icon slot="icon" :size="48">&#xe63f;<my-badge slot="badge" :size="8"></my-badge></my-icon>首页二
           </my-tabbar-item>
-          <my-tabbar-item>
+          <my-tabbar-item tab="/home3">
             <my-icon slot="icon" :size="48">&#xe63f;<my-badge slot="badge" :size="8" text="9"></my-badge></my-icon>首页三
           </my-tabbar-item>
         </my-tabbar>
@@ -23,6 +21,11 @@ export default {
   data: () => {
     return {
       tabIcon: '&#xe63f;'
+    }
+  },
+  methods: {
+    handleTabChange(res) {
+      console.log(res)
     }
   }
 }

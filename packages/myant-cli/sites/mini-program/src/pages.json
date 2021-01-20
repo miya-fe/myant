@@ -12,6 +12,12 @@
       "root": "demos",
       "pages": [
         {
+          "path": "my-layout/index",
+          "style": {
+            "navigationBarTitleText": "my-layout 布局"
+          }
+        },
+        {
           "path": "my-button/index",
           "style": {
             "navigationBarTitleText": "my-button 按钮"
