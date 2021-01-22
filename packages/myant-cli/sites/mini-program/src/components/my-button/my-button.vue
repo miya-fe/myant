@@ -1,5 +1,5 @@
 <template>
-  <button class="btn" :class="dynamicClass" :hover-class="hoverClass" :open-type="openType" @click="handleClick">
+  <button class="btn" :class="dynamicClass" :style="dynamicStyle" :hover-class="hoverClass" :open-type="openType" @click="handleClick">
     <!--  自定义icon  -->
     <my-icon v-if="icon && !loading" :type="icon"></my-icon>
     <view v-if="loading" class="loading">
@@ -58,12 +58,22 @@ export default {
     divClass: {
       type: String,
       default: ''
+    },
+    color: {
+      type: String,
+      default: ''
     }
   },
   data: () => {
     return {}
   },
   computed: {
+    dynamicStyle() {
+      if (this.disable || !this.color) {
+        return ''
+      }
+      return [`border: 2rpx solid ${this.color}`, `color: ${this.color}`].join(';')
+    },
     dynamicClass() {
       // 按钮样式
       const clazz = [`btn-${this.type}`]

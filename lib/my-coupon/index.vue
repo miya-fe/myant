@@ -8,7 +8,7 @@
       <text class="label text-ellipsis">{{ coupon.label }}</text>
       <text class="desc text-ellipsis">{{ coupon.desc }}</text>
     </view>
-    <view class="coupon-btn" v-if="withBtn">
+    <view v-if="withBtn" class="coupon-btn">
       <view class="line">
         <view class="top"></view>
         <view class="bottom"></view>
@@ -35,6 +35,7 @@ interface Coupon {
 })
 export default class MyCoupon extends Vue {
   @Prop({ type: Boolean, default: false }) readonly withBtn: boolean
+
   @Prop({
     type: Object,
     default: () => {

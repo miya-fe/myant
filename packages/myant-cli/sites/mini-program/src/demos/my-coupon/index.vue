@@ -4,7 +4,7 @@
       <view class="tip"> 通用用法 </view>
       <view class="item">
         <my-coupon with-btn :coupon="coupon">
-          <my-button size="small" type="primary" slot="btn">领取</my-button>
+          <my-button slot="btn" size="small" type="primary">领取</my-button>
         </my-coupon>
       </view>
     </view>

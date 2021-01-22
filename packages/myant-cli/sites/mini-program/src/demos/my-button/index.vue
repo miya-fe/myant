@@ -9,6 +9,9 @@
         <my-button type="default">default</my-button>
       </view>
       <view class="item">
+        <my-button type="default" color="#FF7700">default</my-button>
+      </view>
+      <view class="item">
         <my-button type="dashed">dashed</my-button>
       </view>
       <view class="item">
