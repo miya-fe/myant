@@ -74,37 +74,43 @@
         {
           "path": "my-toast/index",
           "style": {
-            "navigationBarTitleText": "My-toast 提示"
+            "navigationBarTitleText": "my-toast 提示"
           }
         },
         {
           "path": "my-stepper/index",
           "style": {
-            "navigationBarTitleText": "My-stepper 加载"
+            "navigationBarTitleText": "my-stepper 加载"
           }
         },
         {
           "path": "my-list/index",
           "style": {
-            "navigationBarTitleText": "My-list 列表"
+            "navigationBarTitleText": "my-list 列表"
           }
         },
         {
           "path": "my-list-item/index",
           "style": {
-            "navigationBarTitleText": "My-list-item 列表项"
+            "navigationBarTitleText": "my-list-item 列表项"
           }
         },
         {
           "path": "my-menu/index",
           "style": {
-            "navigationBarTitleText": "My-menu 菜单"
+            "navigationBarTitleText": "my-menu 菜单"
           }
         },
         {
           "path": "my-picker/index",
           "style": {
-            "navigationBarTitleText": "My-picker 加载"
+            "navigationBarTitleText": "my-picker 加载"
+          }
+        },
+        {
+          "path": "my-coupon/index",
+          "style": {
+            "navigationBarTitleText": "my-coupon 券"
           }
         }
       ]

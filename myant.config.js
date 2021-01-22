@@ -82,27 +82,27 @@ module.exports = {
               },
               {
                 path: 'my-toast',
-                title: 'My-toast 提示'
+                title: 'my-toast 提示'
               },
               {
                 path: 'my-stepper',
-                title: 'My-stepper 加载'
+                title: 'my-stepper 加载'
               },
               {
                 path: 'my-list',
-                title: 'My-list 列表'
+                title: 'my-list 列表'
               },
               {
                 path: 'my-list-item',
-                title: 'My-list-item 列表项'
+                title: 'my-list-item 列表项'
               },
               {
                 path: 'my-menu',
-                title: 'My-menu 菜单'
+                title: 'my-menu 菜单'
               },
               {
                 path: 'my-picker',
-                title: 'My-picker 加载'
+                title: 'my-picker 加载'
               }
               /* {
                 path: 'cell',
@@ -114,20 +114,16 @@ module.exports = {
                 title: 'Layout 布局',
               }, */
             ]
-          }
-          /* {
-            title: '表单组件',
+          },
+          {
+            title: '业务组件',
             items: [
               {
-                path: 'input',
-                title: 'Input 输入框',
-              },
-              {
-                path: 'textarea',
-                title: 'textarea 文本框',
-              },
-            ],
-          }, */
+                path: 'my-coupon',
+                title: 'my-coupon 券'
+              }
+            ]
+          }
         ]
       }
     }

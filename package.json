@@ -61,7 +61,8 @@
       "prefer-const": "off",
       "one-var": "off",
       "vue/no-side-effects-in-computed-properties": "off",
-      "vue/no-reserved-keys": "off"
+      "vue/no-reserved-keys": "off",
+      "@typescript-eslint/member-delimiter-style": "off"
     }
   },
   "stylelint": {
