@@ -86,13 +86,10 @@ export default {
 <style scoped lang="less">
 @font-face {
   font-family: 'my-icon-font'; /* project id 1926676 */
-
-  /* src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot');
-  src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.svg#iconfont') format('svg'); */
-  src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.ttf') format('truetype');
+  src: url('//at.alicdn.com/t/font_2089828_e5rupvivytp.eot');
+  src: url('//at.alicdn.com/t/font_2089828_e5rupvivytp.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_2089828_e5rupvivytp.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2089828_e5rupvivytp.woff') format('woff'), url('//at.alicdn.com/t/font_2089828_e5rupvivytp.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2089828_e5rupvivytp.svg#iconfont') format('svg');
 }
 .icon-wrapper {
   position: relative;
