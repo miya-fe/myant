@@ -164,8 +164,10 @@ export default class IndexAnchor extends Vue {
   z-index: 1;
   box-sizing: border-box;
   width: 100%;
-  padding: 6rpx 10rpx;
+  padding: 10rpx 30rpx;
+  font-weight: bold;
+  font-size: 28rpx;
   text-align: left;
-  background-color: #efefef;
+  background-color: #f9f9f9;
 }
 </style>
