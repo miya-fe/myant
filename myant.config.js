@@ -103,6 +103,10 @@ module.exports = {
               {
                 path: 'my-picker',
                 title: 'my-picker 加载'
+              },
+              {
+                path: 'my-index-bar',
+                title: 'my-index-bar 索引栏'
               }
               /* {
                 path: 'cell',

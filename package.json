@@ -62,7 +62,9 @@
       "one-var": "off",
       "vue/no-side-effects-in-computed-properties": "off",
       "vue/no-reserved-keys": "off",
-      "@typescript-eslint/member-delimiter-style": "off"
+      "@typescript-eslint/member-delimiter-style": "off",
+      "lines-between-class-members": "off",
+      "class-methods-use-this": "off"
     }
   },
   "stylelint": {

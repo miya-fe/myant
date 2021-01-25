@@ -106,6 +106,7 @@ export default {
 <style scoped lang="less">
 .btn {
   display: inline-block;
+  box-sizing: border-box;
   font-weight: 600;
   line-height: normal;
   vertical-align: middle;
@@ -124,7 +125,8 @@ export default {
   }
 
   &-size-default {
-    padding: 22rpx 136rpx;
+    width: 400rpx;
+    padding: 22rpx;
     font-size: 32rpx;
     border-radius: 60rpx;
   }

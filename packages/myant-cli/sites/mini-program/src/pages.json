@@ -108,6 +108,12 @@
           }
         },
         {
+          "path": "my-index-bar/index",
+          "style": {
+            "navigationBarTitleText": "my-index-bar 索引栏"
+          }
+        },
+        {
           "path": "my-coupon/index",
           "style": {
             "navigationBarTitleText": "my-coupon 券"
