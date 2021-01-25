@@ -1,11 +1,11 @@
 <template>
   <view class="container">
-    <scroll-view scroll-y :scroll-top="scrollTop" :scroll-left="scrollLeft" class="scroller" @scroll="handleScroll">
+    <scroll-view scroll-y :scroll-top="scrollTop + anchorScrollTop" :scroll-left="scrollLeft" class="scroller" @scroll="handleScroll">
       <slot></slot>
     </scroll-view>
 
     <view v-if="anchorList.length > 0" class="anchor">
-      <text v-for="anchor in anchorList" :key="anchor" class="anchor-item" @click="handleAnchorClick(anchor)">{{ anchor }}</text>
+      <text v-for="anchor in anchorList" :key="anchor.key" class="anchor-item" @click="handleAnchorClick(anchor)">{{ anchor.key }}</text>
     </view>
   </view>
 </template>
@@ -23,19 +23,24 @@ export default class IndexBar extends Vue {
 
   @Prop({ type: [String, Number], default: 0 }) scrollLeft: string | number
 
+  anchorScrollTop = 0
+
   _index_bar_ = true
 
-  anchorList: string[] = []
+  anchorList: { key: string; scrollTop: number }[] = []
 
   /**
    * 添加锚点索引
-   * @param anchor 索引
+   * @param key 索引
    */
-  addAnchor(anchor: string) {
-    if (this.anchorList.indexOf(anchor) > -1) {
+  addAnchor(key: string, scrollTop: number) {
+    if (this.anchorList.find((item) => item.key === key)) {
       return this
     }
-    this.anchorList.push(anchor)
+    this.anchorList.push({
+      key,
+      scrollTop
+    })
     return this
   }
 
@@ -75,7 +80,7 @@ export default class IndexBar extends Vue {
   }
 
   handleAnchorClick(anchor) {
-    console.log(anchor)
+    this.anchorScrollTop = anchor.scrollTop
   }
 }
 </script>

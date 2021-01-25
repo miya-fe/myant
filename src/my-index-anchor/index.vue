@@ -87,7 +87,7 @@ export default class IndexAnchor extends Vue {
     })
 
     let parent = this.getStickyParent()
-    parent.addAnchor(this.index).onParentScroll(({ detail }) => {
+    parent.onParentScroll(({ detail }) => {
       this.handleScroll({ detail })
     })
   }
@@ -117,22 +117,24 @@ export default class IndexAnchor extends Vue {
     return parent
   }
   setStickyPosition() {
-    this.getStickyParent()
-      .getScrollOffset()
-      .then(({ scrollTop, scrollLeft, offsetTop, offsetLeft }: { [key: string]: number }) => {
-        const query = uni.createSelectorQuery()
-        query.in(this).select('.index-anchor').boundingClientRect()
+    let parent = this.getStickyParent()
 
-        query.exec(([clientRect]) => {
-          this.anchorPosition = {
-            ...clientRect,
-            top: clientRect.top - offsetTop + scrollTop,
-            left: clientRect.left - offsetLeft + scrollLeft,
-            offsetTop,
-            offsetLeft
-          }
-        })
+    parent.getScrollOffset().then(({ scrollTop, scrollLeft, offsetTop, offsetLeft }: { [key: string]: number }) => {
+      const query = uni.createSelectorQuery()
+      query.in(this).select('.index-anchor').boundingClientRect()
+
+      query.exec(([clientRect]) => {
+        this.anchorPosition = {
+          ...clientRect,
+          top: clientRect.top - offsetTop + scrollTop,
+          left: clientRect.left - offsetLeft + scrollLeft,
+          offsetTop,
+          offsetLeft
+        }
+
+        parent.addAnchor(this.index, clientRect.top - offsetTop + scrollTop)
       })
+    })
   }
   handleScroll(e) {
     const { detail } = e
