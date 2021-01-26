@@ -1,5 +1,8 @@
 <template>
-  <view class="loading" :class="{ content: type === 'fixed' ? true : false, fixed: type === 'fixed' ? true : false }">
+  <view
+    class="loading"
+    :class="{ content: type === 'fixed' ? true : false, fixed: type === 'fixed' ? true : false }"
+  >
     <view
       :class="{
         bg: type === 'fixed' ? true : false,
@@ -19,7 +22,9 @@
           borderLeft: '3rpx solid ' + color
         }"
       />
-      <text v-if="showText" class="loader-title" :style="{ fontSize: fontSize + 'rpx' }">{{ text }}</text>
+      <text v-if="showText" class="loader-title" :style="{ fontSize: fontSize + 'rpx' }">{{
+        text
+      }}</text>
     </view>
   </view>
 </template>

@@ -2,11 +2,11 @@
   <block>
     <view class="index-anchor" :style="divStyle">
       <view v-if="!sticky" :style="stickyStyle">
-        <text>{{ index }}</text>
+        <text>{{ label || index }}</text>
       </view>
     </view>
     <view v-if="sticky" class="index-anchor" :style="stickyStyle">
-      <text>{{ index }}</text>
+      <text>{{ label || index }}</text>
     </view>
   </block>
 </template>
@@ -19,6 +19,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator'
 })
 export default class IndexAnchor extends Vue {
   @Prop({ type: Number, default: 0 }) readonly offsetTop: number
+  @Prop({ type: String }) readonly label: string
   @Prop({ type: String, default: 0 }) readonly index: string
   @Prop({
     type: [Object, String],
@@ -164,8 +165,10 @@ export default class IndexAnchor extends Vue {
   z-index: 1;
   box-sizing: border-box;
   width: 100%;
-  padding: 6rpx 10rpx;
+  padding: 10rpx 30rpx;
+  font-weight: bold;
+  font-size: 28rpx;
   text-align: left;
-  background-color: #efefef;
+  background-color: #f9f9f9;
 }
 </style>
