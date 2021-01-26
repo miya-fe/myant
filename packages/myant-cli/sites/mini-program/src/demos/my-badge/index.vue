@@ -1,13 +1,17 @@
 <template>
   <view class="wrapper">
     <view class="list">
-      <view class="tip"> 通用徽标 </view>
+      <view class="tip">
+        通用徽标
+      </view>
       <view class="item">
         <my-badge></my-badge>
       </view>
     </view>
     <view class="list">
-      <view class="tip"> 带数字的徽标 </view>
+      <view class="tip">
+        带数字的徽标
+      </view>
       <view class="item">
         <my-badge text="9"></my-badge>
       </view>
@@ -19,13 +23,17 @@
       </view>
     </view>
     <view class="list">
-      <view class="tip"> 不通颜色的徽标 </view>
+      <view class="tip">
+        不通颜色的徽标
+      </view>
       <view class="item">
         <my-badge color="#ccc" text="99+"></my-badge>
       </view>
     </view>
     <view class="list">
-      <view class="tip"> 自定义字号的徽标 </view>
+      <view class="tip">
+        自定义字号的徽标
+      </view>
       <view class="item">
         <my-badge font-size="36" text="80"></my-badge>
       </view>

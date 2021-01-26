@@ -141,13 +141,13 @@ export default {
 
       if (this.stickPosition.top <= detail.scrollTop + parseFloat(this.offsetTop)) {
         this.sticky = true
-        this.$emit('onChange', {
+        this.$emit('change', {
           isFixed: true,
           detail
         })
       } else {
         this.sticky = false
-        this.$emit('onChange', {
+        this.$emit('change', {
           isFixed: false,
           detail
         })
