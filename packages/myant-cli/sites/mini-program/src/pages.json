@@ -120,6 +120,12 @@
           }
         },
         {
+          "path": "my-tabs/index",
+          "style": {
+            "navigationBarTitleText": "My-tabs 标签页"
+          }
+        },
+        {
           "path": "my-coupon/index",
           "style": {
             "navigationBarTitleText": "my-coupon 券"
