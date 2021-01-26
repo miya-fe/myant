@@ -22,9 +22,8 @@ export default {
     dynamicStyle() {
       if (this.isActive) {
         return `color: ${this.activeColor}`
-      } else {
-        return `color: #333`
       }
+      return `color: #333`
     },
     currentName() {
       return this.name

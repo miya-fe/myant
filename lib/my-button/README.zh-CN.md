@@ -3,11 +3,13 @@
 ## 代码演示
 
 ### 基础用法
+
 ```html
 <my-button>按钮</my-button>
 ```
 
 ### 按钮类型
+
 通过指定 `type` 属性值，可以更改按钮展示类型
 
 ```html
@@ -19,6 +21,7 @@
 ```
 
 ### 按钮大小
+
 通过指定 `size` 属性值，可以更改按钮大小（默认值：`default`）
 
 ```html
@@ -26,6 +29,7 @@
 ```
 
 ### 禁用按钮
+
 通过指定 `disable` 属性值禁用按钮，按钮禁用后不再响应 `click` 事件
 
 ```html
@@ -33,19 +37,22 @@
 ```
 
 ## API
+
 ### button props
-|参数|说明|类型|默认值|
-|---|----|---|------|
-|type|按钮类型|_primary\|default\|dashed\|text_|`default`|
-|size|按钮大小|_default\|small_|`default`|
-|disable|是否禁用|_boolean_|`false`|
-|hover-class|指定hover状态的class|_string_|`-`|
-|div-class|自定义class|_string_|`-`|
-|loading|是否处于加载状态|_boolean_|`false`|
-|icon|按钮图标|_string(参考my-icon组件类型)_|`-`|
-|open-type|微信开放能力|_string[参考](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)_|`-`|
+
+| 参数        | 说明                    | 类型                                                                                   | 默认值    |
+| ----------- | ----------------------- | -------------------------------------------------------------------------------------- | --------- |
+| type        | 按钮类型                | _primary\|default\|dashed\|text_                                                       | `default` |
+| size        | 按钮大小                | _default\|small_                                                                       | `default` |
+| disable     | 是否禁用                | _boolean_                                                                              | `false`   |
+| hover-class | 指定 hover 状态的 class | _string_                                                                               | `-`       |
+| div-class   | 自定义 class            | _string_                                                                               | `-`       |
+| loading     | 是否处于加载状态        | _boolean_                                                                              | `false`   |
+| icon        | 按钮图标                | _string(参考 my-icon 组件类型)_                                                        | `-`       |
+| open-type   | 微信开放能力            | _string[参考](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)_ | `-`       |
 
 ### button events
-|事件名|说明|回调参数|
-|---|----|---|
-|click|点击图标时触发|_event: Event_|
+
+| 事件名 | 说明           | 回调参数       |
+| ------ | -------------- | -------------- |
+| click  | 点击图标时触发 | _event: Event_ |

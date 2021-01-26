@@ -18,7 +18,7 @@ export default {
     icon: {
       type: String,
       default: 'success',
-      validator (value) {
+      validator(value) {
         return ['success', 'error', 'warning', 'none'].indexOf(value) !== -1
       }
     },
@@ -58,7 +58,7 @@ export default {
     }
   },
   watch: {
-    isShow (newval, oldval) {
+    isShow(newval, oldval) {
       if (newval) {
         setTimeout(() => {
           this.isShow = false
