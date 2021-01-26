@@ -1,7 +1,9 @@
 <template>
   <view>
     <view class="list">
-      <view class="tip"> 默认大小按钮（size=default） </view>
+      <view class="tip">
+        默认大小按钮（size=default）
+      </view>
       <view class="item">
         <my-button type="primary">primary</my-button>
       </view>
@@ -23,7 +25,9 @@
     </view>
 
     <view class="list">
-      <view class="tip"> 小号按钮（size=small） </view>
+      <view class="tip">
+        小号按钮（size=small）
+      </view>
       <view class="item">
         <my-button size="small" type="primary">primary</my-button>
       </view>
@@ -39,7 +43,9 @@
     </view>
 
     <view class="list">
-      <view class="tip"> 禁用状态下的小号按钮（size=small disable=true） </view>
+      <view class="tip">
+        禁用状态下的小号按钮（size=small disable=true）
+      </view>
       <view class="item">
         <my-button :disable="true" size="small" type="primary">primary</my-button>
       </view>
@@ -55,14 +61,18 @@
     </view>
 
     <view class="list">
-      <view class="tip"> 自定义样式通行 </view>
+      <view class="tip">
+        自定义样式通行
+      </view>
       <view class="item">
         <my-button div-class="divClass" type="primary">primary</my-button>
       </view>
     </view>
 
     <view class="list">
-      <view class="tip"> 指定hover-class </view>
+      <view class="tip">
+        指定hover-class
+      </view>
       <view class="item">
         <my-button hover-class="hover-btn" div-class="divClass" type="primary">primary</my-button>
       </view>

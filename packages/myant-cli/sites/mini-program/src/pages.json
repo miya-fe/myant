@@ -118,6 +118,12 @@
           "style": {
             "navigationBarTitleText": "my-coupon 券"
           }
+        },
+        {
+          "path": "my-tabs/index",
+          "style": {
+            "navigationBarTitleText": "My-tabs 标签页"
+          }
         }
       ]
     }

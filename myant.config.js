@@ -107,7 +107,15 @@ module.exports = {
               {
                 path: 'my-index-bar',
                 title: 'my-index-bar 索引栏'
+              },
+              {
+                path: 'my-tabs',
+                title: 'My-tabs 标签页'
               }
+              // {
+              //   path: 'my-tab-item',
+              //   title: 'My-tab-item 标签'
+              // }
               /* {
                 path: 'cell',
                 title: 'Cell 单元格',
