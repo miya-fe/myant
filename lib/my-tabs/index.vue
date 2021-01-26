@@ -92,7 +92,8 @@ export default {
     bottom: 0;
     left: 0;
     width: 80rpx;
-    height: 3px;
+    height: 8rpx;
+    border-radius: 8rpx;
   }
 }
 </style>

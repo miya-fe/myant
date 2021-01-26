@@ -14,7 +14,7 @@ export default {
     size: {
       type: String,
       default: 'middle',
-      validator(value) {
+      validator (value) {
         return ['huge', 'large', 'middle', 'small'].indexOf(value) !== -1
       }
     }

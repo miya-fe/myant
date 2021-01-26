@@ -1,5 +1,5 @@
 <template>
-  <view :class="{ 'tab-item': true, active: isActive }" @click="onClick">
+  <view :class="{ 'tab-item': true, active: isActive }" :style="dynamicStyle" @click="onClick">
     <text class="tab-item-title">
       <slot></slot>
     </text>
@@ -12,9 +12,20 @@ export default {
   props: {
     name: {
       type: [String, Number]
+    },
+    activeColor: {
+      type: String,
+      default: '#f70'
     }
   },
   computed: {
+    dynamicStyle() {
+      if (this.isActive) {
+        return `color: ${this.activeColor}`
+      } else {
+        return `color: #333`
+      }
+    },
     currentName() {
       return this.name
     },
@@ -35,6 +46,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #333;
+  font-size: 28rpx;
   &-title {
     max-width: 160rpx;
     padding: 0 10rpx;
