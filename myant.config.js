@@ -107,6 +107,10 @@ module.exports = {
               {
                 path: 'my-index-bar',
                 title: 'my-index-bar 索引栏'
+              },
+              {
+                path: 'my-search-bar',
+                title: 'my-search-bar 搜索栏'
               }
               /* {
                 path: 'cell',

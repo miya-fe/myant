@@ -114,6 +114,12 @@
           }
         },
         {
+          "path": "my-search-bar/index",
+          "style": {
+            "navigationBarTitleText": "my-search-bar 搜索栏"
+          }
+        },
+        {
           "path": "my-coupon/index",
           "style": {
             "navigationBarTitleText": "my-coupon 券"
