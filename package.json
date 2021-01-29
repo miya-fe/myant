@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "npx myant-cli lint",
     "test": "npx myant-cli test",
-    "dev:mini": "npx myant-cli dev:mini --target mini",
+    "dev:mini": "node packages/myant-cli/lib/index.js dev:mini --target mini",
+    "dev2:mini": "npx myant-cli dev:mini --target mini",
     "dev:site": "npx myant-cli dev:mini --target site",
     "build": "npx myant-cli build",
     "release": "npx myant-cli release",
@@ -104,7 +105,7 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@ls-lint/ls-lint": "^1.9.2",
-    "@myant/cli": "^1.0.9",
+    "@myant/cli": "^1.0.10",
     "@myant/eslint-config-vue-ts": "^1.0.0",
     "@myant/stylelint-config": "^1.0.0",
     "eslint": "^7.9.0",

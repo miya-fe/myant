@@ -1,31 +1,7 @@
-import {
-  MINI_DEV_DIR,
-  MINI_PROD_DIR,
-  TPl_MINI_DIR,
-  TPl_MINI_SRC_DIR,
-  SRC_DIR,
-  LIB_DIR,
-  TPl_MINI_COMPONENT_DIR,
-} from '../common/constant'
-import {
-  getSrcFiles,
-  copySrcDir,
-  copyDemoDir,
-  hasYarn,
-  isTestDir,
-  isDemoDir,
-  isComponentEntry,
-  isWin,
-} from '../common'
+import { MINI_DEV_DIR, MINI_PROD_DIR, TPl_MINI_DIR, TPl_MINI_SRC_DIR, SRC_DIR, LIB_DIR, TPl_MINI_COMPONENT_DIR } from '../common/constant'
+import { getSrcFiles, copySrcDir, copyDemoDir, hasYarn, isTestDir, isDemoDir, isComponentEntry, isWin } from '../common'
 import execa from 'execa'
-import {
-  emptyDirSync,
-  existsSync,
-  copyFile,
-  removeSync,
-  createReadStream,
-  createWriteStream,
-} from 'fs-extra'
+import { emptyDirSync, existsSync, copyFileSync, removeSync, createReadStream, createWriteStream } from 'fs-extra'
 import { join } from 'path'
 import chokidar from 'chokidar'
 import ora from 'ora'
@@ -61,7 +37,7 @@ function runMiniCommand(cmd: string) {
         cwd: TPl_MINI_DIR,
         localDir: TPl_MINI_DIR,
         execPath: TPl_MINI_DIR,
-        stdout: process.stdout,
+        stdout: process.stdout
       })
     } else {
       execa.commandSync('npm install', {
@@ -69,27 +45,27 @@ function runMiniCommand(cmd: string) {
         cwd: TPl_MINI_DIR,
         localDir: TPl_MINI_DIR,
         execPath: TPl_MINI_DIR,
-        stdout: process.stdout,
+        stdout: process.stdout
       })
     }
   } else {
     consola.success('小程序依赖模块已安装')
   }
 
+  console.log(`启动目录：${TPl_MINI_DIR}`)
+  console.log(`启动命令：${cmd}`)
   execa.command(cmd, {
     preferLocal: true,
     cwd: TPl_MINI_DIR,
     localDir: TPl_MINI_DIR,
     execPath: TPl_MINI_DIR,
-    stdout: process.stdout,
+    stdout: process.stdout
   })
 }
 
 function runMiniServer(option: Option = { platform: 'mp-weixin' }) {
   option.platform = option.platform || 'mp-weixin'
-  let command = `cross-env NODE_ENV=development UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
-    option.output_dir || MINI_DEV_DIR
-  } vue-cli-service uni-build --watch`
+  let command = `cross-env NODE_ENV=development UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${option.output_dir || MINI_DEV_DIR} vue-cli-service uni-build --watch`
   runMiniCommand(command)
   consola.success('小程序开发服务已启动')
 }
@@ -132,8 +108,8 @@ function watchFileChange() {
     } else {
       miniPath = path.replace(SRC_DIR, SrcTplDir)
     }
-    consola.info(`开始拷贝文件: ${path}`)
-    const spinner = ora('File changed, start copy...').start()
+    consola.info(`开始拷贝目标文件: ${path}`)
+    const spinner = ora('文件变动，开始拷贝').start()
     try {
       if (isComponentEntry(path)) {
         if (isWin()) {
@@ -142,12 +118,12 @@ function watchFileChange() {
           miniPath = miniPath.replace(/\/([^\/]+)\/index.vue$/, '/$1/$1.vue')
         }
       }
-      await copyFile(path, miniPath)
-      // createReadStream(path).pipe(createWriteStream(miniPath))
-      spinner.succeed('Compiled: ' + miniPath)
+      // copyFileSync(path, miniPath)
+      createReadStream(path).pipe(createWriteStream(miniPath))
+      spinner.succeed('开始拷贝至: ' + miniPath)
       consola.success('拷贝成功')
     } catch (err) {
-      spinner.fail('Compile failed: ' + miniPath)
+      spinner.fail('开始拷贝至: ' + miniPath)
       consola.success('拷贝失败', err)
     }
   })
@@ -161,9 +137,7 @@ export async function buildMiniSite(option: Option) {
   copyMiniComponent()
   consola.success('完成拷贝目标文件')
   option.platform = option.platform || 'mp-weixin'
-  let command = `cross-env NODE_ENV=production UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${
-    option.output_dir || MINI_PROD_DIR
-  } vue-cli-service uni-build`
+  let command = `cross-env NODE_ENV=production UNI_PLATFORM=${option.platform} UNI_OUTPUT_DIR=${option.output_dir || MINI_PROD_DIR} vue-cli-service uni-build`
   await runMiniCommand(command)
   consola.success('小程序打包已完成')
 }
