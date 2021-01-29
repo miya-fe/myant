@@ -115,6 +115,10 @@ module.exports = {
               {
                 path: 'my-tabs',
                 title: 'My-tabs 标签页'
+              },
+              {
+                path: 'my-popup',
+                title: 'My-popup 弹出层'
               }
               // {
               //   path: 'my-tab-item',
@@ -137,7 +141,11 @@ module.exports = {
               {
                 path: 'my-coupon',
                 title: 'my-coupon 券'
-              }
+              },
+              // {
+              //   path: 'my-get-phone',
+              //   title: 'my-get-phone 获取手机号'
+              // }
             ]
           }
         ]

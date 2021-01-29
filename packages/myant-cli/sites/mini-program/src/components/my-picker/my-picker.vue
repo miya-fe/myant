@@ -139,8 +139,8 @@ export default {
       } else if (type === 'end') {
         year += 2
       }
-      month = month > 9 ? month : `0${month}`
-      day = day > 9 ? day : `0${day}`
+      month = month > 9 ? month : `0${  month}`
+      day = day > 9 ? day : `0${  day}`
       return `${year}-${month}-${day}`
     },
     bindMultiPickerChange({ detail: { value } }) {

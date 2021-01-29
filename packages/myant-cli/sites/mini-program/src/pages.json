@@ -126,6 +126,12 @@
           }
         },
         {
+          "path": "my-popup/index",
+          "style": {
+            "navigationBarTitleText": "My-popup 弹出层"
+          }
+        },
+        {
           "path": "my-coupon/index",
           "style": {
             "navigationBarTitleText": "my-coupon 券"

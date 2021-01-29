@@ -1,7 +1,9 @@
 <template>
   <view>
     <view class="list">
-      <view class="tip"> 通用图标 </view>
+      <view class="tip">
+        通用图标
+      </view>
       <view class="item">
         <my-icon size="large" @click="handClick">&#xe63f;</my-icon>
       </view>
@@ -17,16 +19,26 @@
     </view>
 
     <view class="list">
-      <view class="tip"> 自定义图标 </view>
+      <view class="tip">
+        自定义图标
+      </view>
       <view class="item">
-        <my-icon size="large" src="http://hh-oss-picture.miyapay.com/box/7012120c4f9fed5558450de70b20a11d.png"></my-icon>
+        <my-icon
+          size="large"
+          src="http://hh-oss-picture.miyapay.com/box/7012120c4f9fed5558450de70b20a11d.png"
+        ></my-icon>
       </view>
     </view>
 
     <view class="list">
-      <view class="tip"> 带徽标的图标 </view>
+      <view class="tip">
+        带徽标的图标
+      </view>
       <view class="item">
-        <my-icon size="large" src="http://hh-oss-picture.miyapay.com/box/7012120c4f9fed5558450de70b20a11d.png">
+        <my-icon
+          size="large"
+          src="http://hh-oss-picture.miyapay.com/box/7012120c4f9fed5558450de70b20a11d.png"
+        >
           <my-badge slot="badge" text="9"></my-badge>
         </my-icon>
       </view>
@@ -55,8 +67,8 @@ export default {
     }
     .hover-btn {
       color: red;
-      background-color: #fff;
       border: 2rpx solid red;
+      background-color: #fff;
     }
   }
 }
@@ -71,8 +83,8 @@ export default {
     font-weight: 600;
   }
   .item {
-    margin-bottom: 20rpx;
     text-align: center;
+    margin-bottom: 20rpx;
   }
 }
 </style>

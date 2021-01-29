@@ -1,5 +1,8 @@
 <template>
-  <view class="loading" :class="{ content: type === 'fixed' ? true : false, fixed: type === 'fixed' ? true : false }">
+  <view
+    class="loading"
+    :class="{ content: type === 'fixed' ? true : false, fixed: type === 'fixed' ? true : false }"
+  >
     <view
       :class="{
         bg: type === 'fixed' ? true : false,
@@ -19,7 +22,9 @@
           borderLeft: '3rpx solid ' + color
         }"
       />
-      <text v-if="showText" class="loader-title" :style="{ fontSize: fontSize + 'rpx' }">{{ text }}</text>
+      <text v-if="showText" class="loader-title" :style="{ fontSize: fontSize + 'rpx' }">{{
+        text
+      }}</text>
     </view>
   </view>
 </template>
@@ -83,51 +88,50 @@ export default {
   display: inline-block;
 }
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .fixed {
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
 }
 .row {
   flex-direction: row;
 }
 .fixed .bg {
-  padding: 30rpx 40rpx 20rpx;
-  text-align: center;
   background: rgba(0, 0, 0, 0.8);
+  padding: 30rpx 40rpx 20rpx;
   border-radius: 10rpx;
+  text-align: center;
 }
 .loader-title {
   margin-top: 16rpx;
   color: #8b8b8d;
 }
 .fixed .loader-title {
-  color: #fff;
+  color: #ffffff;
 }
 .row .loader-title {
   margin-top: 0;
   margin-left: 12rpx;
 }
-
 /* 转圈动画 */
 .loader {
-  position: relative;
   width: 50rpx;
   height: 50rpx;
+  position: relative;
   -webkit-animation: loading 1s infinite linear;
   animation: loading 1s infinite linear;
 }
 .loader,
-.loader::after {
+.loader:after {
   border-radius: 50%;
 }
 @-webkit-keyframes loading {

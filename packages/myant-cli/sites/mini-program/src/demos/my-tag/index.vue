@@ -8,19 +8,20 @@
 <script lang="ts">
 export default {
   data: () => {
-    return {}
+    return {
+    }
   },
   onLoad() {
     console.log('my-tag')
-  }
+  },
 }
 </script>
 <style scoped lang="less">
 .tags {
+  height: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-around;
-  height: 50%;
+  align-items: center;
 }
 </style>
