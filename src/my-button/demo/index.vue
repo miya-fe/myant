@@ -19,7 +19,6 @@
         </view>
       </view>
     </view>
-
     <view class="list">
       <view class="tip"> 默认大小按钮（size=default） </view>
       <view class="item">

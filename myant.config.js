@@ -114,21 +114,8 @@ module.exports = {
               },
               {
                 path: 'my-tabs',
-                title: 'My-tabs 标签页'
+                title: 'my-tabs 标签页'
               }
-              // {
-              //   path: 'my-tab-item',
-              //   title: 'My-tab-item 标签'
-              // }
-              /* {
-                path: 'cell',
-                title: 'Cell 单元格',
-              },
-              /*
-              {
-                path: 'layout',
-                title: 'Layout 布局',
-              }, */
             ]
           },
           {

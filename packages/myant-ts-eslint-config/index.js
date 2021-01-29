@@ -19,12 +19,26 @@ module.exports = {
   },
 
   rules: {
+    'prefer-promise-reject-errors': 'off',
+    'prefer-const': 'off',
+    'vue/no-side-effects-in-computed-properties': 'off',
+    'vue/no-reserved-keys': 'off',
+    '@typescript-eslint/member-delimiter-style': 'off',
+    'max-lines': [
+      'error',
+      {
+        max: 500,
+        skipBlankLines: true,
+        skipComments: true
+      }
+    ],
     'no-new': 'off',
     'no-shadow': 'off',
     'no-bitwise': 'off',
     'func-names': 'off',
     'no-console': 'off',
     'no-plusplus': 'off',
+    'one-var': 'off',
     'default-case': 'off',
     'prefer-template': 'off',
     'consistent-return': 'off',
@@ -57,6 +71,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-namespace': 'off',
     'lines-between-class-members': 'off'
   }
 }

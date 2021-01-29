@@ -1,6 +1,6 @@
 {
   "name": "@myant/cli",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "cli tool",
   "main": "lib/index.ts",
   "typings": "lib/index.d.ts",
