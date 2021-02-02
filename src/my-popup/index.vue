@@ -1,20 +1,9 @@
 <template>
   <block v-if="visible">
-    <view
-      v-if="overlay"
-      class="my-overlay"
-      :style="renderOverlayStyle"
-      @click="handleOverlayClick">
-    </view>
+    <view v-if="overlay" class="my-overlay" :style="renderOverlayStyle" @click="handleOverlayClick"> </view>
     <view
       :animation="animationData"
-      :class="[
-        'my-popup',
-        `my-popup--${position}`,
-        round ? 'my-popup--round' : '',
-        safeAreaInsetBottom ? 'my-popup--safe' : '',
-        safeAreaInsetTop ? 'my-popup--safeTop' : ''
-      ]"
+      :class="['my-popup', `my-popup--${position}`, round ? 'my-popup--round' : '', safeAreaInsetBottom ? 'my-popup--safe' : '', safeAreaInsetTop ? 'my-popup--safeTop' : '']"
       :style="renderCustomStyle"
     >
       <slot></slot>
@@ -27,7 +16,7 @@ export default {
   props: {
     visible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     zIndex: {
       type: Number,
@@ -39,11 +28,11 @@ export default {
     },
     duration: {
       type: Number,
-      default: 300,
+      default: 300
     },
     position: {
       type: String,
-      default: 'center',
+      default: 'center'
     },
     round: {
       type: Boolean,
@@ -95,7 +84,7 @@ export default {
     }
   },
   watch: {
-    visible (nv) {
+    visible(nv) {
       if (!nv) return
       setTimeout(() => {
         this.customAnimationRender()
@@ -133,14 +122,14 @@ export default {
     },
     handleOverlayClick() {
       this.$emit('click-overlay')
-      if(this.closeOnClickOverlay) {
+      if (this.closeOnClickOverlay) {
         this.close()
       }
     },
     handleClick() {
       this.close()
     }
-  },
+  }
 }
 </script>
 
@@ -165,25 +154,25 @@ export default {
     transform: translate3d(-50%, -50%, 0);
     opacity: 0;
     &.my-popup--round {
-      border-radius: 8rpx;
+      border-radius: 16rpx;
     }
   }
   &--top {
     top: 0;
     left: 0;
-    height: 0;
     width: 100%;
+    height: 0;
     &.my-popup--round {
-      border-radius: 0 0 8rpx 8rpx;
+      border-radius: 0 0 16rpx 16rpx;
     }
   }
   &--bottom {
-    left: 0;
     bottom: 0;
-    height: 0;
+    left: 0;
     width: 100%;
+    height: 0;
     &.my-popup--round {
-      border-radius: 8rpx 8rpx 0 0;
+      border-radius: 16rpx 16rpx 0 0;
     }
   }
   &--left {
@@ -193,7 +182,7 @@ export default {
     height: 100%;
     transform: translate3d(0, -50%, 0);
     &.my-popup--round {
-      border-radius: 0 8rpx 8rpx 0;
+      border-radius: 0 16rpx 16rpx 0;
     }
   }
   &--right {
@@ -203,7 +192,7 @@ export default {
     height: 100%;
     transform: translate3d(0, -50%, 0);
     &.my-popup--round {
-      border-radius: 8rpx 0 0 8rpx;
+      border-radius: 16rpx 0 0 16rpx;
     }
   }
 

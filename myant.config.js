@@ -129,10 +129,10 @@ module.exports = {
                 path: 'my-coupon',
                 title: 'my-coupon 券'
               },
-              // {
-              //   path: 'my-get-phone',
-              //   title: 'my-get-phone 获取手机号'
-              // }
+              {
+                path: 'my-get-phone',
+                title: 'my-get-phone 获取手机号'
+              }
             ]
           }
         ]

@@ -122,7 +122,7 @@
         {
           "path": "my-tabs/index",
           "style": {
-            "navigationBarTitleText": "My-tabs 标签页"
+            "navigationBarTitleText": "my-tabs 标签页"
           }
         },
         {
@@ -135,6 +135,12 @@
           "path": "my-coupon/index",
           "style": {
             "navigationBarTitleText": "my-coupon 券"
+          }
+        },
+        {
+          "path": "my-get-phone/index",
+          "style": {
+            "navigationBarTitleText": "my-get-phone 获取手机号"
           }
         }
       ]
