@@ -31,6 +31,7 @@ dist/dev
 dist/prod
 dist/site-desktop-shared.js
 dist/site-mini-shared.js
+dist/.automator
 /site
 #changelog.md
 test/coverage

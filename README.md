@@ -22,7 +22,7 @@ npm install myant -S
 
 ### 链接
 
-- [文档](https://miya-fe.github.io/myant)
+- [文档](http://miya-fe.gitee.io/myant/#/zh-CN/)
 - [uni-app](https://uniapp.dcloud.io/README)
 
 ### 预览
