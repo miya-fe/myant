@@ -9,7 +9,13 @@
         <input v-model="code" class="code" placeholder="验证码" />
         <text class="get-code-btn" @click="getCode">获取验证码</text>
       </view>
-      <view class="desc">查看<text class="link-color" @click="handleClick('user')">《用户协议》</text>和<text class="link-color" @click="handleClick('privacy')">《隐私协议》</text></view>
+      <view v-if="showDesc" class="desc">
+        查看
+        <text class="link-color" @click="handleClick('user')">《用户协议》</text>
+        和
+        <text class="link-color" @click="handleClick('privacy')">《隐私协议》</text>
+      </view>
+      <slot name="desc"></slot>
       <view class="btn-group">
         <button class="btn" @click="cancel">取消</button>
         <button class="btn btn-primary" @click="confirm">确定</button>
@@ -32,6 +38,10 @@ export default {
     height: {
       type: String,
       default: '600rpx'
+    },
+    showDesc: {
+      type: Boolean,
+      default: true
     },
     showCode: {
       type: Boolean,

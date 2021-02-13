@@ -49,16 +49,16 @@ export default {
     }
     .hover-btn {
       color: red;
-      border: 2rpx solid red;
       background-color: #fff;
+      border: 2rpx solid red;
     }
   }
 }
 </style>
 <style scoped lang="less">
 .wrapper {
-  background-color: #eee;
   height: 100%;
+  background-color: #eee;
 }
 .list {
   padding: 20rpx 30rpx;
@@ -69,8 +69,8 @@ export default {
     font-weight: 600;
   }
   .item {
-    text-align: center;
     margin-bottom: 20rpx;
+    text-align: center;
   }
 }
 </style>

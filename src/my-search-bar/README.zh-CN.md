@@ -1,58 +1,44 @@
-# sticky-scroll 粘性滚动
+# search-bar 搜索框
 
 ## 代码演示
 
 ### 基础用法
 
 ```html
-<my-sticky-scroll>粘性滚动</my-sticky-scroll>
+<my-search-bar placeholder="请输入城市名称" />
 ```
 
-### 按钮类型
+### 自带关键字的搜索框
 
-通过指定 `type` 属性值，可以更改按钮展示类型
+通过指定 `keywords` 属性值，会默认填充指定的关键字
 
 ```html
-<my-button type="primary">primary</my-button>
-<my-button type="default">default</my-button>
-<my-button type="default">default</my-button>
-<my-button type="dashed">dashed</my-button>
-<my-button type="text">text</my-button>
+<my-search-bar placeholder="请输入城市名称" keywords="myant" />
 ```
 
-### 按钮大小
+### 不可输入状态的搜索框
 
-通过指定 `size` 属性值，可以更改按钮大小（默认值：`default`）
-
-```html
-<my-button size="small" type="primary">primary</my-button>
-```
-
-### 禁用按钮
-
-通过指定 `disable` 属性值禁用按钮，按钮禁用后不再响应 `click` 事件
+通过指定 `disabled` 属性值，可设置搜索框不可输入（默认值：`false`）
 
 ```html
-<my-button :disable="true" size="small" type="primary">primary</my-button>
+<my-search-bar disabled placeholder="请输入城市名称" />
 ```
 
 ## API
 
-### button props
+### search-bar props
 
-| 参数        | 说明                    | 类型                                                                                   | 默认值    |
-| ----------- | ----------------------- | -------------------------------------------------------------------------------------- | --------- |
-| type        | 按钮类型                | _primary\|default\|dashed\|text_                                                       | `default` |
-| size        | 按钮大小                | _default\|small_                                                                       | `default` |
-| disable     | 是否禁用                | _boolean_                                                                              | `false`   |
-| hover-class | 指定 hover 状态的 class | _string_                                                                               | `-`       |
-| div-class   | 自定义 class            | _string_                                                                               | `-`       |
-| loading     | 是否处于加载状态        | _boolean_                                                                              | `false`   |
-| icon        | 按钮图标                | _string(参考 my-icon 组件类型)_                                                        | `-`       |
-| open-type   | 微信开放能力            | _string[参考](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)_ | `-`       |
+| 参数        | 说明       | 类型      | 默认值             |
+| ----------- | ---------- | --------- | ------------------ |
+| keywords    | 默认关键字 | _string_  | `-`                |
+| disabled    | 是否禁用   | _boolean_ | `false`            |
+| placeholder | 提示语     | _string_  | `请输入关键字搜索` |
 
-### button events
+### search-bar events
 
-| 事件名 | 说明           | 回调参数       |
-| ------ | -------------- | -------------- |
-| click  | 点击图标时触发 | _event: Event_ |
+| 事件名 | 说明                     | 回调参数       |
+| ------ | ------------------------ | -------------- |
+| click  | 点击搜索框时触发         | _event: Event_ |
+| focus  | 搜索框获得焦点时触发     | _event: Event_ |
+| change | 搜索框文本发生变化时触发 | _event: Event_ |
+| blur   | 搜索框失去焦点时触发     | _event: Event_ |

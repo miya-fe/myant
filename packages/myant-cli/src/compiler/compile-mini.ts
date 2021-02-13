@@ -1,4 +1,4 @@
-import { MINI_DEV_DIR, MINI_PROD_DIR, TPl_MINI_DIR, TPl_MINI_SRC_DIR, SRC_DIR, LIB_DIR, TPl_MINI_COMPONENT_DIR } from '../common/constant'
+import { MINI_DEV_DIR, MINI_PROD_DIR, TPl_MINI_DIR, TPl_MINI_SRC_DIR, SRC_DIR, LIB_DIR, TPl_MINI_COMPONENT_DIR, H5_PROD_DIR } from '../common/constant'
 import { getSrcFiles, copySrcDir, copyDemoDir, hasYarn, isTestDir, isDemoDir, isComponentEntry, isWin } from '../common'
 import execa from 'execa'
 import { emptyDirSync, existsSync, copyFileSync, removeSync, createReadStream, createWriteStream } from 'fs-extra'
@@ -10,7 +10,7 @@ import consola from 'consola'
 export type Option = {
   platform?: 'mp-weixin' | 'mp-alipay' | 'mp-baidu' | 'mp-qq' | 'mp-toutiao'
   output_dir?: string
-  target?: 'all' | 'mini' | 'site'
+  target?: 'all' | 'mini' | 'site' | 'h5'
 }
 
 /**
@@ -30,7 +30,7 @@ function buildComponent() {
 
 function runMiniCommand(cmd: string) {
   if (!existsSync(join(TPl_MINI_DIR, 'node_modules'))) {
-    consola.info('检测到未安装小程序依赖模块，现在开始安装')
+    consola.info('检测到未安装依赖模块，现在开始安装')
     if (hasYarn()) {
       execa.commandSync('yarn install', {
         preferLocal: true,
@@ -49,7 +49,7 @@ function runMiniCommand(cmd: string) {
       })
     }
   } else {
-    consola.success('小程序依赖模块已安装')
+    consola.success('依赖模块已安装')
   }
 
   console.log(`启动目录：${TPl_MINI_DIR}`)
@@ -153,4 +153,30 @@ export async function compileMini(isProduction: boolean = false, cmd?: Option) {
     watchFileChange()
     runMiniServer(cmd)
   }
+}
+
+/**
+ * 编译H5版本的demo
+ * @param isProduction
+ * @param cmd
+ */
+export async function compileH5Demo(isProduction: boolean = false, cmd: Option) {
+  if (isProduction) {
+    await buildH5Demo(cmd)
+  } else {
+    runH5DemoServer()
+  }
+}
+
+export async function buildH5Demo(option: Option) {
+  consola.info('开始打包demo')
+  let command = `cross-env NODE_ENV=production UNI_PLATFORM=h5 UNI_OUTPUT_DIR=${option.output_dir || H5_PROD_DIR} vue-cli-service uni-build`
+  await runMiniCommand(command)
+  // consola.success('demo打包已完成')
+}
+
+export function runH5DemoServer() {
+  let command = `cross-env NODE_ENV=development UNI_PLATFORM=h5 vue-cli-service uni-serve`
+  runMiniCommand(command)
+  // consola.success('demo开发服务已启动')
 }

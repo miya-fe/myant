@@ -15,14 +15,14 @@ export default {
   },
   mounted() {
     console.log('avatar demo ！！2200')
-  },
+  }
 }
 </script>
 <style scoped lang="less">
-  .avatar-demo {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  }
+.avatar-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
 </style>

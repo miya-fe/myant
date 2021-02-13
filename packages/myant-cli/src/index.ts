@@ -21,7 +21,7 @@ command('clean').description('Clean all dist files').action(clean)
 
 command('dev:mini')
   .description('Run miniprogram dev server')
-  .option('--target <type>', 'which target to be packaged: mini | site')
+  .option('--target <type>', 'which target to be packaged: mini | site | h5')
   .option('--platform <type>', 'which target to be packaged: mp-weixin | mp-alipay')
   .action(devMini)
 command('dev:vue').description('Run webpack dev server').action(devVue)
@@ -35,16 +35,13 @@ command('test')
   .option('--clearCache', 'Clears the configured Jest cache directory and then exits')
   .action(test)
 
-command('build')
-  .description('Compile components in production mode')
-  .option('--watch', 'Watch file change')
-  .action(build)
+command('build').description('Compile components in production mode').option('--target <type>', 'which target to be packaged: mini | site | h5').option('--watch', 'Watch file change').action(build)
 
 command('release').description('Compile components and release it').action(release)
 
 command('build-site')
   .description('Compile site in production mode')
-  .option('--target <type>', 'which target to be packaged: mini | site')
+  .option('--target <type>', 'which target to be packaged: mini | site | h5')
   .option('--platform <type>', 'which target to be packaged: mp-weixin | mp-alipay')
   .action(buildSite)
 
