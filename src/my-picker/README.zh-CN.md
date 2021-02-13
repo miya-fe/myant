@@ -5,7 +5,7 @@
 ### 基础用法
 
 ```html
-<my-picker :mode="'selector'" @click="handlePickerClick" :array="array" :array-index="arrayIndex"/>
+<my-picker :mode="'selector'" @click="handlePickerClick" :array="array" :array-index="arrayIndex" />
 ```
 
 ### picker 类型
