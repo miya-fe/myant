@@ -12,12 +12,6 @@
       "root": "demos",
       "pages": [
         {
-          "path": "my-layout/index",
-          "style": {
-            "navigationBarTitleText": "my-layout 布局"
-          }
-        },
-        {
           "path": "my-button/index",
           "style": {
             "navigationBarTitleText": "my-button 按钮"
@@ -42,75 +36,9 @@
           }
         },
         {
-          "path": "my-progress/index",
-          "style": {
-            "navigationBarTitleText": "my-progress 进度条"
-          }
-        },
-        {
           "path": "my-tag/index",
           "style": {
             "navigationBarTitleText": "my-tag 标签"
-          }
-        },
-        {
-          "path": "my-loading/index",
-          "style": {
-            "navigationBarTitleText": "my-loading 加载"
-          }
-        },
-        {
-          "path": "my-tabbar/index",
-          "style": {
-            "navigationBarTitleText": "my-tabbar 标签栏"
-          }
-        },
-        {
-          "path": "my-sticky/index",
-          "style": {
-            "navigationBarTitleText": "my-sticky 粘性布局"
-          }
-        },
-        {
-          "path": "my-toast/index",
-          "style": {
-            "navigationBarTitleText": "my-toast 提示"
-          }
-        },
-        {
-          "path": "my-stepper/index",
-          "style": {
-            "navigationBarTitleText": "my-stepper 加载"
-          }
-        },
-        {
-          "path": "my-list/index",
-          "style": {
-            "navigationBarTitleText": "my-list 列表"
-          }
-        },
-        {
-          "path": "my-list-item/index",
-          "style": {
-            "navigationBarTitleText": "my-list-item 列表项"
-          }
-        },
-        {
-          "path": "my-menu/index",
-          "style": {
-            "navigationBarTitleText": "my-menu 菜单"
-          }
-        },
-        {
-          "path": "my-picker/index",
-          "style": {
-            "navigationBarTitleText": "my-picker 加载"
-          }
-        },
-        {
-          "path": "my-index-bar/index",
-          "style": {
-            "navigationBarTitleText": "my-index-bar 索引栏"
           }
         },
         {
@@ -120,15 +48,81 @@
           }
         },
         {
-          "path": "my-tabs/index",
+          "path": "my-picker/index",
           "style": {
-            "navigationBarTitleText": "my-tabs 标签页"
+            "navigationBarTitleText": "my-picker 选择"
+          }
+        },
+        {
+          "path": "my-loading/index",
+          "style": {
+            "navigationBarTitleText": "my-loading 加载"
+          }
+        },
+        {
+          "path": "my-stepper/index",
+          "style": {
+            "navigationBarTitleText": "my-stepper 步进器"
           }
         },
         {
           "path": "my-popup/index",
           "style": {
             "navigationBarTitleText": "My-popup 弹出层"
+          }
+        },
+        {
+          "path": "my-toast/index",
+          "style": {
+            "navigationBarTitleText": "my-toast 提示"
+          }
+        },
+        {
+          "path": "my-progress/index",
+          "style": {
+            "navigationBarTitleText": "my-progress 进度条"
+          }
+        },
+        {
+          "path": "my-layout/index",
+          "style": {
+            "navigationBarTitleText": "my-layout 布局"
+          }
+        },
+        {
+          "path": "my-sticky/index",
+          "style": {
+            "navigationBarTitleText": "my-sticky 粘性布局"
+          }
+        },
+        {
+          "path": "my-list/index",
+          "style": {
+            "navigationBarTitleText": "my-list 列表"
+          }
+        },
+        {
+          "path": "my-tabbar/index",
+          "style": {
+            "navigationBarTitleText": "my-tabbar 标签栏"
+          }
+        },
+        {
+          "path": "my-index-bar/index",
+          "style": {
+            "navigationBarTitleText": "my-index-bar 索引栏"
+          }
+        },
+        {
+          "path": "my-menu/index",
+          "style": {
+            "navigationBarTitleText": "my-menu 菜单"
+          }
+        },
+        {
+          "path": "my-tabs/index",
+          "style": {
+            "navigationBarTitleText": "my-tabs 标签页"
           }
         },
         {

@@ -1,24 +1,32 @@
-# myant (miya-ant) 小程序组件库
+## myant (miya-ant) 跨平台组件库（微信小程序、支付宝小程序、H5）
 
-## Project setup
+### 安装
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
+yarn add myant -S
+或
+npm install myant -S
 ```
 
-### Compiles and minifies for production
-```
-yarn build
+### 开始
+集成方式参考 uni-app 第三方UI库集成方法，eg:
+```html
+"easycom": {
+  "autoscan": true,
+  "custom": {
+    "^my-(.*)": "myant/lib/my-$1/index.vue"
+  }
+}
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+### 浏览器支持
+现代浏览器以及 Android 4.0+, iOS 8.0+。
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### 链接
+- [文档](https://miya-fe.github.io/myant)
+- [uni-app](https://uniapp.dcloud.io/README)
+
+
+### 预览
+- [H5预览地址](https://miya-fe.github.io/myant)
+- 小程序预览

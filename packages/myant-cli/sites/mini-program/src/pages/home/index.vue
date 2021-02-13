@@ -1,10 +1,10 @@
 <template>
   <view class="content">
     <view class="header">
-      <image class="logo" mode="widthFix" src="http://hh-oss-picture.miyapay.com/box/7c472992c6f2e4bbe74a9b218044e19a.png"></image>
+      <image class="logo" mode="widthFix" src="http://hh-oss-picture.miyapay.com/box/e0ad6809af6c6738a84ad79b824980cf.png"></image>
       <text class="title">Myant uniApp</text>
     </view>
-    <text class="tip">基于uniApp的轻量级小程序UI组件库</text>
+    <text class="tip">基于 uni-app 的轻量级跨平台UI组件库</text>
 
     <view v-for="(nav, index) in navs" :key="index" class="section">
       <text class="tip">{{ nav.title }}</text>

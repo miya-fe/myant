@@ -5,54 +5,52 @@
 ### 基础用法
 
 ```html
-<my-sticky>粘性布局</my-sticky>
+<my-sticky-scroll>
+  <my-sticky>
+    <view>
+      <text>我是固定的头</text>
+    </view>
+  </my-sticky>
+  <view> 内容区域 </view>
+  <my-sticky>
+    <text>我是固定的底</text>
+  </my-sticky>
+</my-sticky-scroll>
 ```
 
-### 按钮类型
+### 自定义距离顶部的固定距离
 
-通过指定 `type` 属性值，可以更改按钮展示类型
-
-```html
-<my-button type="primary">primary</my-button>
-<my-button type="default">default</my-button>
-<my-button type="default">default</my-button>
-<my-button type="dashed">dashed</my-button>
-<my-button type="text">text</my-button>
-```
-
-### 按钮大小
-
-通过指定 `size` 属性值，可以更改按钮大小（默认值：`default`）
+通过指定 `offset-top` 属性值，可设置粘性区域距离顶部的距离（默认：0）
 
 ```html
-<my-button size="small" type="primary">primary</my-button>
-```
-
-### 禁用按钮
-
-通过指定 `disable` 属性值禁用按钮，按钮禁用后不再响应 `click` 事件
-
-```html
-<my-button :disable="true" size="small" type="primary">primary</my-button>
+<my-sticky :offset-top="100">
+  <text>我是粘性区域</text>
+</my-sticky>
 ```
 
 ## API
 
-### button props
+### sticky-scroll props
 
-| 参数        | 说明                    | 类型                                                                                   | 默认值    |
-| ----------- | ----------------------- | -------------------------------------------------------------------------------------- | --------- |
-| type        | 按钮类型                | _primary\|default\|dashed\|text_                                                       | `default` |
-| size        | 按钮大小                | _default\|small_                                                                       | `default` |
-| disable     | 是否禁用                | _boolean_                                                                              | `false`   |
-| hover-class | 指定 hover 状态的 class | _string_                                                                               | `-`       |
-| div-class   | 自定义 class            | _string_                                                                               | `-`       |
-| loading     | 是否处于加载状态        | _boolean_                                                                              | `false`   |
-| icon        | 按钮图标                | _string(参考 my-icon 组件类型)_                                                        | `-`       |
-| open-type   | 微信开放能力            | _string[参考](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)_ | `-`       |
+| 参数       | 说明           | 类型             | 默认值 |
+| ---------- | -------------- | ---------------- | ------ |
+| offset-top | 默认滚动的位置 | _number\|string_ | `0`    |
 
-### button events
+### sticky props
 
-| 事件名 | 说明           | 回调参数       |
-| ------ | -------------- | -------------- |
-| click  | 点击图标时触发 | _event: Event_ |
+| 参数        | 说明                   | 类型             | 默认值 |
+| ----------- | ---------------------- | ---------------- | ------ |
+| offset-top  | 粘性区域距离顶部的距离 | _number\|string_ | `0`    |
+| offset-left | 粘性区域距离左侧的距离 | _number\|string_ | `0`    |
+
+### sticky events
+
+| 事件名 | 说明                         | 回调参数                                   |
+| ------ | ---------------------------- | ------------------------------------------ |
+| change | 当粘性区域状态发生变化时触发 | _{isFixed: boolean, detail: event.detail}_ |
+
+### sticky slots
+
+| 名称    | 说明         |
+| ------- | ------------ |
+| default | 粘性区域内容 |

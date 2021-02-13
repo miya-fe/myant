@@ -4,7 +4,7 @@
 
 ### 基础用法
 
-```
+```html
 <my-picker :mode="'selector'" @click="handlePickerClick" :array="array" :array-index="arrayIndex"/>
 ```
 
@@ -12,7 +12,7 @@
 
 通过指定 `mode` 属性值，可以更改 picker 类型
 
-```text
+```html
 <my-picker mode="selector"></my-picker>
 <my-picker mode="multiSelector"></my-picker>
 <my-picker mode="time"></my-picker>

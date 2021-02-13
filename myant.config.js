@@ -37,13 +37,18 @@ module.exports = {
           placeholder: '搜索文档...'
         },
         nav: [
+          /*{
+            title: '开发指南',
+            items: [
+              {
+                path: 'home',
+                title: '介绍'
+              }
+            ]
+          },*/
           {
             title: '基础组件',
             items: [
-              {
-                path: 'my-layout',
-                title: 'my-layout 布局'
-              },
               {
                 path: 'my-button',
                 title: 'my-button 按钮'
@@ -61,64 +66,79 @@ module.exports = {
                 title: 'my-avatar 头像'
               },
               {
-                path: 'my-progress',
-                title: 'my-progress 进度条'
-              },
-              {
                 path: 'my-tag',
                 title: 'my-tag 标签'
+              }
+            ]
+          },
+          {
+            title: '反馈组件',
+            items: [
+              {
+                path: 'my-search-bar',
+                title: 'my-search-bar 搜索栏'
+              },
+              {
+                path: 'my-picker',
+                title: 'my-picker 选择'
               },
               {
                 path: 'my-loading',
                 title: 'my-loading 加载'
               },
               {
-                path: 'my-tabbar',
-                title: 'my-tabbar 标签栏'
+                path: 'my-stepper',
+                title: 'my-stepper 步进器'
               },
               {
-                path: 'my-sticky',
-                title: 'my-sticky 粘性布局'
+                path: 'my-popup',
+                title: 'My-popup 弹出层'
               },
               {
                 path: 'my-toast',
                 title: 'my-toast 提示'
               },
               {
-                path: 'my-stepper',
-                title: 'my-stepper 加载'
+                path: 'my-progress',
+                title: 'my-progress 进度条'
+              }
+            ]
+          },
+          {
+            title: '展示组件',
+            items: [
+              {
+                path: 'my-layout',
+                title: 'my-layout 布局'
+              },
+              {
+                path: 'my-sticky',
+                title: 'my-sticky 粘性布局'
               },
               {
                 path: 'my-list',
                 title: 'my-list 列表'
-              },
+              }
+            ]
+          },
+          {
+            title: '导航组件',
+            items: [
               {
-                path: 'my-list-item',
-                title: 'my-list-item 列表项'
-              },
-              {
-                path: 'my-menu',
-                title: 'my-menu 菜单'
-              },
-              {
-                path: 'my-picker',
-                title: 'my-picker 加载'
+                path: 'my-tabbar',
+                title: 'my-tabbar 标签栏'
               },
               {
                 path: 'my-index-bar',
                 title: 'my-index-bar 索引栏'
               },
               {
-                path: 'my-search-bar',
-                title: 'my-search-bar 搜索栏'
+                path: 'my-menu',
+                title: 'my-menu 菜单'
               },
               {
                 path: 'my-tabs',
                 title: 'my-tabs 标签页'
-              },
-              {
-                path: 'my-popup',
-                title: 'My-popup 弹出层'
               }
             ]
           },

@@ -4,7 +4,7 @@
 
 ### 基础用法
 
-```
+```html
 <my-stepper num="11"></my-stepper>
 ```
 
@@ -12,7 +12,7 @@
 
 通过指定 `type` 属性值，可以更改按钮 stepper 类型
 
-```text
+```html
 <my-stepper type="normal"></my-stepper>
 <my-stepper type="empty"></my-stepper>
 ```
