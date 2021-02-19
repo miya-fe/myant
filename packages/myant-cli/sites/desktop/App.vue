@@ -17,13 +17,17 @@ export default {
   },
 
   data() {
-    // const path = location.pathname.replace(/\/index(\.html)?/, '/')
+    let paths = location.hash.split('/'),
+      path = paths[paths.length - 1] || '',
+      simulator = config.build.mobile.host
+    if (path.indexOf('my-') > -1) {
+      simulator += `/#/demos/${path}/index`
+    }
 
     return {
       packageVersion: version,
-      // simulator: `${path}mobile.html${location.hash}`,
+      simulator
       // simulator: `http://hh-oss-picture.miyapay.com/box/f8811cbfed3d08e19f9707fabf224510.jpeg`
-      simulator: `http://localhost:8081`
     }
   },
 

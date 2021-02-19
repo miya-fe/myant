@@ -12,12 +12,6 @@
       "root": "demos",
       "pages": [
         {
-          "path": "home/index",
-          "style": {
-            "navigationBarTitleText": "介绍"
-          }
-        },
-        {
           "path": "my-button/index",
           "style": {
             "navigationBarTitleText": "my-button 按钮"

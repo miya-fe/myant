@@ -20,6 +20,15 @@ export default {
     }
   },
 
+  watch: {
+    '$route.path'(path, oldVal) {
+      let paths = path.split('/')
+      this.$nextTick(() => {
+        this.$refs.iframe.contentWindow.syncH5Path(paths[paths.length - 1] || '')
+      })
+    }
+  },
+
   computed: {
     isFixed() {
       return this.scrollTop > 60

@@ -4,7 +4,20 @@ import App from './App'
 Vue.config.productionTip = false
 // install(Vue)
 
+// #ifdef H5
+window.syncH5Path = function (hash) {
+  // http://localhost:8081/#/demos/my-badge/index
+  let url = `//${location.host}`
+  if (hash.indexOf('my-') > -1) {
+    url += `${url}/#/demos/${hash}/index`
+  }
+  uni.redirectTo({
+    url
+  })
+}
+// #endif
+
 const app = new Vue({
-  ...App,
+  ...App
 })
 app.$mount()

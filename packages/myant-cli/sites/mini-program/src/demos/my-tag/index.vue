@@ -23,17 +23,11 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< Updated upstream
-  justify-content: space-around;
-  height: 50%;
-=======
-  flex-direction: column;
 
   text {
     font-size: 28rpx;
     font-weight: bold;
     margin-top: 40rpx;
   }
->>>>>>> Stashed changes
 }
 </style>

@@ -21,13 +21,13 @@ function parseName(name) {
 
     return {
       component: `${decamelize(component)}`,
-      lang: pairs.join('-'),
+      lang: pairs.join('-')
     }
   }
 
   return {
     component: `${decamelize(name)}`,
-    lang: '',
+    lang: ''
   }
 }
 
@@ -49,12 +49,12 @@ function getRoutes() {
   if (locales) {
     routes.push({
       path: '*',
-      redirect: (route) => `/${getLangFromRoute(route)}/`,
+      redirect: (route) => `/${getLangFromRoute(route)}/`
     })
   } else {
     routes.push({
       path: '*',
-      redirect: '/',
+      redirect: '/'
     })
   }
 
@@ -63,7 +63,7 @@ function getRoutes() {
       name: lang,
       path: `/${lang || ''}`,
       component: Home,
-      meta: { lang },
+      meta: { lang }
     })
   }
 
@@ -82,8 +82,8 @@ function getRoutes() {
         component: documents[name],
         meta: {
           lang,
-          name: component,
-        },
+          name: component
+        }
       })
     } else {
       routes.push({
@@ -91,8 +91,8 @@ function getRoutes() {
         path: `/${component}`,
         component: documents[name],
         meta: {
-          name: component,
-        },
+          name: component
+        }
       })
     }
   })
@@ -111,11 +111,15 @@ export const router = new VueRouter({
     }
 
     return { x: 0, y: 0 }
-  },
+  }
 })
 
-/*router.afterEach(() => {
-  Vue.nextTick(() => window.syncPath())
+/*router.afterEach((to, from) => {
+  let paths = to.path.split('/')
+  console.log(paths)
+  Vue.nextTick(() => {
+    window.syncH5Path && window.syncH5Path(paths[paths.length-1] || '')
+  })
 })*/
 
 window.vueRouter = router
