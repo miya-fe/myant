@@ -1,7 +1,7 @@
 <template>
   <div :class="['myant-doc-simulator', { 'myant-doc-simulator-fixed': isFixed }]">
-    <!--    <iframe ref="iframe" :src="src" :style="simulatorStyle" frameborder="0" />-->
-    <img :src="src" />
+    <iframe ref="iframe" :src="src" :style="simulatorStyle" frameborder="0" />
+    <!--    <img :src="src" />-->
   </div>
 </template>
 
@@ -10,13 +10,13 @@ export default {
   name: 'myant-doc-simulator',
 
   props: {
-    src: String,
+    src: String
   },
 
   data() {
     return {
       scrollTop: window.scrollY,
-      windowHeight: window.innerHeight,
+      windowHeight: window.innerHeight
     }
   },
 
@@ -28,9 +28,9 @@ export default {
     simulatorStyle() {
       const height = Math.min(640, this.windowHeight - 90)
       return {
-        height: height + 'px',
+        height: height + 'px'
       }
-    },
+    }
   },
 
   mounted() {
@@ -40,7 +40,7 @@ export default {
     window.addEventListener('resize', () => {
       this.windowHeight = window.innerHeight
     })
-  },
+  }
 }
 </script>
 

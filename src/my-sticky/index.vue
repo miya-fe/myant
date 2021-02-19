@@ -1,14 +1,12 @@
 <template>
-  <block>
-    <view class="sticky" :style="divStyle">
-      <view v-if="!sticky" :style="stickyStyle">
-        <slot></slot>
-      </view>
+  <view class="sticky" :class="randomClassName" :style="divStyle">
+    <view v-if="!sticky" :style="stickyStyle">
+      <slot></slot>
     </view>
     <view v-if="sticky" :style="stickyStyle">
       <slot></slot>
     </view>
-  </block>
+  </view>
 </template>
 
 <script>
@@ -63,11 +61,18 @@ export default {
     },
     stickyStyle() {
       if (this.sticky) {
-        let styles = [this.divStyle, `position: fixed;top:${parseFloat(this.offsetTop)}px;left:${this.stickPosition.left}px`]
+        let top = this.offsetTop
+        // #ifdef H5
+        top += 44 // H5有一个默认的头部
+        // #endif
+        let styles = [this.divStyle, `position: fixed;top:${parseFloat(top)}px;left:${this.stickPosition.left}px`]
 
         return styles.join(';')
       }
       return ''
+    },
+    randomClassName() {
+      return `sticky-${Math.floor(Math.random() * 100000)}`
     }
   },
   mounted() {
@@ -76,8 +81,25 @@ export default {
     }
     // 获取 sticky 位置信息
     this.setStickyPosition()
-    // 检测是否可见
-    // this.checkIsVisible()
+
+    // #ifdef H5
+    this.intersectionObserver = new IntersectionObserver(
+      ([res]) => {
+        if (res.intersectionRect.top > 0) {
+          this.visible = true
+        } else {
+          this.visible = false
+        }
+      },
+      {
+        root: document.querySelector('.__sticky_scroll__'),
+        rootMargin: `${-(this.offsetTop || 0) - 1}px 0px 0px 0px`
+      }
+    )
+    this.intersectionObserver.observe(document.querySelector(`.${this.randomClassName}`))
+    // #endif
+
+    // #ifndef H5
     this.intersectionObserver = uni.createIntersectionObserver(this)
     this.intersectionObserver.relativeToViewport({ top: -this.offsetTop - 1 }).observe(`.sticky`, (res) => {
       if (res.intersectionRect.top > 0) {
@@ -86,6 +108,7 @@ export default {
         this.visible = false
       }
     })
+    // #endif
 
     this.getStickyParent().onParentScroll(({ detail }) => {
       this.handleScroll({ detail })
@@ -120,15 +143,17 @@ export default {
     setStickyPosition() {
       this.getStickyParent()
         .getScrollOffset()
-        .then(({ scrollTop, scrollLeft }) => {
+        .then(({ scrollTop, scrollLeft, offsetTop, offsetLeft }) => {
           const query = uni.createSelectorQuery()
-          query.in(this).select('.sticky').boundingClientRect()
+          query.in(this).select(`.${this.randomClassName}`).boundingClientRect()
 
           query.exec(([clientRect]) => {
             this.stickPosition = {
               ...clientRect,
-              top: clientRect.top + scrollTop,
-              left: clientRect.left + scrollLeft
+              // top: clientRect.top + scrollTop,
+              // left: clientRect.left + scrollLeft
+              top: clientRect.top - offsetTop + scrollTop,
+              left: clientRect.left - offsetLeft + scrollLeft
             }
           })
         })

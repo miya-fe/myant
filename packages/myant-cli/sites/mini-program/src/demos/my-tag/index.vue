@@ -1,7 +1,10 @@
 <template>
   <view class="tags">
+    <text>一级标签</text>
     <my-tag type="one-tag">一级标签</my-tag>
+    <text>二级标签</text>
     <my-tag type="two-tag">二级标签</my-tag>
+    <text>默认标签</text>
     <my-tag>默认标签</my-tag>
   </view>
 </template>
@@ -20,7 +23,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< Updated upstream
   justify-content: space-around;
   height: 50%;
+=======
+  flex-direction: column;
+
+  text {
+    font-size: 28rpx;
+    font-weight: bold;
+    margin-top: 40rpx;
+  }
+>>>>>>> Stashed changes
 }
 </style>

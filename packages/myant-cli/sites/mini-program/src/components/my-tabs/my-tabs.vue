@@ -26,6 +26,7 @@ export default {
   options: { styleIsolation: 'shared' },
   data() {
     return {
+      _tabs_: true,
       isInit: true,
       curIdx: 0,
       elWidth: null
@@ -36,12 +37,13 @@ export default {
       return `height: ${this.height}rpx; line-height: ${this.height}rpx;`
     },
     lineStyle() {
-      let styles = [`background:${this.lineColor}`]
+      let styles = [`background:${this.lineColor}`],
+        children = this.getChildren(this.$children)
       if (!this.isInit) {
         styles.push('transition-duration: 0.3s')
       }
-      let linePos = this.elWidth / this.$children.length / 2
-      let pos = (this.elWidth / this.$children.length) * this.curIdx
+      let linePos = this.elWidth / children.length / 2
+      let pos = (this.elWidth / children.length) * this.curIdx
       styles.push(`transform: translateX(${pos + linePos}px) translateX(-50%)`)
       return styles.join(';')
     },
@@ -69,8 +71,19 @@ export default {
         this.elWidth = res.width
       })
     },
+    getChildren(children) {
+      if (!children || !children[0]) {
+        return []
+      }
+
+      if (children[0].$data._tabItem_) {
+        return children.filter((child) => child.$data._tabItem_)
+      }
+      return this.getChildren(children[0] && children[0].$children)
+    },
     getActiveIndex() {
-      this.$children.forEach((item, index) => {
+      let children = this.getChildren(this.$children)
+      children.forEach((item, index) => {
         if (item.isActive) this.curIdx = index
       })
     },
@@ -86,7 +99,7 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   &--line {
     position: absolute;
     bottom: 0;

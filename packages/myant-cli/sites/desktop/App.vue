@@ -1,12 +1,6 @@
 <template>
   <div class="app">
-    <myant-doc
-      :lang="lang"
-      :config="config"
-      :versions="versions"
-      :simulator="simulator"
-      :lang-configs="langConfigs"
-    >
+    <myant-doc :lang="lang" :config="config" :versions="versions" :simulator="simulator" :lang-configs="langConfigs">
       <router-view />
     </myant-doc>
   </div>
@@ -28,7 +22,8 @@ export default {
     return {
       packageVersion: version,
       // simulator: `${path}mobile.html${location.hash}`,
-      simulator: `http://hh-oss-picture.miyapay.com/box/f8811cbfed3d08e19f9707fabf224510.jpeg`
+      // simulator: `http://hh-oss-picture.miyapay.com/box/f8811cbfed3d08e19f9707fabf224510.jpeg`
+      simulator: `http://localhost:8081`
     }
   },
 
@@ -97,10 +92,8 @@ export default {
 @font-face {
   font-family: 'my-icon-font'; /* project id 1926676 */
   src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot');
-  src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.ttf') format('truetype'), url('//at.alicdn.com/t/font_1926676_v7kmrq9wc3.svg#iconfont') format('svg');
 }
 .icon {
   font-family: 'my-icon-font';

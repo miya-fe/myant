@@ -1,5 +1,5 @@
 <template>
-  <block v-if="visible">
+  <view class="overlay" v-if="visible">
     <view v-if="overlay" class="my-overlay" :style="renderOverlayStyle" @click="handleOverlayClick"> </view>
     <view
       :animation="animationData"
@@ -8,7 +8,7 @@
     >
       <slot></slot>
     </view>
-  </block>
+  </view>
 </template>
 
 <script>
@@ -134,6 +134,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.overlay,
 .my-overlay {
   position: fixed;
   top: 0;
@@ -141,6 +142,8 @@ export default {
   z-index: 1;
   width: 100%;
   height: 100%;
+}
+.my-overlay {
   background-color: rgba(0, 0, 0, 0.5);
 }
 .my-popup {

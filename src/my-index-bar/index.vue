@@ -1,5 +1,5 @@
 <template>
-  <view class="container">
+  <view class="container __index_bar__">
     <scroll-view scroll-y :scroll-top="scrollTop + anchorScrollTop" :scroll-left="scrollLeft" class="scroller" @scroll="handleScroll">
       <slot></slot>
     </scroll-view>
@@ -67,7 +67,12 @@ export default class IndexBar extends Vue {
           })
         })
       } catch (e) {
-        resolve({ scrollTop: 0, scrollLeft: 0 })
+        resolve({
+          scrollTop: 0,
+          scrollLeft: 0,
+          offsetTop: 0,
+          offsetLeft: 0
+        })
       }
     })
   }

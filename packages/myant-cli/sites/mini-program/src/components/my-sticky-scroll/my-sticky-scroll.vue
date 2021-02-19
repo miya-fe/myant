@@ -1,5 +1,5 @@
 <template>
-  <scroll-view scroll-y :scroll-top="scrollTop" :scroll-left="scrollLeft" class="container" @scroll="handleScroll">
+  <scroll-view scroll-y :scroll-top="scrollTop" :scroll-left="scrollLeft" class="container __sticky_scroll__" @scroll="handleScroll">
     <slot></slot>
   </scroll-view>
 </template>
@@ -34,12 +34,23 @@ export default {
         try {
           const query = uni.createSelectorQuery()
           query.in(this).select('.container').scrollOffset()
+          query.in(this).select('.container').boundingClientRect()
 
-          query.exec(([offset]) => {
-            resolve({ scrollTop: offset.scrollTop, scrollLeft: offset.scrollLeft })
+          query.exec(([offset, clientRect]) => {
+            resolve({
+              scrollTop: offset.scrollTop,
+              scrollLeft: offset.scrollLeft,
+              offsetTop: clientRect.top,
+              offsetLeft: clientRect.left
+            })
           })
         } catch (e) {
-          resolve({ scrollTop: 0, scrollLeft: 0 })
+          resolve({
+            scrollTop: 0,
+            scrollLeft: 0,
+            offsetTop: 0,
+            offsetLeft: 0
+          })
         }
       })
     },

@@ -4,7 +4,7 @@
       <view class="tip"> 基础用法 </view>
       <view class="item">
         <my-index-bar>
-          <my-index-anchor style="background-color: red" index="A" />
+          <my-index-anchor styles="background-color: red" index="A" />
           <text class="text-line">这是一行</text>
           <text class="text-line">这是一行</text>
           <text class="text-line">这是一行</text>

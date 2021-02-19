@@ -27,12 +27,12 @@ export default {
     },
     // 展示数量
     num: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     // 限制数量,展示数量不能超过限制数量
     limit: {
-      type: Number
+      type: [Number, String]
     }
   },
   data: () => {

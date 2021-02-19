@@ -164,6 +164,7 @@ export async function compileH5Demo(isProduction: boolean = false, cmd: Option) 
   if (isProduction) {
     await buildH5Demo(cmd)
   } else {
+    watchFileChange()
     runH5DemoServer()
   }
 }

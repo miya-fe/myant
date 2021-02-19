@@ -36,7 +36,7 @@
         </view>
       </view>
     </view>
-    <view class="picker-contain">
+    <!--<view class="picker-contain">
       <view class="picker-title">省市区选择器</view>
       <view class="picker-content">
         <view class="picker-header"> 当前选择 </view>
@@ -44,7 +44,7 @@
           <my-picker :mode="'region'" :region-value="regionValue" @click="handlePickerClick" />
         </view>
       </view>
-    </view>
+    </view>-->
   </view>
 </template>
 

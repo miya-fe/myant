@@ -1,13 +1,13 @@
 <template>
   <view>
     <view class="list">
-      <view class="tip"> 默认stepper </view>
+      <view class="tip"> 默认stepper(不可点击) </view>
       <view class="item">
         <my-stepper num="11" />
       </view>
     </view>
     <view class="list">
-      <view class="tip"> 没有背景颜色的stepper </view>
+      <view class="tip"> 没有背景颜色的stepper(不可点击) </view>
       <view class="item">
         <my-stepper num="11" :type="'empty'" />
       </view>

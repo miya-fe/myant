@@ -57,6 +57,7 @@ export default {
     justify-content: center;
     color: #fff;
     font-weight: bold;
+    min-height: 16rpx;
   }
 }
 .badge-without-text {

@@ -17,7 +17,7 @@
 #### 安装
 
 ```html
-yarn add @myant/cli 或 npm i @myant/cli --save
+yarn add @myant/cli -S 或 npm i @myant/cli -S
 ```
 
 #### 配置

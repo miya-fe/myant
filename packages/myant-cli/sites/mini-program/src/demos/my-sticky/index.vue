@@ -17,16 +17,18 @@
         <view>我是分割线</view>
         <view class="inner">
           <view class="left">
-            <my-sticky :offset-top="50" :style="categoryStyle">
-              <view>分类一</view>
-              <view>分类一</view>
-              <view>分类一</view>
-              <view>分类一</view>
-              <view>分类一</view>
-              <view>分类一</view>
-              <view>分类一</view>
-              <view>分类一</view>
-              <view>分类一</view>
+            <my-sticky :offset-top="60">
+              <view>
+                <view>分类一</view>
+                <view>分类一</view>
+                <view>分类一</view>
+                <view>分类一</view>
+                <view>分类一</view>
+                <view>分类一</view>
+                <view>分类一</view>
+                <view>分类一</view>
+                <view>分类一</view>
+              </view>
             </my-sticky>
           </view>
           <view class="right">
