@@ -38,7 +38,7 @@ module.exports = {
           placeholder: '搜索文档...'
         },
         nav: [
-          /* {
+          {
             title: '开发指南',
             items: [
               {
@@ -46,7 +46,7 @@ module.exports = {
                 title: '介绍'
               }
             ]
-          }, */
+          },
           {
             title: '基础组件',
             items: [
