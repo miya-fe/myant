@@ -7,9 +7,9 @@ Vue.config.productionTip = false
 // #ifdef H5
 window.syncH5Path = function (hash) {
   // http://localhost:8081/#/demos/my-badge/index
-  let url = `//${location.host}`
+  let url = `http://miya-fe.gitee.io/myant/h5`
   if (hash.indexOf('my-') > -1) {
-    url += `${url}/#/demos/${hash}/index`
+    url = `${url}/#/demos/${hash}/index`
   }
   uni.redirectTo({
     url
