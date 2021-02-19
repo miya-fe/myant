@@ -7,6 +7,7 @@ const MiniPageWebpackPlugin = require('../../lib/compiler/mini-page-webpack-plug
 module.exports = {
   chainWebpack: (config) => {
     config.resolve.alias.set('site-mini-shared', SITE_MINI_SHARED_FILE)
+    // config.output.publicPath = ''
   },
   configureWebpack: {
     /*resolve: {
@@ -16,6 +17,6 @@ module.exports = {
         'site-mini-shared': SITE_MINI_SHARED_FILE,
       },
     },*/
-    plugins: [new MyantCliSitePlugin({ platform: [Platform.mini] }), new MiniPageWebpackPlugin()],
-  },
+    plugins: [new MyantCliSitePlugin({ platform: [Platform.mini] }), new MiniPageWebpackPlugin()]
+  }
 }
