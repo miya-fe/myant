@@ -14,7 +14,7 @@ export function getSiteDevWebpackConfig(site: string = 'desktop'): Configuration
     siteConfig = get(myantConfig, `site.locales['zh-CN']`, {})
   let siteDevWebpackConfig = {
     entry: {
-      'site-desktop': [join(__dirname, '../../sites/desktop/main.js')],
+      'site-desktop': [join(__dirname, '../../sites/desktop/main.js')]
       // 'site-mobile': [join(__dirname, '../../sites/mobile/main.js')],
     },
     devServer: {
@@ -23,17 +23,17 @@ export function getSiteDevWebpackConfig(site: string = 'desktop'): Configuration
       host: '0.0.0.0',
       stats: 'errors-only',
       publicPath: '/',
-      disableHostCheck: true,
+      disableHostCheck: true
     },
     resolve: {
       alias: {
         '@': SRC_DIR,
         // 'site-mobile-shared': SITE_MOBILE_SHARED_FILE,
-        'site-desktop-shared': SITE_DESKTOP_SHARED_FILE,
-      },
+        'site-desktop-shared': SITE_DESKTOP_SHARED_FILE
+      }
     },
     output: {
-      chunkFilename: '[name].js',
+      chunkFilename: '[name].js'
     },
     optimization: {
       splitChunks: {
@@ -42,27 +42,29 @@ export function getSiteDevWebpackConfig(site: string = 'desktop'): Configuration
             chunks: 'all',
             minChunks: 2,
             minSize: 0,
-            name: 'chunks',
-          },
-        },
-      },
+            name: 'chunks'
+          }
+        }
+      }
     },
     plugins: [
       new WebpackBar({
         name: 'myant cli',
-        color: GREEN,
+        color: GREEN
       }),
       new MyantCliSitePlugin({ platform: [Platform.mobile, Platform.desktop] }),
       new HtmlWebpackPlugin({
         title: siteConfig.title,
         icon: siteConfig.icon,
+        logo: siteConfig.logo,
+        keywords: siteConfig.keywords,
         description: siteConfig.description,
         chunks: ['chunks', 'site-desktop'],
         template: join(__dirname, '../../sites/desktop/index.html'),
         filename: 'index.html',
-        baiduAnalytics: siteConfig.baiduAnalytics,
-      }),
-    ],
+        baiduAnalytics: siteConfig.baiduAnalytics
+      })
+    ]
   }
 
   // @ts-ignore

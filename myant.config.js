@@ -24,13 +24,13 @@ module.exports = {
   site: {
     defaultLang: 'zh-CN',
     outputDir: join(__dirname, 'dist'),
-    publicPath: '',
     locales: {
       'zh-CN': {
-        title: 'Myant',
+        title: 'myant',
         logo: 'http://hh-oss-picture.miyapay.com/box/e0ad6809af6c6738a84ad79b824980cf.png',
         icon: 'http://hh-oss-picture.miyapay.com/box/9ee38309cc66ea32fc46945c0cdc297d.svg',
-        description: 'myant微信小程序组件库',
+        keywords: 'myant,myant组件库,uni-app,微信小程序,支付宝小程序,小程序UI库,UI库',
+        description: '基于uni-app的移动端跨平台组件库，现已支持微信小程序、支付宝小程序、H5',
         langLabel: '中文',
         searchConfig: {
           apiKey: '',

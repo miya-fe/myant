@@ -20,21 +20,21 @@ export function getSiteProdWebpackConfig(site: string = 'desktop'): Configuratio
     mode: 'production',
     stats: 'none',
     entry: {
-      'site-desktop': [join(__dirname, '../../sites/desktop/main.js')],
+      'site-desktop': [join(__dirname, '../../sites/desktop/main.js')]
       // 'site-mobile': [join(__dirname, '../../sites/mobile/main.js')],
     },
     resolve: {
       alias: {
         '@': SRC_DIR,
         // 'site-mobile-shared': SITE_MOBILE_SHARED_FILE,
-        'site-desktop-shared': SITE_DESKTOP_SHARED_FILE,
-      },
+        'site-desktop-shared': SITE_DESKTOP_SHARED_FILE
+      }
     },
     output: {
       publicPath,
       path: outputDir,
       filename: '[name].[hash:8].js',
-      chunkFilename: 'async_[name].[chunkhash:8].js',
+      chunkFilename: 'async_[name].[chunkhash:8].js'
     },
     optimization: {
       splitChunks: {
@@ -43,27 +43,29 @@ export function getSiteProdWebpackConfig(site: string = 'desktop'): Configuratio
             chunks: 'all',
             minChunks: 2,
             minSize: 0,
-            name: 'chunks',
-          },
-        },
-      },
+            name: 'chunks'
+          }
+        }
+      }
     },
     plugins: [
       new WebpackBar({
         name: 'myant cli',
-        color: GREEN,
+        color: GREEN
       }),
       new MyantCliSitePlugin({ platform: [Platform.mobile, Platform.desktop] }),
       new HtmlWebpackPlugin({
         title: siteConfig.title,
+        icon: siteConfig.icon,
         logo: siteConfig.logo,
+        keywords: siteConfig.keywords,
         description: siteConfig.description,
         chunks: ['chunks', 'site-' + site],
         template: join(__dirname, '../../sites/desktop/index.html'),
         filename: 'index.html',
-        baiduAnalytics: siteConfig.baiduAnalytics,
-      }),
-    ],
+        baiduAnalytics: siteConfig.baiduAnalytics
+      })
+    ]
   }
 
   // @ts-ignore
