@@ -19,6 +19,9 @@
     "release": "npx myant-cli release",
     "changelog": "conventional-changelog -p anguNOlar -i CHANGELOG.md -s -r 0"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": "https://github.com/miya-fe/myant",
   "sideEffects": false,
   "files": [
