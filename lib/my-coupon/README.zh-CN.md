@@ -1,74 +1,49 @@
-# icon 图标
+# coupon 券
 
 ## 代码演示
 
 ### 基础用法
 
 ```html
-<my-icon>&#xe63f;</my-icon>
+<my-coupon :coupon="coupon"></my-coupon>
+
+注：coupon 属性请参考下文
 ```
 
-### 按钮大小
+### 带按钮的券
 
-通过指定 `size` 属性值，可以更改按钮大小（默认值：`default`）
+通过指定 `with-btn` 属性值，可以为券添加按钮（默认值：`false`）
 
 ```html
-<my-icon size="large">&#xe63f;</my-icon>
-<my-icon size="default">&#xe63f;</my-icon>
-<my-icon size="small">&#xe63f;</my-icon>
+<my-coupon with-btn :coupon="coupon">
+  <my-button slot="btn" size="small" type="primary">领取</my-button>
+</my-coupon>
 ```
-
-### 禁用按钮
-
-通过指定 `color` 属性值更改图标颜色
-
-```html
-<my-icon size="large" color="red">&#xe63f;</my-icon>
-```
-
-### 自定义图标
-
-通过指定 `src` 属性值设置自定义图标
-
-```html
-<my-icon size="large" src="http://hh-oss-picture.miyapay.com/box/7012120c4f9fed5558450de70b20a11d.png"></my-icon>
-```
-
-### 带徽标的图标
-
-通过指定的 `badge` 插槽，可在图标右上角增加徽标
-
-```html
-<my-icon size="large">&#xe63f;<my-badge slot="badge" text="9"></my-badge></my-icon>
-```
-
-徽标的参数说明请查看[徽标组件 my-badge](#/zh-CN/my-badge)
 
 ## API
 
-### icon props
+### coupon props
 
-| 参数         | 说明               | 类型                                    | 默认值    |
-| ------------ | ------------------ | --------------------------------------- | --------- |
-| src          | 自定义图标地址     | _string_                                | `-`       |
-| color        | 图标颜色           | _string_                                | `-`       |
-| size         | 图标大小           | _string(large\|default\|small)\|number_ | `default` |
-| class-prefix | 自定义图标样式前缀 | _string_                                | `-`       |
+| 参数     | 说明         | 类型      | 默认值  |
+| -------- | ------------ | --------- | ------- |
+| with-btn | 是否显示按钮 | _boolean_ | `false` |
+| coupon   | 券数据       | _object_  | `-`     |
+
+### coupon 属性值
+
+| 名称  | 说明   | 必须 |
+| ----- | ------ | ---- |
+| logo  | 券图片 | 是   |
+| name  | 券名称 | 是   |
+| label | 券标签 | 否   |
+| desc  | 券说明 | 否   |
 
 ### icon events
 
-| 事件名 | 说明           | 回调参数       |
-| ------ | -------------- | -------------- |
-| click  | 点击图标时触发 | _event: Event_ |
+| 事件名 | 说明       | 回调参数       |
+| ------ | ---------- | -------------- |
+| click  | 点击时触发 | _event: Event_ |
 
-### icon slots
+### slot 插槽
 
-| 名称  | 说明       |
-| ----- | ---------- |
-| badge | 自定义徽标 |
-
-## icon 字典
-
-### 字典
-
-[链接](https://www.iconfont.cn/manage/index?spm=a313x.7781069.1998910419.db775f1f3&manage_type=myprojects&projectId=1926676&keyword=&project_type=&page=)
+自定义点击按钮

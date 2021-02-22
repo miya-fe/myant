@@ -18,24 +18,51 @@ export default {
       default: '#f70'
     }
   },
+  data: () => {
+    return {
+      _tabItem_: true
+    }
+  },
   computed: {
     dynamicStyle() {
       if (this.isActive) {
         return `color: ${this.activeColor}`
-      } else {
-        return `color: #333`
       }
+      return `color: #333`
     },
     currentName() {
       return this.name
     },
     isActive() {
-      return this.currentName === this.$parent.currentName
+      let parent = this.getTabItemParent()
+      return this.currentName === parent.currentName
     }
   },
   methods: {
+    getTabItemParent() {
+      if (this.tabItemParent) {
+        return this.tabItemParent
+      }
+
+      let parent = this.$parent
+
+      while (parent) {
+        if (parent.$data._tabs_) {
+          break
+        } else if (parent.$parent) {
+          parent = parent.$parent
+        } else {
+          parent = null
+        }
+      }
+      this.tabItemParent = parent
+      return parent
+    },
     onClick() {
-      this.$parent.updateName(this.currentName)
+      let parent = this.getTabItemParent()
+      if (parent) {
+        parent.updateName(this.currentName)
+      }
     }
   }
 }

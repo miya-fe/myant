@@ -1,5 +1,5 @@
 {
-  "name": "myant",
+  "name": "@myant/uni",
   "version": "0.1.0",
   "description": "WX & AliPay UI Components built on uniApp",
   "main": "lib/index.js",

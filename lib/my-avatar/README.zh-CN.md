@@ -1,16 +1,26 @@
-### avatar 进度条的使用方法
+# avatar 头像
 
-1. 基础使用：
+## 代码演示
 
-   ```vue
-   <template>
-     <my-avatar size="huge" src="http://hh-oss-picture.miyapay.com/box/94dc6578bb06b89a2ab95910a4966ba6.png"></my-avatar>
-   </template>
-   ```
+### 基础用法
 
-2. props 参数：
+```html
+<my-avatar size="huge" src="http://hh-oss-picture.miyapay.com/box/94dc6578bb06b89a2ab95910a4966ba6.png"></my-avatar>
+```
 
-   | 字段 | 类型   | 含义                                                      |
-   | ---- | ------ | --------------------------------------------------------- |
-   | src  | String | 头像图片链接地址(必填)                                    |
-   | size | String | 头像尺寸，可选值 'huge', 'large', 'middle'(默认), 'small' |
+### 头像大小
+
+通过制定 `size` 属性值，可以更改头像的大小（默认值： `middle`）
+
+```html
+<my-avatar size="middle" src="http://hh-oss-picture.miyapay.com/box/94dc6578bb06b89a2ab95910a4966ba6.png"></my-avatar>
+```
+
+## API
+
+### avatar props
+
+| 参数 | 说明     | 类型                         | 默认值   |
+| ---- | -------- | ---------------------------- | -------- |
+| src  | 头像地址 | _string_                     | `-`      |
+| size | 头像尺寸 | _huge\|large\|middle\|small_ | `middle` |

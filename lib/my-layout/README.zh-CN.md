@@ -5,70 +5,40 @@
 ### 基础用法
 
 ```html
-<my-layout>...</my-layout>
+<my-layout>
+  <view>
+    <text>我是内容区域</text>
+  </view>
+</my-layout>
 ```
 
-### 按钮大小
+### 带 tabbar 的布局
 
-通过指定 `size` 属性值，可以更改按钮大小（默认值：`default`）
+通过指定 `with-tab-bar` 属性值，会在底部固定预留 tabbar 的区域（默认值：`false`）
 
 ```html
-<my-icon size="large">&#xe63f;</my-icon>
-<my-icon size="default">&#xe63f;</my-icon>
-<my-icon size="small">&#xe63f;</my-icon>
+<my-layout with-tab-bar>
+  <view>
+    <text>我是内容区域</text>
+  </view>
+  <my-tabbar slot="tab-bar">
+    <my-tabbar-item tab="home">首页一</my-tabbar-item>
+    <my-tabbar-item tab="home2">首页二</my-tabbar-item>
+    <my-tabbar-item tab="home3">首页三</my-tabbar-item>
+  </my-tabbar>
+</my-layout>
 ```
-
-### 禁用按钮
-
-通过指定 `color` 属性值更改图标颜色
-
-```html
-<my-icon size="large" color="red">&#xe63f;</my-icon>
-```
-
-### 自定义图标
-
-通过指定 `src` 属性值设置自定义图标
-
-```html
-<my-icon size="large" src="http://hh-oss-picture.miyapay.com/box/7012120c4f9fed5558450de70b20a11d.png"></my-icon>
-```
-
-### 带徽标的图标
-
-通过指定的 `badge` 插槽，可在图标右上角增加徽标
-
-```html
-<my-icon size="large">&#xe63f;<my-badge slot="badge" text="9"></my-badge></my-icon>
-```
-
-徽标的参数说明请查看[徽标组件 my-badge](#/zh-CN/my-badge)
 
 ## API
 
-### icon props
+### layout props
 
-| 参数         | 说明               | 类型                                    | 默认值    |
-| ------------ | ------------------ | --------------------------------------- | --------- |
-| src          | 自定义图标地址     | _string_                                | `-`       |
-| color        | 图标颜色           | _string_                                | `-`       |
-| size         | 图标大小           | _string(large\|default\|small)\|number_ | `default` |
-| class-prefix | 自定义图标样式前缀 | _string_                                | `-`       |
+| 参数         | 说明                 | 类型      | 默认值  |
+| ------------ | -------------------- | --------- | ------- |
+| with-tab-bar | 是否带有 tabbar 区域 | _boolean_ | `false` |
 
-### icon events
+### layout slots
 
-| 事件名 | 说明           | 回调参数       |
-| ------ | -------------- | -------------- |
-| click  | 点击图标时触发 | _event: Event_ |
-
-### icon slots
-
-| 名称  | 说明       |
-| ----- | ---------- |
-| badge | 自定义徽标 |
-
-## icon 字典
-
-### 字典
-
-[链接](https://www.iconfont.cn/manage/index?spm=a313x.7781069.1998910419.db775f1f3&manage_type=myprojects&projectId=1926676&keyword=&project_type=&page=)
+| 名称    | 说明                 |
+| ------- | -------------------- |
+| tab-bar | 底部 tabbar 内容区域 |

@@ -1,14 +1,13 @@
 <template>
-  <block>
-    <view class="index-anchor" :style="divStyle">
-      <view v-if="!sticky" :style="stickyStyle">
-        <text>{{ label || index }}</text>
-      </view>
-    </view>
-    <view v-if="sticky" class="index-anchor" :style="stickyStyle">
+  <view class="index-anchor" :class="randomClassName" :style="divStyle">
+    <view v-if="!sticky" :style="stickyStyle">
       <text>{{ label || index }}</text>
     </view>
-  </block>
+
+    <view v-if="sticky" class="index-anchor-fixed" :style="stickyStyle">
+      <text>{{ label || index }}</text>
+    </view>
+  </view>
 </template>
 
 <script lang="ts">
@@ -25,7 +24,7 @@ export default class IndexAnchor extends Vue {
     type: [Object, String],
     default: ''
   })
-  readonly style: string | object
+  readonly styles: string | object
   sticky = false
   visible = false
   anchorPosition = {
@@ -38,14 +37,17 @@ export default class IndexAnchor extends Vue {
   }
   stickyParent: any
   intersectionObserver: any
+  get randomClassName() {
+    return `index-anchor-${Math.floor(Math.random() * 100000)}`
+  }
   get divStyle() {
     let styles = [],
       keys = []
 
-    if (typeof this.style === 'string') {
-      styles.push(this.style)
+    if (typeof this.styles === 'string') {
+      styles.push(this.styles)
     } else {
-      keys = Object.keys(this.style)
+      keys = Object.keys(this.styles)
     }
 
     if (this.sticky && typeof this.anchorPosition.width !== 'undefined') {
@@ -53,7 +55,7 @@ export default class IndexAnchor extends Vue {
     }
 
     keys.forEach((key) => {
-      styles.push(`${key}: ${this.style[key]}`)
+      styles.push(`${key}: ${this.styles[key]}`)
     })
 
     return styles.join(';')
@@ -63,6 +65,10 @@ export default class IndexAnchor extends Vue {
       let top = this.offsetTop + this.anchorPosition.offsetTop,
         left = this.anchorPosition.offsetLeft
 
+      // #ifdef H5
+      top += 44 // H5有一个默认的头部
+      // #endif
+
       let styles = [this.divStyle, `position: fixed;top:${top}px;left:${left}px`]
 
       return styles.join(';')
@@ -71,13 +77,31 @@ export default class IndexAnchor extends Vue {
   }
 
   mounted() {
+    console.log('setStickyPosition')
     if (!uni.createIntersectionObserver) {
       return
     }
     // 获取 sticky 位置信息
     this.setStickyPosition()
-    // 检测是否可见
-    // this.checkIsVisible()
+
+    // #ifdef H5
+    this.intersectionObserver = new IntersectionObserver(
+      ([res]) => {
+        if (res.intersectionRect.top > 0) {
+          this.visible = true
+        } else {
+          this.visible = false
+        }
+      },
+      {
+        root: document.querySelector('.__index_bar__'),
+        rootMargin: `${-(this.offsetTop || 0) - 1}px 0px 0px 0px`
+      }
+    )
+    this.intersectionObserver.observe(document.querySelector(`.${this.randomClassName}`))
+    // #endif
+
+    // #ifndef H5
     this.intersectionObserver = uni.createIntersectionObserver(this)
     this.intersectionObserver.relativeToViewport({ top: -this.offsetTop - 1 }).observe(`.index-anchor`, (res) => {
       if (res.intersectionRect.top > 0) {
@@ -86,6 +110,7 @@ export default class IndexAnchor extends Vue {
         this.visible = false
       }
     })
+    // #endif
 
     let parent = this.getStickyParent()
     parent.onParentScroll(({ detail }) => {
@@ -119,10 +144,9 @@ export default class IndexAnchor extends Vue {
   }
   setStickyPosition() {
     let parent = this.getStickyParent()
-
     parent.getScrollOffset().then(({ scrollTop, scrollLeft, offsetTop, offsetLeft }: { [key: string]: number }) => {
       const query = uni.createSelectorQuery()
-      query.in(this).select('.index-anchor').boundingClientRect()
+      query.in(this).select(`.${this.randomClassName}`).boundingClientRect()
 
       query.exec(([clientRect]) => {
         this.anchorPosition = {
@@ -130,7 +154,9 @@ export default class IndexAnchor extends Vue {
           top: clientRect.top - offsetTop + scrollTop,
           left: clientRect.left - offsetLeft + scrollLeft,
           offsetTop,
-          offsetLeft
+          offsetLeft,
+          width: clientRect.width,
+          height: clientRect.height
         }
 
         parent.addAnchor(this.index, clientRect.top - offsetTop + scrollTop)
@@ -160,7 +186,8 @@ export default class IndexAnchor extends Vue {
 </script>
 
 <style lang="less">
-.index-anchor {
+.index-anchor,
+.index-anchor-fixed {
   position: relative;
   z-index: 1;
   box-sizing: border-box;
