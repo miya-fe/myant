@@ -17,7 +17,9 @@
 #### 安装
 
 ```html
-yarn add @myant/uni -S 或 npm i @myant/uni -S
+yarn add @myant/uni -S 
+或 
+npm i @myant/uni -S
 ```
 
 #### 配置
@@ -25,7 +27,12 @@ yarn add @myant/uni -S 或 npm i @myant/uni -S
 集成方式参考 uni-app 第三方 UI 库集成方法
 
 ```html
-"easycom": { "autoscan": true, "custom": { "^my-(.*)": "myant/lib/my-$1/index.vue" } }
+"easycom": { 
+    "autoscan": true, 
+    "custom": { 
+        "^my-(.*)": "@myant/uni/lib/my-$1/index.vue" 
+    } 
+}
 ```
 
 ### 贡献代码

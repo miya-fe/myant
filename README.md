@@ -3,9 +3,9 @@
 ### 安装
 
 ```
-yarn add myant -S
+yarn add @myant/uni -S
 或
-npm install myant -S
+npm install @myant/uni -S
 ```
 
 ### 开始
@@ -13,7 +13,12 @@ npm install myant -S
 集成方式参考 uni-app 第三方 UI 库集成方法，eg:
 
 ```html
-"easycom": { "autoscan": true, "custom": { "^my-(.*)": "myant/lib/my-$1/index.vue" } }
+"easycom": { 
+    "autoscan": true, 
+    "custom": { 
+        "^my-(.*)": "@myant/uni/lib/my-$1/index.vue" 
+    } 
+}
 ```
 
 ### 浏览器支持
@@ -27,5 +32,5 @@ npm install myant -S
 
 ### 预览
 
-- [H5 预览地址](https://miya-fe.github.io/myant)
+- [H5 预览地址](https://miya-fe.github.io/myant/desktop)
 - 小程序预览

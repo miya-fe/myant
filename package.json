@@ -48,7 +48,6 @@
     }
   },
   "lint-staged": {
-    "*.md": "prettier --write",
     "*.{ts,tsx,js,vue,less}": "prettier --write",
     "*.{ts,tsx,js,vue}": "eslint --fix"
   },
